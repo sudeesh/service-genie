@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/service-genie/static/css/main.9b5a23bd.chunk.css",
+    "main.js": "/service-genie/static/js/main.cffc66c1.chunk.js",
+    "main.js.map": "/service-genie/static/js/main.cffc66c1.chunk.js.map",
+    "runtime-main.js": "/service-genie/static/js/runtime-main.7210f7de.js",
+    "runtime-main.js.map": "/service-genie/static/js/runtime-main.7210f7de.js.map",
+    "static/css/2.20aa2d7b.chunk.css": "/service-genie/static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.72d43ae9.chunk.js": "/service-genie/static/js/2.72d43ae9.chunk.js",
+    "static/js/2.72d43ae9.chunk.js.map": "/service-genie/static/js/2.72d43ae9.chunk.js.map",
+    "static/js/3.fc309d02.chunk.js": "/service-genie/static/js/3.fc309d02.chunk.js",
+    "static/js/3.fc309d02.chunk.js.map": "/service-genie/static/js/3.fc309d02.chunk.js.map",
+    "index.html": "/service-genie/index.html",
+    "static/css/2.20aa2d7b.chunk.css.map": "/service-genie/static/css/2.20aa2d7b.chunk.css.map",
+    "static/css/main.9b5a23bd.chunk.css.map": "/service-genie/static/css/main.9b5a23bd.chunk.css.map",
+    "static/js/2.72d43ae9.chunk.js.LICENSE.txt": "/service-genie/static/js/2.72d43ae9.chunk.js.LICENSE.txt",
+    "static/media/car.b69359b3.png": "/service-genie/static/media/car.b69359b3.png",
+    "static/media/homePage.styles.scss": "/service-genie/static/media/cityscape.dc2b1674.png",
+    "static/media/logo.d961efe3.png": "/service-genie/static/media/logo.d961efe3.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7210f7de.js",
+    "static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.72d43ae9.chunk.js",
+    "static/css/main.9b5a23bd.chunk.css",
+    "static/js/main.cffc66c1.chunk.js"
+  ]
+}

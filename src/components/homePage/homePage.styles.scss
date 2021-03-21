@@ -1,0 +1,30 @@
+.home-page-container {
+  background-color: #e6ebef;
+}
+.banner-bg {
+  background-image: url("../../images/cityscape.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #ced6dc;
+  height: 72px;
+}
+
+.btn-primary.home-btn {
+  background-color: #eeff00;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  padding: 10px 40px;
+  font-size: 25px;
+  a {
+    color: #000;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+.btn-primary:hover.home-btn {
+  background-color: #eeff00;
+  border: none;
+  color: #000;
+}
