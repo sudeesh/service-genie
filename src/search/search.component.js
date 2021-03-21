@@ -6,7 +6,6 @@ import {
   FormControlLabel,
   FormControl,
   FormLabel,
-  CircularProgress,
   TextField,
 } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -95,6 +94,12 @@ export default function Search() {
         autoHighlight
         getOptionLabel={(option) => option.label}
         onChange={selectChange}
+        onOpen={() => {
+          setOpen(true);
+        }}
+        onClose={() => {
+          setOpen(false);
+        }}
         renderOption={(option) => (
           <React.Fragment>
             {option.label} ({option.code}) +{option.phone}
