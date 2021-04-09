@@ -3,13 +3,13 @@ import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 // commenting homepage for temporary purpose
 // import Homepage from "./components/homePage/homePage.component";
-import SearchPage from "./components/searchPage/searchPage.component";
-import DetailsPage from "./components/detailsPage/detailsPage.component";
-import LocationList from "./components/locationList/locationList.component";
+import SearchPage from "./pages/searchPage/searchPage.component";
+import DetailsPage from "./pages/detailsPage/detailsPage.component";
+import LocationList from "./pages/locationList/locationList.component";
 
 // component
-import Header from "../src/common/header/header.component";
-import Footer from "../src/common/footer/footer.component";
+// import Header from "../src/common/header/header.component";
+// import Footer from "../src/common/footer/footer.component";
 
 const App = () => {
   const [latitude, setLatitude] = useState(0);
@@ -27,7 +27,8 @@ const App = () => {
   };
   return (
     <div className="grid-container">
-      <Header />
+      {/* Hidded header for time being as we are integrating with wix */}
+      {/* <Header /> */}
       <main>
         {/* <Route exact path="/" render={(props) => <Homepage {...props} />} /> */}
         <Route
@@ -48,7 +49,8 @@ const App = () => {
           render={(props) => <LocationList {...props} />}
         />
       </main>
-      <Footer />
+      {/* Hidded footer for time being as we are integrating with wix */}
+      {/* <Footer /> */}
     </div>
   );
 };

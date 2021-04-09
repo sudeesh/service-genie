@@ -9,72 +9,87 @@ import carAvatar from "../../images/car-avatar.png";
 
 //Icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faMapMarkedAlt,
-  faChevronDown,
-} from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
 
 //Styles
 import "./tileList.styles.scss";
 
 const TileList = (props) => {
   let history = useHistory();
-  const onClickDetail = (event) => {
+  const onClickDetail = (name, location) => {
     history.push({
       pathname: "/details",
-      search: `?garageName=event`,
-      state: { value: event },
+      search: `?garageName=${name}`,
+      state: { val: name, location: location },
     });
   };
   const { list } = props;
-  return list.map((x) => (
-    <List className="list-container" key={x.id}>
-      <ListItem>
-        <Grid container spacing={2}>
-          <Grid item xs={4}>
-            <h3>
-              <img src={carAvatar} alt="car avatar" /> {x.garageTitle}
-            </h3>
-            <p>
-              <FontAwesomeIcon icon={faMapMarkedAlt} />
-              {x.address}
-            </p>
-            <p className="text-underline">{x.operatingHours}</p>
-          </Grid>
-          <Grid item xs={10} sm container>
-            <Grid item container direction="column" spacing={2}>
-              <Grid item xs>
-                <p>
-                  <button className="common-button verified-color">
-                    Verified
-                  </button>
-                  <button className="common-button available-color">
-                    Available All days
-                  </button>
-                </p>
-                <h3>Customer rating</h3>
-                <div
-                  className="cursor-pointer"
-                  onClick={() => onClickDetail(x.garageTitle)}
-                >
-                  Details <FontAwesomeIcon icon={faChevronDown} />
-                </div>
+
+  return (
+    list &&
+    list.map((x) => (
+      <List className="list-container" key={x.id}>
+        <ListItem>
+          <Grid container spacing={2}>
+            <Grid item xs={4} className="description-panel">
+              <h3>
+                <img src={carAvatar} alt="car avatar" /> {x.garageTitle}
+              </h3>
+              <p>
+                <FontAwesomeIcon
+                  icon={faMapMarkedAlt}
+                  className="offest-margin-right-10"
+                />
+                {x.address}
+              </p>
+              <p className="text-underline">
+                <span>operating Hours:</span>
+                {x.operatingHours}
+              </p>
+            </Grid>
+            <Grid item xs={10} sm container>
+              <Grid item container direction="column" spacing={2}>
+                <Grid item xs>
+                  <p>
+                    {x.verified === true ? (
+                      <button className="common-button verified-color">
+                        Verified
+                      </button>
+                    ) : null}
+                    <button className="common-button available-color">
+                      {x.weekOff}
+                    </button>
+                  </p>
+                  <h3>Customer rating</h3>
+                  <p></p>
+                </Grid>
               </Grid>
             </Grid>
+            <Grid item xs={2}>
+              <p>Serivices starting at</p>
+              <p>
+                <b>{x.startingPrice}</b>
+              </p>
+              <p>
+                <button
+                  className="common-button book-now-btn cursor-pointer"
+                  onClick={() => onClickDetail(x.garageTitle, x.location)}
+                >
+                  Book Now
+                </button>
+                <span
+                  className="cursor-pointer text-underline"
+                  onClick={() => onClickDetail(x.garageTitle, x.location)}
+                >
+                  Details
+                </span>
+              </p>
+            </Grid>
           </Grid>
-          <Grid item xs={2}>
-            <p>Serivices starting at</p>
-            <p>
-              <b>Rs. 1670</b>
-            </p>
-            <p>
-              <button className="common-button book-now-btn">Book Now</button>
-            </p>
-          </Grid>
-        </Grid>
-      </ListItem>
-    </List>
-  ));
+        </ListItem>
+      </List>
+    ))
+  );
 };
 
 export default TileList;
