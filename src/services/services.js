@@ -14,9 +14,3 @@ export const getGaragesByName = (name) =>
   axios.get(
     `http://13.235.168.116:8080/api/v1/getGarageDetailsByName?garageName=${name}`
   );
-
-export const getOverallReviewRatingsOfGarage = (name, location) => {
-  axios.get(
-    `http://13.235.168.116:8080/api/v1/getOverallReviewRatingsOfGarage?garageName=${name}&location=${location}`
-  );
-};

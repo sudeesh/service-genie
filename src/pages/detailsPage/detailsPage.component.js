@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
+import axios from "axios";
+import StarRatings from "react-star-ratings";
 
 // image
 import tyre from "../../images/tyre.png";
@@ -18,24 +20,22 @@ import "./detailsPage.styles.scss";
 const DetailsPage = (props) => {
   const [name, setGarageName] = useState({});
   useEffect(() => {
-    debugger;
     getGaragesByName(props.location.state.val)
       .then((res) => setGarageName(res.data))
       .catch((error) => error.message);
   }, [props.location.state.val]);
 
-  // const [review, setReview] = useState({});
+  const [review, setReview] = useState({});
 
-  // useEffect(() => {
-  //   getOverallReviewRatingsOfGarage(
-  //     props.location.state.val,
-  //     props.location.state.location
-  //   ).then((res) => {
-  //     debugger;
-  //     console.log("res", res);
-  //     return setReview(res.data);
-  //   });
-  // }, [props.location]);w);
+  useEffect(() => {
+    axios
+      .get(
+        `http://13.235.168.116:8080/api/v1/getOverallReviewRatingsOfGarage?garageName=${props.location.state.val}&location=${props.location.state.location}`
+      )
+      .then((res) => setReview(res.data));
+  }, [props.location]);
+
+  console.log("review", review);
 
   return (
     <Grid
@@ -66,6 +66,24 @@ const DetailsPage = (props) => {
                 <span>Paymant Mode:</span> {name.paymentMode}
               </p>
               <p>
+                <span>Reviews:</span>
+                {review.averageGarageRatings === "NaN" ? (
+                  "No Reviews"
+                ) : (
+                  <>
+                    <StarRatings
+                      rating={review.averageGarageRatings}
+                      starRatedColor="rgb(2238, 255, 0)"
+                      numberOfStars={5}
+                      name="rating"
+                      starDimension="20px"
+                      starSpacing="3px"
+                    />
+                    <span> {review.totalGarageReviews} reviews</span>
+                  </>
+                )}
+              </p>
+              <p>
                 <span>Detail:</span> Specialist with premium brands ranging from
                 Hummer, Jaguar, BMW, Audi, etc Known for on-time delivery and
                 Economical billing. Can be trusted to handle complicated issues
@@ -73,7 +91,15 @@ const DetailsPage = (props) => {
                 Garage equipped with in-house paintbooth and body shopping
                 facilities.
               </p>
-              <button className="common-button book-now-btn">Book</button>
+              <button
+                className="common-button book-now-btn cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href = `https://wa.me/919361040506?text=I%20need%20my%20car%20to%20be%20serviced%20@%20%3C${name.garageTitle}%3E,%3C${name.location}%3E`;
+                }}
+              >
+                Book
+              </button>
             </Grid>
           </Grid>
         </Grid>
