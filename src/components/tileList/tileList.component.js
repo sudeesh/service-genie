@@ -73,7 +73,10 @@ const TileList = (props) => {
               <p>
                 <button
                   className="common-button book-now-btn cursor-pointer"
-                  onClick={() => onClickDetail(x.garageTitle, x.location)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = `https://wa.me/919361040506?text=I%20need%20my%20car%20to%20be%20serviced%20@%20${x.garageTitle},%20${x.location}`;
+                  }}
                 >
                   Book Now
                 </button>
