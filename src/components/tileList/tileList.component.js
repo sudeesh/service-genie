@@ -26,12 +26,10 @@ const TileList = (props) => {
   };
   const { list } = props;
 
-  console.log("list", list);
-
   return (
     list &&
     list.map((x) => (
-      <List className="list-container" key={x.id}>
+      <List className="list-container" key={x.garageTitle}>
         <ListItem>
           <Grid container spacing={2}>
             <Grid item xs={4} className="description-panel">
@@ -64,13 +62,15 @@ const TileList = (props) => {
                     </button>
                   </p>
                   <h3>Customer rating</h3>
-                  <p>
-                    {/* {x.garageOverallRating.averageGarageRatings === "NaN" ? (
+                  <div>
+                    {x.garageOverallRating.averageGarageRatings === "NaN" ? (
                       "No Reviews"
                     ) : (
                       <>
                         <StarRatings
-                          rating={x.garageOverallRating.averageGarageRatings}
+                          rating={parseInt(
+                            x.garageOverallRating.averageGarageRatings
+                          )}
                           starRatedColor="rgb(2238, 255, 0)"
                           numberOfStars={5}
                           name="rating"
@@ -81,8 +81,8 @@ const TileList = (props) => {
                           {x.garageOverallRating.totalGarageReviews} reviews
                         </span>
                       </>
-                    )} */}
-                  </p>
+                    )}
+                  </div>
                 </Grid>
               </Grid>
             </Grid>
