@@ -72,7 +72,11 @@ const DetailsPage = (props) => {
                 ) : (
                   <>
                     <StarRatings
-                      rating={review.averageGarageRatings}
+                      rating={
+                        review.averageGarageRatings
+                          ? parseInt(review.averageGarageRatings)
+                          : 0
+                      }
                       starRatedColor="rgb(2238, 255, 0)"
                       numberOfStars={5}
                       name="rating"
