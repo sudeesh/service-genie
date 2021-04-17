@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Grid from "@material-ui/core/Grid";
+import StarRatings from "react-star-ratings";
 
 // image
 import carAvatar from "../../images/car-avatar.png";
@@ -24,6 +25,8 @@ const TileList = (props) => {
     });
   };
   const { list } = props;
+
+  console.log("list", list);
 
   return (
     list &&
@@ -61,7 +64,25 @@ const TileList = (props) => {
                     </button>
                   </p>
                   <h3>Customer rating</h3>
-                  <p></p>
+                  <p>
+                    {/* {x.garageOverallRating.averageGarageRatings === "NaN" ? (
+                      "No Reviews"
+                    ) : (
+                      <>
+                        <StarRatings
+                          rating={x.garageOverallRating.averageGarageRatings}
+                          starRatedColor="rgb(2238, 255, 0)"
+                          numberOfStars={5}
+                          name="rating"
+                          starDimension="20px"
+                          starSpacing="3px"
+                        />
+                        <span>
+                          {x.garageOverallRating.totalGarageReviews} reviews
+                        </span>
+                      </>
+                    )} */}
+                  </p>
                 </Grid>
               </Grid>
             </Grid>

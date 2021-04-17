@@ -55,13 +55,13 @@ export default function Search() {
       history.push({
         pathname: "/location-list",
         search: `?location=${val}`,
-        state: { val },
+        state: { val, searchName: "location" },
       });
     } else {
       history.push({
-        pathname: "/details",
+        pathname: "/location-list",
         search: `?garageName=${val}`,
-        state: { val },
+        state: { val, searchName: "garage" },
       });
     }
   };

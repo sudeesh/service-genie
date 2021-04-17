@@ -3,15 +3,24 @@ import Grid from "@material-ui/core/Grid";
 
 /* component */
 import TileList from "../../components/tileList/tileList.component";
-import { getLocationByLocation } from "../../services/services";
+import {
+  getAllGaragesUsingRegex,
+  getLocationByLocation,
+} from "../../services/services";
 
 const LocationList = (props) => {
   const [location, setLocation] = useState("");
   useEffect(() => {
-    getLocationByLocation(props.location.state.val).then((res) => {
-      return setLocation(res.data);
-    });
-  }, [props.location.state.val]);
+    if (props.location.state.searchName === "location") {
+      getLocationByLocation(props.location.state.val).then((res) => {
+        return setLocation(res.data);
+      });
+    } else {
+      getAllGaragesUsingRegex(props.location.state.val).then((res) => {
+        return setLocation(res.data);
+      });
+    }
+  }, [props.location.state]);
 
   return (
     <Grid container spacing={0} alignItems="center" justify="center">

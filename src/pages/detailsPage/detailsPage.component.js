@@ -30,7 +30,7 @@ const DetailsPage = (props) => {
   useEffect(() => {
     axios
       .get(
-        `http://13.235.168.116:8080/api/v1/getOverallReviewRatingsOfGarage?garageName=${props.location.state.val}&location=${props.location.state.location}`
+        `http://20.198.80.220:8080/api/v1/getOverallReviewRatingsOfGarage?garageName=${props.location.state.val}&location=${props.location.state.location}`
       )
       .then((res) => setReview(res.data));
   }, [props.location]);
