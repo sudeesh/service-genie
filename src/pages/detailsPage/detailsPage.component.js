@@ -108,17 +108,14 @@ const DetailsPage = (props) => {
           </Grid>
         </Grid>
         <Grid item xs={6}>
-          {console.log("image", name)}
-          {
-            (name.garageImage = "" ? (
-              <img src="http://via.placeholder.com/640x360" alt="garage" />
-            ) : (
-              <img
-                src={`data:image/jpeg;base64,${name.garageImage}`}
-                alt="garage"
-              />
-            ))
-          }
+          {name.garageImage === "" ? (
+            <img src="http://via.placeholder.com/400x200" alt="garage" />
+          ) : (
+            <img
+              src={`data:image/jpeg;base64,${name.garageImage}`}
+              alt="garage"
+            />
+          )}
           <h4>Common services offered:</h4>
           <ul className="services-list">
             {name.garageServices && name.garageServices.gsAndOil ? (
