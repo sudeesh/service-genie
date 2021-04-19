@@ -35,8 +35,6 @@ const DetailsPage = (props) => {
       .then((res) => setReview(res.data));
   }, [props.location]);
 
-  console.log("review", review);
-
   return (
     <Grid
       container
@@ -54,9 +52,6 @@ const DetailsPage = (props) => {
                 <span>Address:</span> {name.address}
               </p>
               <p>
-                <span>Mobile Number:</span> {name.contact}
-              </p>
-              <p>
                 <span>Date of Establish:</span> {name.dateOfEst}
               </p>
               <p>
@@ -66,7 +61,7 @@ const DetailsPage = (props) => {
                 <span>Paymant Mode:</span> {name.paymentMode}
               </p>
               <p>
-                <span>Reviews:</span>
+                <span>Rating:</span>
                 {review.averageGarageRatings === "NaN" ? (
                   "No Reviews"
                 ) : (
@@ -83,7 +78,10 @@ const DetailsPage = (props) => {
                       starDimension="20px"
                       starSpacing="3px"
                     />
-                    <span> {review.totalGarageReviews} reviews</span>
+                    <span className="offset-padding-left-5">
+                      {review.totalGarageReviews}
+                      {review.totalGarageReviews <= 1 ? " Review" : " Reviews"}
+                    </span>
                   </>
                 )}
               </p>
@@ -95,23 +93,32 @@ const DetailsPage = (props) => {
                 Garage equipped with in-house paintbooth and body shopping
                 facilities.
               </p>
-              <button
-                className="common-button book-now-btn cursor-pointer"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.location.href = `https://wa.me/919361040506?text=I%20need%20my%20car%20to%20be%20serviced%20@%20${name.garageTitle},%20${name.location}`;
-                }}
-              >
-                Book
-              </button>
+              <p class="text-center">
+                <button
+                  className="common-button book-now-btn cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = `https://wa.me/919361040506?text=I%20need%20my%20car%20to%20be%20serviced%20@%20${name.garageTitle},%20${name.location}`;
+                  }}
+                >
+                  Book
+                </button>
+              </p>
             </Grid>
           </Grid>
         </Grid>
         <Grid item xs={6}>
-          <img
-            src={`data:image/jpeg;base64,${name.garageImage}`}
-            alt="garage"
-          />
+          {console.log("image", name)}
+          {
+            (name.garageImage = "" ? (
+              <img src="http://via.placeholder.com/640x360" alt="garage" />
+            ) : (
+              <img
+                src={`data:image/jpeg;base64,${name.garageImage}`}
+                alt="garage"
+              />
+            ))
+          }
           <h4>Common services offered:</h4>
           <ul className="services-list">
             {name.garageServices && name.garageServices.gsAndOil ? (

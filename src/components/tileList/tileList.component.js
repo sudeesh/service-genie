@@ -61,7 +61,7 @@ const TileList = (props) => {
                       {x.weekOff}
                     </button>
                   </p>
-                  <h3>Customer rating</h3>
+                  <h3>Customer Ratings & Reviews</h3>
                   <div>
                     {x.garageOverallRating.averageGarageRatings === "NaN" ? (
                       "No Reviews"
@@ -86,10 +86,10 @@ const TileList = (props) => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={2}>
-              <p>Serivices starting at</p>
+            <Grid item xs={2} className="text-center">
+              <p>Services starting at</p>
               <p>
-                <b>{x.startingPrice}</b>
+                <b>&#8377; {x.startingPrice}</b>
               </p>
               <p>
                 <button
@@ -101,13 +101,13 @@ const TileList = (props) => {
                 >
                   Book Now
                 </button>
-                <span
-                  className="cursor-pointer text-underline"
-                  onClick={() => onClickDetail(x.garageTitle, x.location)}
-                >
-                  Details
-                </span>
               </p>
+              <div
+                className="cursor-pointer text-underline"
+                onClick={() => onClickDetail(x.garageTitle, x.location)}
+              >
+                know more about the service center and their offerings
+              </div>
             </Grid>
           </Grid>
         </ListItem>
