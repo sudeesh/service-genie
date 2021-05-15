@@ -40,7 +40,6 @@ const DetailsPage = (props) => {
       container
       justify="center"
       alignItems="center"
-      item
       xs={10}
       className="center-div"
     >
