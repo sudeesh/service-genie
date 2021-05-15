@@ -33,17 +33,18 @@ const TileList = (props) => {
         <ListItem>
           <Grid container spacing={2}>
             <Grid item xs={4} className="description-panel">
-              <h3>
-                <img src={carAvatar} alt="car avatar" /> {x.garageTitle}
-              </h3>
-              <p>
+              <div className="text-header-container">
+                <img src={carAvatar} alt="car avatar" />
+                <h3 className="text-transform-captilize">{x.garageTitle}</h3>
+              </div>
+              <div className="address-text-image">
                 <FontAwesomeIcon
                   icon={faMapMarkedAlt}
                   className="offest-margin-right-10"
                 />
                 {x.address}
-              </p>
-              <p className="text-underline">
+              </div>
+              <p>
                 <span>operating Hours:</span>
                 {x.operatingHours}
               </p>
@@ -99,7 +100,7 @@ const TileList = (props) => {
                     window.location.href = `https://wa.me/919361040506?text=I%20need%20my%20car%20to%20be%20serviced%20@%20${x.garageTitle},%20${x.location}`;
                   }}
                 >
-                  Book Now
+                  Schedule Now
                 </button>
               </p>
               <div

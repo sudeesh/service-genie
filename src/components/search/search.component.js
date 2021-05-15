@@ -73,7 +73,7 @@ export default function Search() {
       alignItems="center"
       className="search-container"
     >
-      <Grid items xs={8}>
+      <Grid item xs={8}>
         <div className="row center flex-column">
           <FormControl>
             <FormLabel component="legend" className="option-heading">

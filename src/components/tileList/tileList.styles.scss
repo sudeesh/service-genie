@@ -58,3 +58,15 @@
 .offest-margin-right-10 {
   margin-right: 10px;
 }
+.text-header-container {
+  display: flex;
+  align-items: center;
+  img {
+    align-self: center;
+    margin-right: 10px;
+  }
+}
+.address-text-image {
+  display: flex;
+  align-items: flex-start;
+}

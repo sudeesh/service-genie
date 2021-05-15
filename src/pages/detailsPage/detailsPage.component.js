@@ -40,6 +40,7 @@ const DetailsPage = (props) => {
       container
       justify="center"
       alignItems="center"
+      item
       xs={10}
       className="center-div"
     >
@@ -47,7 +48,7 @@ const DetailsPage = (props) => {
         <Grid item xs={6} sm container>
           <Grid item xs container direction="column">
             <Grid item xs className="description-panel">
-              <h3>{name.garageTitle}</h3>
+              <h3 className="text-transform-captilize">{name.garageTitle}</h3>
               <p>
                 <span>Address:</span> {name.address}
               </p>
@@ -58,7 +59,7 @@ const DetailsPage = (props) => {
                 <span>Operating Hours:</span> {name.operatingHours}
               </p>
               <p>
-                <span>Paymant Mode:</span> {name.paymentMode}
+                <span>Payment Mode:</span> {name.paymentMode}
               </p>
               <p>
                 <span>Rating:</span>
@@ -108,14 +109,16 @@ const DetailsPage = (props) => {
           </Grid>
         </Grid>
         <Grid item xs={6}>
-          {name.garageImage === "" ? (
-            <img src="http://via.placeholder.com/400x200" alt="garage" />
-          ) : (
-            <img
-              src={`data:image/jpeg;base64,${name.garageImage}`}
-              alt="garage"
-            />
-          )}
+          <div className="image-container">
+            {name.garageImage === "" ? (
+              <img src="http://via.placeholder.com/400x200" alt="garage" />
+            ) : (
+              <img
+                src={`data:image/jpeg;base64,${name.garageImage}`}
+                alt="garage"
+              />
+            )}
+          </div>
           <h4>Common services offered:</h4>
           <ul className="services-list">
             {name.garageServices && name.garageServices.gsAndOil ? (
