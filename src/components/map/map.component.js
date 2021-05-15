@@ -6,6 +6,12 @@ const mapStyles = {
   height: "100%",
 };
 
+const config = {
+  SECRET_KEY: "AIzaSyD1PNeY3KohNcsk_iwZtPCf4Qv7g9jnGjM",
+};
+
+const secretkey = config.SECRET_KEY;
+
 export class MapContainer extends Component {
   render() {
     return (
@@ -23,5 +29,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyD1PNeY3KohNcsk_iwZtPCf4Qv7g9jnGjM",
+  apiKey: secretkey,
 })(MapContainer);
