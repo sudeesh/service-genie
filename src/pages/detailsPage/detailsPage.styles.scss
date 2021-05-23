@@ -50,7 +50,8 @@
   }
 }
 
-.description-panel p span {
+.description-panel p span,
+.description-panel div span {
   font-weight: bold;
   color: rgb(54, 109, 140);
   padding-right: 5px;
@@ -67,10 +68,10 @@
   margin-right: 5px;
 }
 .icons-conatner {
-  color: #555;
   .material-icons {
     margin-right: 10px;
     font-size: 32px;
+    color: #555;
   }
 
   a {
