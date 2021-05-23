@@ -35,7 +35,12 @@ const TileList = (props) => {
             <Grid item xs={4} className="description-panel">
               <div className="text-header-container">
                 <img src={carAvatar} alt="car avatar" />
-                <h3 className="text-transform-captilize">{x.garageTitle}</h3>
+                <h3
+                  className="text-transform-captilize cursor-pointer"
+                  onClick={() => onClickDetail(x.garageTitle, x.location)}
+                >
+                  {x.garageTitle}
+                </h3>
               </div>
               <div className="address-text-image">
                 <FontAwesomeIcon
@@ -45,7 +50,7 @@ const TileList = (props) => {
                 {x.address}
               </div>
               <p>
-                <span>operating Hours:</span>
+                <span>Operating Hours:</span>
                 {x.operatingHours}
               </p>
             </Grid>
