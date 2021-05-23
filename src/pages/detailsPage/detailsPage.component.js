@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 import StarRatings from "react-star-ratings";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+} from "react-share";
+import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
 
 // image
 import tyre from "../../images/tyre.png";
@@ -19,6 +25,7 @@ import "./detailsPage.styles.scss";
 
 const DetailsPage = (props) => {
   const [name, setGarageName] = useState({});
+  const [share, setShare] = useState(false);
   useEffect(() => {
     getGaragesByName(props.location.state.val)
       .then((res) => setGarageName(res.data))
@@ -26,6 +33,7 @@ const DetailsPage = (props) => {
   }, [props.location.state.val]);
 
   const [review, setReview] = useState({});
+  const url = window.location.href;
 
   useEffect(() => {
     axios
@@ -34,6 +42,10 @@ const DetailsPage = (props) => {
       )
       .then((res) => setReview(res.data));
   }, [props.location]);
+
+  const socialShare = () => {
+    setShare(!share);
+  };
 
   return (
     <Grid
@@ -60,7 +72,7 @@ const DetailsPage = (props) => {
               <p>
                 <span>Payment Mode:</span> {name.paymentMode}
               </p>
-              <p>
+              <div>
                 <span>Rating:</span>
                 {review.averageGarageRatings === "NaN" ? (
                   "No Reviews"
@@ -84,7 +96,7 @@ const DetailsPage = (props) => {
                     </span>
                   </>
                 )}
-              </p>
+              </div>
               <p>
                 <span>Detail:</span> Specialist with premium brands ranging from
                 Hummer, Jaguar, BMW, Audi, etc Known for on-time delivery and
@@ -93,7 +105,44 @@ const DetailsPage = (props) => {
                 Garage equipped with in-house paintbooth and body shopping
                 facilities.
               </p>
-              <p class="text-center">
+              <div>
+                <div className="icons-conatner">
+                  <a
+                    className="material-icons cursor-pointer"
+                    href={`http://maps.google.com?q=${name.latitude},${name.longitude}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    location_on
+                  </a>
+                  <span
+                    className="material-icons cursor-pointer"
+                    onClick={socialShare}
+                  >
+                    share
+                  </span>
+                </div>
+                {share ? (
+                  <div className="share-icons">
+                    <FacebookShareButton
+                      url={url}
+                      quote="Service genie shared a service center"
+                    >
+                      <FacebookIcon size={32} />
+                    </FacebookShareButton>
+                    <TwitterShareButton url={url}>
+                      <TwitterIcon size={32} />
+                    </TwitterShareButton>
+                    <WhatsappShareButton
+                      url={url}
+                      title="Service genie shared a service center"
+                    >
+                      <WhatsappIcon size={32} />
+                    </WhatsappShareButton>
+                  </div>
+                ) : null}
+              </div>
+              <p className="text-center">
                 <button
                   className="common-button book-now-btn cursor-pointer"
                   onClick={(e) => {
