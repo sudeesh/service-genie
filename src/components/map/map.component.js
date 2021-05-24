@@ -7,7 +7,7 @@ const mapStyles = {
 };
 
 const config = {
-  SECRET_KEY: "AIzaSyD1PNeY3KohNcsk_iwZtPCf4Qv7g9jnGjM",
+  SECRET_KEY: "AIzaSyAhnpl8m5jed67sO1DueRlrPk8muzWUtQU",
 };
 
 const secretkey = config.SECRET_KEY;
