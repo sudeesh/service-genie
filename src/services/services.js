@@ -19,3 +19,8 @@ export const getAllGaragesUsingRegex = (name) =>
   axios.get(
     `http://20.197.28.152:8080/api/v1/getAllGaragesUsingRegex?garageNameContaining=${name}`
   );
+
+export const getAllGaragesByLatAndLong = (distance, latitude, longitude) =>
+  axios.get(
+    `http://20.197.28.152:8080/api/v1/getGaragesByLatAndLong?distanceInKms=${distance}&latitude=${latitude}&longitude=${longitude}`
+  );

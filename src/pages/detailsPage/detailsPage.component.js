@@ -33,14 +33,20 @@ const DetailsPage = (props) => {
   }, [props.location.state.val]);
 
   const [review, setReview] = useState({});
+  const [overAllRating, SetOverAllrating] = useState();
   const url = window.location.href;
 
   useEffect(() => {
     axios
       .get(
-        `http://20.197.28.152:8080/api/v1/getOverallReviewRatingsOfGarage?garageName=${props.location.state.val}&location=${props.location.state.location}`
+        `http://20.197.28.152:8080/api/v1/getReviewsOfGarage?garageName=${props.location.state.val}&location=${props.location.state.location}`
       )
       .then((res) => setReview(res.data));
+    axios
+      .get(
+        `http://20.197.28.152:8080/api/v1/getOverallReviewRatingsOfGarage?garageName=${props.location.state.val}&location=${props.location.state.location}`
+      )
+      .then((res) => SetOverAllrating(res.data));
   }, [props.location]);
 
   const socialShare = () => {
@@ -72,31 +78,6 @@ const DetailsPage = (props) => {
               <p>
                 <span>Payment Mode:</span> {name.paymentMode}
               </p>
-              <div>
-                <span>Rating:</span>
-                {review.averageGarageRatings === "NaN" ? (
-                  "No Reviews"
-                ) : (
-                  <>
-                    <StarRatings
-                      rating={
-                        review.averageGarageRatings
-                          ? parseInt(review.averageGarageRatings)
-                          : 0
-                      }
-                      starRatedColor="rgb(2238, 255, 0)"
-                      numberOfStars={5}
-                      name="rating"
-                      starDimension="20px"
-                      starSpacing="3px"
-                    />
-                    <span className="offset-padding-left-5">
-                      {review.totalGarageReviews}
-                      {review.totalGarageReviews <= 1 ? " Review" : " Reviews"}
-                    </span>
-                  </>
-                )}
-              </div>
               <p>
                 <span>Detail:</span> Specialist with premium brands ranging from
                 Hummer, Jaguar, BMW, Audi, etc Known for on-time delivery and
@@ -141,6 +122,38 @@ const DetailsPage = (props) => {
                     </WhatsappShareButton>
                   </div>
                 ) : null}
+              </div>
+              <div>
+                <span>Rating:</span>
+                {console.log("overAllRating", overAllRating)}
+                {overAllRating.averageGarageRatings === "NaN" ? (
+                  "No Reviews"
+                ) : (
+                  <>
+                    <StarRatings
+                      rating={
+                        overAllRating.averageGarageRatings
+                          ? parseInt(overAllRating.averageGarageRatings)
+                          : 0
+                      }
+                      starRatedColor="rgb(2238, 255, 0)"
+                      numberOfStars={5}
+                      name="rating"
+                      starDimension="20px"
+                      starSpacing="3px"
+                    />
+                    <span className="offset-padding-left-5">
+                      {overAllRating.totalGarageReviews}
+                      {overAllRating.totalGarageReviews <= 1
+                        ? " Review"
+                        : " Reviews"}
+                    </span>
+                    <div className="review-container">
+                      <h4 className="text-header">Reviews</h4>
+                      {review && review.map((x) => <p>{x.review}</p>)}
+                    </div>
+                  </>
+                )}
               </div>
               <p className="text-center">
                 <button
