@@ -56,7 +56,8 @@ export class MapContainer extends Component {
             return (
               <Marker
                 onClick={this.onMarkerClick}
-                name={"Kenyatta International Convention Centre"}
+                title={x.garageTitle}
+                name={x.garageTitle}
                 position={{ lat: x.latitude, lng: x.longitude }}
               />
             );
