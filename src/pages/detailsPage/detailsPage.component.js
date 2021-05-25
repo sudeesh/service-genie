@@ -123,16 +123,17 @@ const DetailsPage = (props) => {
                   </div>
                 ) : null}
               </div>
+              {console.log("overall rating", overAllRating)}
               <div>
                 <span>Rating:</span>
-                {console.log("overAllRating", overAllRating)}
-                {overAllRating.averageGarageRatings === "NaN" ? (
+                {overAllRating &&
+                overAllRating.averageGarageRatings === "NaN" ? (
                   "No Reviews"
                 ) : (
                   <>
                     <StarRatings
                       rating={
-                        overAllRating.averageGarageRatings
+                        overAllRating && overAllRating.averageGarageRatings
                           ? parseInt(overAllRating.averageGarageRatings)
                           : 0
                       }
@@ -143,15 +144,17 @@ const DetailsPage = (props) => {
                       starSpacing="3px"
                     />
                     <span className="offset-padding-left-5">
-                      {overAllRating.totalGarageReviews}
-                      {overAllRating.totalGarageReviews <= 1
+                      {overAllRating && overAllRating.totalGarageReviews}
+                      {overAllRating && overAllRating.totalGarageReviews <= 1
                         ? " Review"
                         : " Reviews"}
                     </span>
-                    <div className="review-container">
-                      <h4 className="text-header">Reviews</h4>
-                      {review && review.map((x) => <p>{x.review}</p>)}
-                    </div>
+                    {review.length >= 1 ? (
+                      <div className="review-container">
+                        <h4 className="text-header">Reviews</h4>
+                        {review && review.map((x) => <p>{x.review}</p>)}
+                      </div>
+                    ) : null}
                   </>
                 )}
               </div>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
+import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import { getAllGaragesByLatAndLong } from "../../services/services";
 
 const mapStyles = {
@@ -31,12 +31,18 @@ export class MapContainer extends Component {
       .catch((error) => error.message);
   }
 
-  onMarkerClick = (props, marker, e) =>
+  onMarkerClick = (props, marker, e) => {
+    this.props.history.push({
+      pathname: "/details",
+      search: `?garageName=${props.name}`,
+      state: { val: props.name, location: props.location },
+    });
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true,
     });
+  };
 
   onClose = (props) => {
     if (this.state.showingInfoWindow) {
@@ -49,24 +55,24 @@ export class MapContainer extends Component {
 
   render() {
     return (
-      <Map google={this.props.google} zoom={14} style={mapStyles}>
+      <Map
+        google={this.props.google}
+        zoom={14}
+        style={mapStyles}
+        initialCenter={{ lat: this.props.latitude, lng: this.props.longitude }}
+      >
         {this.state.markerData &&
           this.state.markerData.map((x) => {
-            console.log("x", x.latitude);
             return (
               <Marker
                 onClick={this.onMarkerClick}
                 title={x.garageTitle}
                 name={x.garageTitle}
+                location={x.location}
                 position={{ lat: x.latitude, lng: x.longitude }}
               />
             );
           })}
-        {/* <Marker
-          onClick={this.onMarkerClick}
-          name={"Kenyatta International Convention Centre"}
-          position={{ lat: this.props.latitude, lng: this.props.longitude }}
-        /> */}
       </Map>
     );
   }
