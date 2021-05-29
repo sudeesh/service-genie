@@ -34,7 +34,6 @@ const DetailsPage = (props) => {
 
   const [review, setReview] = useState({});
   const [overAllRating, SetOverAllrating] = useState();
-  const url = window.location.href;
 
   useEffect(() => {
     axios
@@ -106,16 +105,16 @@ const DetailsPage = (props) => {
                 {share ? (
                   <div className="share-icons">
                     <FacebookShareButton
-                      url={url}
+                      url="https://www.facebook.com/"
                       quote="Service genie shared a service center"
                     >
                       <FacebookIcon size={32} />
                     </FacebookShareButton>
-                    <TwitterShareButton url={url}>
+                    <TwitterShareButton url="https://twitter.com/">
                       <TwitterIcon size={32} />
                     </TwitterShareButton>
                     <WhatsappShareButton
-                      url={url}
+                      url="https://wa.me/919361040506"
                       title="Service genie shared a service center"
                     >
                       <WhatsappIcon size={32} />
@@ -123,7 +122,6 @@ const DetailsPage = (props) => {
                   </div>
                 ) : null}
               </div>
-              {console.log("overall rating", overAllRating)}
               <div>
                 <span>Rating:</span>
                 {overAllRating &&
@@ -152,7 +150,8 @@ const DetailsPage = (props) => {
                     {review.length >= 1 ? (
                       <div className="review-container">
                         <h4 className="text-header">Reviews</h4>
-                        {review && review.map((x) => <p>{x.review}</p>)}
+                        {review &&
+                          review.map((x, i) => <p key={x}>{x.review}</p>)}
                       </div>
                     ) : null}
                   </>
