@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 import StarRatings from "react-star-ratings";
+import Button from "@material-ui/core/Button";
 import {
   FacebookShareButton,
   TwitterShareButton,
   WhatsappShareButton,
 } from "react-share";
 import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 // image
 import tyre from "../../images/tyre.png";
@@ -23,7 +30,24 @@ import { getGaragesByName } from "../../services/services";
 // style
 import "./detailsPage.styles.scss";
 
+const useStyles = makeStyles((theme) => ({
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    margin: "auto",
+    width: "fit-content",
+  },
+  formControl: {
+    marginTop: theme.spacing(2),
+    minWidth: 120,
+  },
+  formControlLabel: {
+    marginTop: theme.spacing(1),
+  },
+}));
+
 const DetailsPage = (props) => {
+  const classes = useStyles();
   const [name, setGarageName] = useState({});
   const [share, setShare] = useState(false);
   useEffect(() => {
@@ -34,6 +58,17 @@ const DetailsPage = (props) => {
 
   const [review, setReview] = useState({});
   const [overAllRating, SetOverAllrating] = useState();
+  const [open, setOpen] = React.useState(false);
+  const [fullWidth, setFullWidth] = React.useState(true);
+  const [maxWidth, setMaxWidth] = React.useState("sm");
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     axios
@@ -151,9 +186,44 @@ const DetailsPage = (props) => {
                       <div className="review-container">
                         <h4 className="text-header">Reviews</h4>
                         {review &&
-                          review.map((x, i) => <p key={x}>{x.review}</p>)}
+                          review
+                            .filter((item, idx) => idx < 5)
+                            .map((x, i) => <p key={x}>{x.review}</p>)}
+                        {review.length > 5 ? (
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={handleClickOpen}
+                          >
+                            Show more Reviews
+                          </Button>
+                        ) : null}
                       </div>
                     ) : null}
+
+                    <Dialog
+                      fullWidth={fullWidth}
+                      maxWidth={maxWidth}
+                      open={open}
+                      onClose={handleClose}
+                      aria-labelledby="max-width-dialog-title"
+                    >
+                      <DialogTitle id="max-width-dialog-title">
+                        Reviews
+                      </DialogTitle>
+                      <DialogContent>
+                        <DialogContentText>
+                          {review.map((x, i) => (
+                            <p key={x}>{x.review}</p>
+                          ))}
+                        </DialogContentText>
+                      </DialogContent>
+                      <DialogActions>
+                        <Button onClick={handleClose} color="primary">
+                          Close
+                        </Button>
+                      </DialogActions>
+                    </Dialog>
                   </>
                 )}
               </div>
