@@ -30,9 +30,10 @@ const TileList = (props) => {
     list &&
     list.map((x) => (
       <List className="list-container" key={x.garageTitle}>
+        {console.log("x", x)}
         <ListItem>
-          <Grid container spacing={2}>
-            <Grid item xs={4} className="description-panel">
+          <Grid container spacing={3}>
+            <Grid item xs={12} lg={5} className="description-panel">
               <div className="text-header-container">
                 <img src={carAvatar} alt="car avatar" />
                 <h3
@@ -54,7 +55,7 @@ const TileList = (props) => {
                 {x.operatingHours}
               </p>
             </Grid>
-            <Grid item xs={10} sm container>
+            <Grid item xs={12} lg={4}>
               <Grid item container direction="column" spacing={2}>
                 <Grid item xs>
                   <p>
@@ -92,7 +93,7 @@ const TileList = (props) => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={2} className="text-center">
+            <Grid item xs={12} lg={3} className="text-center">
               <p>Services starting at</p>
               <p>
                 <b>&#8377; {x.startingPrice}</b>

@@ -61,7 +61,7 @@ const DetailsPage = (props) => {
       className="center-div"
     >
       <Grid container>
-        <Grid item xs={6} sm container>
+        <Grid item xs={12} lg={6} sm container>
           <Grid item xs container direction="column">
             <Grid item xs className="description-panel">
               <h3 className="text-transform-captilize">{name.garageTitle}</h3>
@@ -171,7 +171,7 @@ const DetailsPage = (props) => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} lg={6}>
           <div className="image-container">
             {name.garageImage === "" ? (
               <img src="http://via.placeholder.com/400x200" alt="garage" />
