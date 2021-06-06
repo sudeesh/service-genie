@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 import StarRatings from "react-star-ratings";
@@ -30,24 +29,7 @@ import { getGaragesByName } from "../../services/services";
 // style
 import "./detailsPage.styles.scss";
 
-const useStyles = makeStyles((theme) => ({
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    margin: "auto",
-    width: "fit-content",
-  },
-  formControl: {
-    marginTop: theme.spacing(2),
-    minWidth: 120,
-  },
-  formControlLabel: {
-    marginTop: theme.spacing(1),
-  },
-}));
-
 const DetailsPage = (props) => {
-  const classes = useStyles();
   const [name, setGarageName] = useState({});
   const [share, setShare] = useState(false);
   useEffect(() => {
@@ -59,8 +41,6 @@ const DetailsPage = (props) => {
   const [review, setReview] = useState({});
   const [overAllRating, SetOverAllrating] = useState();
   const [open, setOpen] = React.useState(false);
-  const [fullWidth, setFullWidth] = React.useState(true);
-  const [maxWidth, setMaxWidth] = React.useState("sm");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -201,29 +181,28 @@ const DetailsPage = (props) => {
                       </div>
                     ) : null}
 
-                    <Dialog
-                      fullWidth={fullWidth}
-                      maxWidth={maxWidth}
-                      open={open}
-                      onClose={handleClose}
-                      aria-labelledby="max-width-dialog-title"
-                    >
-                      <DialogTitle id="max-width-dialog-title">
-                        Reviews
-                      </DialogTitle>
-                      <DialogContent>
-                        <DialogContentText>
-                          {review.map((x, i) => (
-                            <p key={x}>{x.review}</p>
-                          ))}
-                        </DialogContentText>
-                      </DialogContent>
-                      <DialogActions>
-                        <Button onClick={handleClose} color="primary">
-                          Close
-                        </Button>
-                      </DialogActions>
-                    </Dialog>
+                    {review.length >= 1 ? (
+                      <Dialog
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="max-width-dialog-title"
+                      >
+                        <DialogTitle id="max-width-dialog-title">
+                          Reviews
+                        </DialogTitle>
+                        <DialogContent>
+                          <DialogContentText>
+                            {review &&
+                              review.map((x, i) => <p key={x}>{x.review}</p>)}
+                          </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                          <Button onClick={handleClose} color="primary">
+                            Close
+                          </Button>
+                        </DialogActions>
+                      </Dialog>
+                    ) : null}
                   </>
                 )}
               </div>

@@ -30,7 +30,6 @@ const TileList = (props) => {
     list &&
     list.map((x) => (
       <List className="list-container" key={x.garageTitle}>
-        {console.log("x", x)}
         <ListItem>
           <Grid container spacing={3}>
             <Grid item xs={12} lg={5} className="description-panel">
