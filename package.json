@@ -21,13 +21,14 @@
     "react-scripts": "4.0.1",
     "react-share": "^4.4.0",
     "react-star-ratings": "2.3.0",
-    "web-vitals": "0.2.4"
+    "web-vitals": "0.2.4",
+    "serve": "^11.3.2"
   },
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "serve -s _static -l tcp://0.0.0.0:$PORT -n",
+    "build": "rm -r _static 2>/dev/null; react-scripts build && mv build _static",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "publish:npm": "rm -rf dist && mkdir dist &&  babel src/components -d dist --copy-files"
