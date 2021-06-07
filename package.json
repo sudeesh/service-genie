@@ -60,5 +60,6 @@
     "@babel/cli": "^7.13.16",
     "@babel/preset-react": "^7.13.13",
     "gh-pages": "^3.1.0"
-  }
+  },
+  "proxy":"http://20.197.28.152:8080"
 }
