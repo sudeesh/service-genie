@@ -116,7 +116,9 @@ export default function Search() {
             renderInput={(params) => (
               <TextField
                 {...params}
-                label="Choose a location"
+                label={
+                  value === "location" ? "Choose location" : "Choose garage"
+                }
                 variant="outlined"
                 inputProps={{
                   ...params.inputProps,

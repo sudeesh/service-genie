@@ -1,18 +1,17 @@
-import axios from 'axios';
+import axios from "axios";
 
-axios.defaults.headers.common.Accept = 'application/json';
-axios.defaults.headers.common['Content-Type'] =
-  'application/x-www-form-urlencoded';
+axios.defaults.headers.common.Accept = "application/json";
+axios.defaults.headers.common["Content-Type"] =
+  "application/x-www-form-urlencoded";
 
 const apiSg = axios.create({
-  baseURL: 'https://157.245.105.114:8443/api/v1',
+  baseURL: "https://157.245.105.114:8443/api/v1",
 });
 
 const setAuthentication = (config) => {
-  const username = 'servicegenie';
-  const password = 'pranav';
-  const basicAuth = `Basic ${btoa(username + ':' + password)}`;
-  console.log(`basicAuth`, basicAuth);
+  const username = "servicegenie";
+  const password = "pranav";
+  const basicAuth = `Basic ${btoa(username + ":" + password)}`;
   config.headers.Authorization = basicAuth;
   return config;
 };
@@ -44,6 +43,4 @@ export const sgServices = {
   put: (request) => apiClient.put(request, apiSg),
 };
 
-export default {
-  sgServices,
-};
+export default sgServices;

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
-import axios from "axios";
 import StarRatings from "react-star-ratings";
 import Button from "@material-ui/core/Button";
 import {
@@ -24,7 +23,11 @@ import ac from "../../images/ac.png";
 import accessories from "../../images/hubcap.png";
 
 // service
-import { getGaragesByName } from "../../services/services";
+import {
+  getGaragesByName,
+  getReviewRating,
+  getOverallReviewRating,
+} from "../../services/services";
 
 // style
 import "./detailsPage.styles.scss";
@@ -51,16 +54,15 @@ const DetailsPage = (props) => {
   };
 
   useEffect(() => {
-    axios
-      .get(
-        `http://20.197.28.152:8080/api/v1/getReviewsOfGarage?garageName=${props.location.state.val}&location=${props.location.state.location}`
-      )
-      .then((res) => setReview(res.data));
-    axios
-      .get(
-        `http://20.197.28.152:8080/api/v1/getOverallReviewRatingsOfGarage?garageName=${props.location.state.val}&location=${props.location.state.location}`
-      )
-      .then((res) => SetOverAllrating(res.data));
+    getReviewRating(props.location.state.val, props.location.state.location)
+      .then((res) => setReview(res.data))
+      .catch((error) => error.message);
+    getOverallReviewRating(
+      props.location.state.val,
+      props.location.state.location
+    )
+      .then((res) => SetOverAllrating(res.data))
+      .catch((error) => error.message);
   }, [props.location]);
 
   const socialShare = () => {
