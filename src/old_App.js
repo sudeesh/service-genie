@@ -12,8 +12,8 @@ import LocationList from "./pages/locationList/locationList.component";
 // import Footer from "../src/common/footer/footer.component";
 
 const App = () => {
-  const [latitude, setLatitude] = useState(13.0827);
-  const [longitude, setLongitude] = useState(80.2707);
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
 
   useEffect(() => {
     if (navigator.geolocation) {
