@@ -5,7 +5,7 @@ axios.defaults.headers.common["Content-Type"] =
   "application/x-www-form-urlencoded";
 
 const apiSg = axios.create({
-  baseURL: "https://157.245.105.114:8443/api/v1",
+  baseURL: "https://servicegeni.online:8443/api/v1",
 });
 
 const setAuthentication = (config) => {
