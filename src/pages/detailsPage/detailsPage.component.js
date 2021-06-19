@@ -78,15 +78,15 @@ const DetailsPage = (props) => {
       className="center-div"
     >
       <Grid container>
-        <Grid item xs={12} lg={6} sm container>
+        <Grid item xs={12} sm={6} lg={6} container>
           <Grid item xs container direction="column">
             <Grid item xs className="description-panel">
               <h3 className="text-transform-captilize">{name.garageTitle}</h3>
               <p>
-                <span>Address:</span> {name.address}
+                <span>Date of Establish:</span> {name.dateOfEst}
               </p>
               <p>
-                <span>Date of Establish:</span> {name.dateOfEst}
+                <span>Located at:</span> {name.address}
               </p>
               <p>
                 <span>Operating Hours:</span> {name.operatingHours}
@@ -95,12 +95,12 @@ const DetailsPage = (props) => {
                 <span>Payment Mode:</span> {name.paymentMode}
               </p>
               <p>
-                <span>Detail:</span> Specialist with premium brands ranging from
-                Hummer, Jaguar, BMW, Audi, etc Known for on-time delivery and
-                Economical billing. Can be trusted to handle complicated issues
-                that have been even rejected by stalwarts in the Industry.
-                Garage equipped with in-house paintbooth and body shopping
-                facilities.
+                <span>About Workshop:</span> Specialist with premium brands
+                ranging from Hummer, Jaguar, BMW, Audi, etc Known for on-time
+                delivery and Economical billing. Can be trusted to handle
+                complicated issues that have been even rejected by stalwarts in
+                the Industry. Garage equipped with in-house paintbooth and body
+                shopping facilities.
               </p>
               <div>
                 <div className="icons-conatner">
@@ -216,13 +216,13 @@ const DetailsPage = (props) => {
                     window.location.href = `https://wa.me/919361040506?text=I%20need%20my%20car%20to%20be%20serviced%20@%20${name.garageTitle},%20${name.location}`;
                   }}
                 >
-                  Book
+                  Schedule Now
                 </button>
               </p>
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} lg={6}>
+        <Grid item xs={12} sm={6} lg={6}>
           <div className="image-container">
             {name.garageImage === "" ? (
               <img src="http://via.placeholder.com/400x200" alt="garage" />
