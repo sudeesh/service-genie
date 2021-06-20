@@ -220,12 +220,12 @@ const DetailsPage = (props) => {
                 {share ? (
                   <div className="share-icons">
                     <FacebookShareButton
-                      url="https://www.facebook.com/"
+                      url="https://www.facebook.com/servicegeni"
                       quote="Service genie shared a service center"
                     >
                       <FacebookIcon size={32} />
                     </FacebookShareButton>
-                    <TwitterShareButton url="https://twitter.com/">
+                    <TwitterShareButton url="https://twitter.com/GeniService">
                       <TwitterIcon size={32} />
                     </TwitterShareButton>
                     <WhatsappShareButton
