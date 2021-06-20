@@ -24,7 +24,7 @@ export const getAllGaragesByLatAndLong = (distance, latitude, longitude) =>
 
 export const getReviewRating = (value, location) =>
   sgServices.get({
-    endpoint: `getOverallReviewRatingsOfGarage?garageName=${value}&location=${location}`,
+    endpoint: `getReviewsOfGarage?garageName=${value}&location=${location}`,
   });
 
 export const getOverallReviewRating = (value, location) =>

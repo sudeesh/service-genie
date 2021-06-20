@@ -21,7 +21,7 @@
 
   li {
     width: 140px;
-    border: 1px solid rgb(54, 109, 140);
+    border: 1px solid #555;
     border-radius: 10px;
     margin: 0 5px 30px;
     padding: 5px;
@@ -35,7 +35,7 @@
       text-align: center;
       padding-top: 10px;
       font-weight: bold;
-      color: rgb(54, 109, 140);
+      color: #555;
       font-size: 12px;
     }
 
@@ -85,4 +85,7 @@
 }
 .text-header {
   color: #366d8c;
+}
+.review-container {
+  margin-bottom: 20px;
 }

@@ -107,17 +107,12 @@ const DetailsPage = (props) => {
                       name="rating"
                       starDimension="20px"
                       starSpacing="3px"
-                    />
-                    <span className="offset-padding-left-5">
-                      {overAllRating && overAllRating.totalGarageReviews}
-                      {overAllRating && overAllRating.totalGarageReviews <= 1
-                        ? " Review"
-                        : " Reviews"}
-                    </span>
+                    />{" "}
                   </>
                 )}
               </div>
               <p>
+                {console.log("review", review)}
                 <span>Date of Establish:</span> {name.dateOfEst}
               </p>
               <p>
@@ -132,6 +127,9 @@ const DetailsPage = (props) => {
               <p>
                 <span>About Workshop:</span> {name.garageDescription}
               </p>
+              <p>
+                <span>weekOff: </span> {name.weekOff}
+              </p>
 
               <div>
                 {overAllRating &&
@@ -139,19 +137,56 @@ const DetailsPage = (props) => {
                   "No Reviews"
                 ) : (
                   <>
+                    <span className="offset-padding-left-5">
+                      {overAllRating && overAllRating.totalGarageReviews}
+                      {overAllRating && overAllRating.totalGarageReviews <= 1
+                        ? " Review"
+                        : " Reviews"}
+                    </span>
+                    {review.length >= 1 ? (
+                      <div className="review-container">
+                        <h4 className="text-header">Reviews</h4>
+                        {review &&
+                          review
+                            .filter((item, idx) => idx < 5)
+                            .map((x, i) => (
+                              <div key={x}>
+                                <h4>{x.reviewerName}:</h4>
+                                <p>{x.review}</p>
+                              </div>
+                            ))}
+                        {review.length > 5 ? (
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={handleClickOpen}
+                          >
+                            Show more Reviews
+                          </Button>
+                        ) : null}
+                      </div>
+                    ) : null}
+                    {console.log("review", review)}
+
                     {review.length >= 1 ? (
                       <Dialog
                         open={open}
                         onClose={handleClose}
                         aria-labelledby="max-width-dialog-title"
+                        className="custom-dialog"
                       >
                         <DialogTitle id="max-width-dialog-title">
-                          Reviews
+                          <b>Reviews</b>
                         </DialogTitle>
                         <DialogContent>
                           <DialogContentText>
                             {review &&
-                              review.map((x, i) => <p key={x}>{x.review}</p>)}
+                              review.map((x, i) => (
+                                <>
+                                  <h4>{x.reviewerName}:</h4>
+                                  <p key={x}>{x.review}</p>
+                                </>
+                              ))}
                           </DialogContentText>
                         </DialogContent>
                         <DialogActions>

@@ -7,9 +7,6 @@ import "./header.styles.scss";
 
 const Header = () => (
   <header className="row top no-wrap flex-column">
-    <div className="header-top text-center">
-      For all the car lovers out there!
-    </div>
     <div className="header-menu">
       {/* buttton styles */}
       <div className="col-1">
