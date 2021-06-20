@@ -104,7 +104,7 @@ export default function Search() {
             style={{ width: 300 }}
             options={options}
             autoHighlight
-            getOptionLabel={(option) => option}
+            getOptionLabel={(option) => (option ? option : "")}
             onChange={selectChange}
             onOpen={() => {
               setOpen(true);

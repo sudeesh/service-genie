@@ -82,6 +82,34 @@ const DetailsPage = (props) => {
           <Grid item xs container direction="column">
             <Grid item xs className="description-panel">
               <h3 className="text-transform-captilize">{name.garageTitle}</h3>
+              <div>
+                <span>Rating:</span>
+                {overAllRating &&
+                overAllRating.averageGarageRatings === "NaN" ? (
+                  "No Reviews"
+                ) : (
+                  <>
+                    <StarRatings
+                      rating={
+                        overAllRating && overAllRating.averageGarageRatings
+                          ? parseInt(overAllRating.averageGarageRatings)
+                          : 0
+                      }
+                      starRatedColor="rgb(2238, 255, 0)"
+                      numberOfStars={5}
+                      name="rating"
+                      starDimension="20px"
+                      starSpacing="3px"
+                    />
+                    <span className="offset-padding-left-5">
+                      {overAllRating && overAllRating.totalGarageReviews}
+                      {overAllRating && overAllRating.totalGarageReviews <= 1
+                        ? " Review"
+                        : " Reviews"}
+                    </span>
+                  </>
+                )}
+              </div>
               <p>
                 <span>Date of Establish:</span> {name.dateOfEst}
               </p>
@@ -95,13 +123,41 @@ const DetailsPage = (props) => {
                 <span>Payment Mode:</span> {name.paymentMode}
               </p>
               <p>
-                <span>About Workshop:</span> Specialist with premium brands
-                ranging from Hummer, Jaguar, BMW, Audi, etc Known for on-time
-                delivery and Economical billing. Can be trusted to handle
-                complicated issues that have been even rejected by stalwarts in
-                the Industry. Garage equipped with in-house paintbooth and body
-                shopping facilities.
+                <span>About Workshop:</span> {console.log("name", name)}
               </p>
+
+              <div>
+                {overAllRating &&
+                overAllRating.averageGarageRatings === "NaN" ? (
+                  "No Reviews"
+                ) : (
+                  <>
+                    {review.length >= 1 ? (
+                      <Dialog
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="max-width-dialog-title"
+                      >
+                        <DialogTitle id="max-width-dialog-title">
+                          Reviews
+                        </DialogTitle>
+                        <DialogContent>
+                          <DialogContentText>
+                            {review &&
+                              review.map((x, i) => <p key={x}>{x.review}</p>)}
+                          </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                          <Button onClick={handleClose} color="primary">
+                            Close
+                          </Button>
+                        </DialogActions>
+                      </Dialog>
+                    ) : null}
+                  </>
+                )}
+              </div>
+
               <div>
                 <div className="icons-conatner">
                   <a
@@ -139,75 +195,7 @@ const DetailsPage = (props) => {
                   </div>
                 ) : null}
               </div>
-              <div>
-                <span>Rating:</span>
-                {overAllRating &&
-                overAllRating.averageGarageRatings === "NaN" ? (
-                  "No Reviews"
-                ) : (
-                  <>
-                    <StarRatings
-                      rating={
-                        overAllRating && overAllRating.averageGarageRatings
-                          ? parseInt(overAllRating.averageGarageRatings)
-                          : 0
-                      }
-                      starRatedColor="rgb(2238, 255, 0)"
-                      numberOfStars={5}
-                      name="rating"
-                      starDimension="20px"
-                      starSpacing="3px"
-                    />
-                    <span className="offset-padding-left-5">
-                      {overAllRating && overAllRating.totalGarageReviews}
-                      {overAllRating && overAllRating.totalGarageReviews <= 1
-                        ? " Review"
-                        : " Reviews"}
-                    </span>
-                    {review.length >= 1 ? (
-                      <div className="review-container">
-                        <h4 className="text-header">Reviews</h4>
-                        {review &&
-                          review
-                            .filter((item, idx) => idx < 5)
-                            .map((x, i) => <p key={x}>{x.review}</p>)}
-                        {review.length > 5 ? (
-                          <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={handleClickOpen}
-                          >
-                            Show more Reviews
-                          </Button>
-                        ) : null}
-                      </div>
-                    ) : null}
 
-                    {review.length >= 1 ? (
-                      <Dialog
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="max-width-dialog-title"
-                      >
-                        <DialogTitle id="max-width-dialog-title">
-                          Reviews
-                        </DialogTitle>
-                        <DialogContent>
-                          <DialogContentText>
-                            {review &&
-                              review.map((x, i) => <p key={x}>{x.review}</p>)}
-                          </DialogContentText>
-                        </DialogContent>
-                        <DialogActions>
-                          <Button onClick={handleClose} color="primary">
-                            Close
-                          </Button>
-                        </DialogActions>
-                      </Dialog>
-                    ) : null}
-                  </>
-                )}
-              </div>
               <p className="text-center">
                 <button
                   className="common-button book-now-btn cursor-pointer"
