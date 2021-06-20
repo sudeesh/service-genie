@@ -25,7 +25,13 @@ const LocationList = (props) => {
   return (
     <Grid container spacing={0} alignItems="center" justify="center">
       <Grid item lg={10}>
-        <h2>Car Service Centers around {props.location.state.val}</h2>
+        <h2>
+          {props.location.state.searchName === "location"
+            ? `Car Service Centers
+          around ${props.location.state.val}`
+            : `Branches of
+          ${props.location.state.val}`}
+        </h2>
         <TileList list={location} />
       </Grid>
     </Grid>

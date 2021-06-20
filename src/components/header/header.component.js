@@ -19,9 +19,9 @@ const Header = () => (
       </div>
       {/* logo */}
       <div className="col-2 text-center">
-        <Link to="/">
+        <a href="https://www.servicegeni.in/">
           <img src={Logo} alt="service genie" className="logo" />
-        </Link>
+        </a>
       </div>
 
       <div className="col-1 text-right">
