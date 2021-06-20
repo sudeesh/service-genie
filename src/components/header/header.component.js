@@ -10,12 +10,12 @@ const Header = () => (
     <div className="header-menu">
       {/* buttton styles */}
       <div className="col-1">
-        <button variant="dark" className="common-button">
+        {/* <button variant="dark" className="common-button">
           Accessories store
         </button>
         <button variant="outline-secondary" className="common-button">
           Premium services
-        </button>
+        </button> */}
       </div>
       {/* logo */}
       <div className="col-2 text-center">
@@ -25,12 +25,12 @@ const Header = () => (
       </div>
 
       <div className="col-1 text-right">
-        <button variant="link" className="link-btn common-button">
+        {/* <button variant="link" className="link-btn common-button">
           Sign up
         </button>
         <button variant="link" className="link-btn common-button">
           Login
-        </button>
+        </button> */}
       </div>
     </div>
   </header>

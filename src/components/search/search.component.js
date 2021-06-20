@@ -72,6 +72,7 @@ export default function Search() {
       justify="center"
       alignItems="center"
       className="search-container"
+      style={{ padding: "10px" }}
     >
       <Grid item xs={8}>
         <div className="row center flex-column">

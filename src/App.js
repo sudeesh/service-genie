@@ -8,8 +8,8 @@ import DetailsPage from "./pages/detailsPage/detailsPage.component";
 import LocationList from "./pages/locationList/locationList.component";
 
 // component
-// import Header from "../src/common/header/header.component";
-// import Footer from "../src/common/footer/footer.component";
+import Header from "../src/components/header/header.component";
+import Footer from "../src/components/footer/footer.component";
 
 const App = () => {
   const [latitude, setLatitude] = useState(13.0827);
@@ -27,8 +27,7 @@ const App = () => {
   };
   return (
     <div className="grid-container">
-      {/* Hidded header for time being as we are integrating with wix */}
-      {/* <Header /> */}
+      <Header />
       <main>
         {/* <Route exact path="/" render={(props) => <Homepage {...props} />} /> */}
         <Route
@@ -49,8 +48,7 @@ const App = () => {
           render={(props) => <LocationList {...props} />}
         />
       </main>
-      {/* Hidded footer for time being as we are integrating with wix */}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
