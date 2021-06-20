@@ -78,7 +78,14 @@ const DetailsPage = (props) => {
       className="center-div"
     >
       <Grid container>
-        <Grid item xs={12} sm={6} lg={6} container>
+        <Grid
+          item
+          xs={12}
+          sm={6}
+          lg={6}
+          container
+          style={{ paddingRight: "30px" }}
+        >
           <Grid item xs container direction="column">
             <Grid item xs className="description-panel">
               <h3 className="text-transform-captilize">{name.garageTitle}</h3>
@@ -123,7 +130,7 @@ const DetailsPage = (props) => {
                 <span>Payment Mode:</span> {name.paymentMode}
               </p>
               <p>
-                <span>About Workshop:</span> {console.log("name", name)}
+                <span>About Workshop:</span> {name.garageDescription}
               </p>
 
               <div>
