@@ -3,7 +3,7 @@ import React from "react";
 export default function Footer() {
   return (
     <footer className="row center">
-      All rights are reserved to Serivice Genie
+      Copyright © 2021 Service Geni - All Rights Reserved
     </footer>
   );
 }

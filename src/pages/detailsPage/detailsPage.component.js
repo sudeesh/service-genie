@@ -21,6 +21,7 @@ import spray from "../../images/spray-can.png";
 import carWash from "../../images/car-wash.png";
 import ac from "../../images/ac.png";
 import accessories from "../../images/hubcap.png";
+import ecu from "../../images/ecu.png";
 
 // service
 import {
@@ -35,6 +36,7 @@ import "./detailsPage.styles.scss";
 const DetailsPage = (props) => {
   const [name, setGarageName] = useState({});
   const [share, setShare] = useState(false);
+  const [centerDetails, setCenterDetails] = useState();
   useEffect(() => {
     getGaragesByName(props.location.state.val)
       .then((res) => setGarageName(res.data))
@@ -54,6 +56,7 @@ const DetailsPage = (props) => {
   };
 
   useEffect(() => {
+    setCenterDetails(window.location.href);
     getReviewRating(props.location.state.val, props.location.state.location)
       .then((res) => setReview(res.data))
       .catch((error) => error.message);
@@ -107,12 +110,23 @@ const DetailsPage = (props) => {
                       name="rating"
                       starDimension="20px"
                       starSpacing="3px"
-                    />{" "}
+                    />
+                    {review.length ? (
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={handleClickOpen}
+                        style={{ marginLeft: "10px" }}
+                      >
+                        {review.length && review.length >= 1
+                          ? `${review.length} Review`
+                          : `${review.length} Reviews`}
+                      </Button>
+                    ) : null}
                   </>
                 )}
               </div>
               <p>
-                {console.log("review", review)}
                 <span>Date of Establish:</span> {name.dateOfEst}
               </p>
               <p>
@@ -132,72 +146,36 @@ const DetailsPage = (props) => {
               </p>
 
               <div>
-                {overAllRating &&
-                overAllRating.averageGarageRatings === "NaN" ? (
-                  "No Reviews"
-                ) : (
-                  <>
-                    <span className="offset-padding-left-5">
-                      {overAllRating && overAllRating.totalGarageReviews}
-                      {overAllRating && overAllRating.totalGarageReviews <= 1
-                        ? " Review"
-                        : " Reviews"}
-                    </span>
-                    {review.length >= 1 ? (
-                      <div className="review-container">
-                        <h4 className="text-header">Reviews</h4>
-                        {review &&
-                          review
-                            .filter((item, idx) => idx < 5)
-                            .map((x, i) => (
+                <>
+                  {review.length ? (
+                    <Dialog
+                      open={open}
+                      onClose={handleClose}
+                      aria-labelledby="max-width-dialog-title"
+                      className="custom-dialog"
+                    >
+                      <DialogTitle id="max-width-dialog-title">
+                        <b>Reviews</b>
+                      </DialogTitle>
+                      <DialogContent>
+                        <DialogContentText>
+                          {review &&
+                            review.map((x, i) => (
                               <div key={x}>
                                 <h4>{x.reviewerName}:</h4>
                                 <p>{x.review}</p>
                               </div>
                             ))}
-                        {review.length > 5 ? (
-                          <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={handleClickOpen}
-                          >
-                            Show more Reviews
-                          </Button>
-                        ) : null}
-                      </div>
-                    ) : null}
-                    {console.log("review", review)}
-
-                    {review.length >= 1 ? (
-                      <Dialog
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="max-width-dialog-title"
-                        className="custom-dialog"
-                      >
-                        <DialogTitle id="max-width-dialog-title">
-                          <b>Reviews</b>
-                        </DialogTitle>
-                        <DialogContent>
-                          <DialogContentText>
-                            {review &&
-                              review.map((x, i) => (
-                                <>
-                                  <h4>{x.reviewerName}:</h4>
-                                  <p key={x}>{x.review}</p>
-                                </>
-                              ))}
-                          </DialogContentText>
-                        </DialogContent>
-                        <DialogActions>
-                          <Button onClick={handleClose} color="primary">
-                            Close
-                          </Button>
-                        </DialogActions>
-                      </Dialog>
-                    ) : null}
-                  </>
-                )}
+                        </DialogContentText>
+                      </DialogContent>
+                      <DialogActions>
+                        <Button onClick={handleClose} color="primary">
+                          Close
+                        </Button>
+                      </DialogActions>
+                    </Dialog>
+                  ) : null}
+                </>
               </div>
 
               <div>
@@ -220,16 +198,16 @@ const DetailsPage = (props) => {
                 {share ? (
                   <div className="share-icons">
                     <FacebookShareButton
-                      url="https://www.facebook.com/servicegeni"
+                      url={centerDetails}
                       quote="Service genie shared a service center"
                     >
                       <FacebookIcon size={32} />
                     </FacebookShareButton>
-                    <TwitterShareButton url="https://twitter.com/GeniService">
+                    <TwitterShareButton url={centerDetails}>
                       <TwitterIcon size={32} />
                     </TwitterShareButton>
                     <WhatsappShareButton
-                      url="https://wa.me/919361040506"
+                      url={centerDetails}
                       title="Service genie shared a service center"
                     >
                       <WhatsappIcon size={32} />
@@ -299,7 +277,7 @@ const DetailsPage = (props) => {
             ) : null}
             {name.garageServices && name.garageServices.engAndEcu ? (
               <li>
-                <img src={tyre} alt="ECU Coding" />
+                <img src={ecu} alt="ECU Coding" />
                 <div className="image-caption">ECU Coding</div>
               </li>
             ) : null}
