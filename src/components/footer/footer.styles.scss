@@ -1,0 +1,22 @@
+.footer-list {
+  background: #fff;
+  padding: 10px;
+}
+.footer-list li {
+  list-style-type: none;
+  display: inline-block;
+  color: #9e3b1b;
+  padding: 0 10px;
+  font-size: 14px;
+}
+.footer-conatiner {
+  flex-direction: column;
+  flex-wrap: nowrap !important;
+}
+.input-footer {
+  width: 300px;
+  padding: 8px;
+}
+.copy-right {
+  margin-left: 20px;
+}
