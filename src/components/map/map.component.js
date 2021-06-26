@@ -23,11 +23,25 @@ export class MapContainer extends Component {
       activeMarker: {}, //Shows the active marker upon click
       selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
       markerData: [],
+      loading: true,
+      latitude: 13.0827,
+      longitude: 80.2707,
     };
   }
 
   componentDidMount() {
-    getAllGaragesByLatAndLong(2, this.props.latitude, this.props.longitude)
+    if (navigator.geolocation) {
+      navigator.geolocation.watchPosition((position) => {
+        console.log("postion", position);
+        this.setState({
+          loading: false,
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      });
+    }
+
+    getAllGaragesByLatAndLong(2, this.state.latitude, this.state.longitude)
       .then((res) => this.setState({ markerData: res.data }))
       .catch((error) => error.message);
   }
@@ -53,14 +67,13 @@ export class MapContainer extends Component {
       });
     }
   };
-
-  render() {
+  loadmap() {
     return (
       <Map
         google={this.props.google}
         zoom={14}
         style={mapStyles}
-        initialCenter={{ lat: this.props.latitude, lng: this.props.longitude }}
+        initialCenter={{ lat: this.state.latitude, lng: this.state.longitude }}
         className="map-holder"
       >
         {this.state.markerData &&
@@ -77,6 +90,11 @@ export class MapContainer extends Component {
           })}
       </Map>
     );
+  }
+
+  render() {
+    console.log("latitude", this.state.latitude);
+    return this.state.loading ? this.loadmap() : this.loadmap();
   }
 }
 

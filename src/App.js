@@ -10,21 +10,29 @@ import LocationList from "./pages/locationList/locationList.component";
 // component
 import Header from "../src/components/header/header.component";
 import Footer from "../src/components/footer/footer.component";
+import { usePosition } from "./customHooks/usePosition";
 
 const App = () => {
-  const [latitude, setLatitude] = useState(13.0827);
-  const [longitude, setLongitude] = useState(80.2707);
+  const [lat, setLat] = useState(13.0827);
+  const [long, setLongitude] = useState(80.2707);
 
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.watchPosition(showPosition);
-    }
-  });
-
-  const showPosition = (position) => {
-    setLatitude(position.coords.latitude);
-    setLongitude(position.coords.longitude);
+  const highAccuracySettings = {
+    enableHighAccuracy: true,
   };
+
+  const { latitude, longitude, timestamp, accuracy, speed, error } =
+    usePosition(true, highAccuracySettings);
+
+  // useEffect(() => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.watchPosition(showPosition);
+  //   }
+  // });
+
+  // const showPosition = (position) => {
+  //   setLatitude(position.coords.latitude);
+  //   setLongitude(position.coords.longitude);
+  // };
   return (
     <div className="grid-container">
       <Header />
