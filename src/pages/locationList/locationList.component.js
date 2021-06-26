@@ -19,8 +19,6 @@ const LocationList = (props) => {
       });
     } else {
       getAllGaragesUsingRegex(props.location.state.val).then((res) => {
-        console.log("pro", props.location.state);
-        console.log("res", res.data);
         if (
           res.data.length === 1 &&
           props.location.state.searchName === "garage"

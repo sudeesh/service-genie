@@ -6,7 +6,6 @@ import Map from "../../components/map/map.component";
 
 const SearchPage = (props) => {
   const { latitude, longitude, history } = props;
-  console.log("latitude", { latitude, longitude });
   return (
     <>
       <Search />

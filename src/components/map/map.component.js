@@ -29,10 +29,15 @@ export class MapContainer extends Component {
     };
   }
 
+  getPosition() {
+    getAllGaragesByLatAndLong(5, this.state.latitude, this.state.longitude)
+      .then((res) => this.setState({ markerData: res.data }))
+      .catch((error) => error.message);
+  }
+
   componentDidMount() {
     if (navigator.geolocation) {
       navigator.geolocation.watchPosition((position) => {
-        console.log("postion", position);
         this.setState({
           loading: false,
           latitude: position.coords.latitude,
@@ -40,10 +45,13 @@ export class MapContainer extends Component {
         });
       });
     }
+    this.getPosition();
+  }
 
-    getAllGaragesByLatAndLong(2, this.state.latitude, this.state.longitude)
-      .then((res) => this.setState({ markerData: res.data }))
-      .catch((error) => error.message);
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.latitude !== this.state.latitude) {
+      this.getPosition();
+    }
   }
 
   onMarkerClick = (props, marker, e) => {
@@ -94,7 +102,6 @@ export class MapContainer extends Component {
   }
 
   render() {
-    console.log("latitude", this.state.latitude);
     return this.state.loading ? this.loadmap() : this.loadmap();
   }
 }
