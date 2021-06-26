@@ -26,7 +26,7 @@ export class MapContainer extends Component {
   }
 
   componentDidMount() {
-    getAllGaragesByLatAndLong(2, this.props.latitude, this.props.longitude)
+    getAllGaragesByLatAndLong(5, this.props.latitude, this.props.longitude)
       .then((res) => this.setState({ markerData: res.data }))
       .catch((error) => error.message);
   }
