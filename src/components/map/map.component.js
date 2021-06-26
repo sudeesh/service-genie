@@ -74,6 +74,7 @@ export class MapContainer extends Component {
         zoom={14}
         style={mapStyles}
         initialCenter={{ lat: this.state.latitude, lng: this.state.longitude }}
+        center={{ lat: this.state.latitude, lng: this.state.longitude }}
         className="map-holder"
       >
         {this.state.markerData &&
