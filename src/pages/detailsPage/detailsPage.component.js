@@ -80,6 +80,7 @@ const DetailsPage = (props) => {
           <Grid item xs container direction="column">
             <Grid item xs className="description-panel">
               <h3 className="text-transform-captilize">{name.garageTitle}</h3>
+
               <p>
                 <span>Address:</span> {name.address}
               </p>
@@ -169,7 +170,7 @@ const DetailsPage = (props) => {
                           review
                             .filter((item, idx) => idx < 5)
                             .map((x, i) => <p key={x}>{x.review}</p>)}
-                        {review.length > 5 ? (
+                        {review.length > 2 ? (
                           <Button
                             variant="contained"
                             color="primary"

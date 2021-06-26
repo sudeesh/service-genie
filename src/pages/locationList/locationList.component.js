@@ -25,6 +25,7 @@ const LocationList = (props) => {
   return (
     <Grid container spacing={0} alignItems="center" justify="center">
       <Grid item lg={10}>
+        {console.log("props", props.location)}
         <h2>Car Service Centers around {props.location.state.val}</h2>
         <TileList list={location} />
       </Grid>
