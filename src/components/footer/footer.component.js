@@ -8,13 +8,29 @@ export default function Footer() {
     <footer className="row center footer-conatiner">
       <div>
         <ul className="footer-list">
-          <li>HOME</li>
-          <li>DOORSTEP SERVICES</li>
-          <li>ECU CODING & REPAIR</li>
-          <li>ABOUT US</li>
-          <li>CONTACT</li>
-          <li>BLOGS</li>
-          <li>VIRAL KINDNESS</li>
+          <li>
+            <a href="https://www.servicegeni.in/">HOME</a>
+          </li>
+          <li>
+            <a href="https://www.servicegeni.in/doorstep">DOORSTEP SERVICES</a>
+          </li>
+          <li>
+            <a href="https://www.servicegeni.in/ecu">ECU CODING & REPAIR</a>
+          </li>
+          <li>
+            <a href="https://www.servicegeni.in/about-us">ABOUT US</a>
+          </li>
+          <li>
+            <a href="https://www.servicegeni.in/contact-us">CONTACT</a>
+          </li>
+          <li>
+            <a href="https://www.servicegeni.in/blogs">BLOGS</a>
+          </li>
+          <li>
+            <a href="https://www.servicegeni.in/viral-kindness">
+              VIRAL KINDNESS
+            </a>
+          </li>
         </ul>
       </div>
       <div style={{ display: "flex" }}>

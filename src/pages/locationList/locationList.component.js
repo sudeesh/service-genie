@@ -46,7 +46,7 @@ const LocationList = (props) => {
       <Grid item lg={10}>
         <h2>
           {props.location.state.searchName === "location"
-            ? `Car Service Centers
+            ? `Car Service Centres
           around ${props.location.state.val}`
             : `Branches of
           ${props.location.state.val}`}

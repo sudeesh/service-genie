@@ -134,3 +134,13 @@ a:hover {
 .map-holder {
   height: calc(100% - 150px) !important;
 }
+
+@media only screen and (max-width: 600px) {
+  .footer-list {
+    padding: 20x;
+  }
+  .input-footer {
+    width: 230px;
+    height: 30px;
+  }
+}
