@@ -20,7 +20,7 @@ const TileList = (props) => {
   const onClickDetail = (name, location) => {
     history.push({
       pathname: "/details",
-      search: `?garageName=${name}`,
+      search: `?garageName=${name}?location=${location}`,
       state: { val: name, location: location },
     });
   };

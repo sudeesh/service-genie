@@ -37,15 +37,34 @@ const DetailsPage = (props) => {
   const [name, setGarageName] = useState({});
   const [share, setShare] = useState(false);
   const [centerDetails, setCenterDetails] = useState();
-  useEffect(() => {
-    getGaragesByName(props.location.state.val)
-      .then((res) => setGarageName(res.data))
-      .catch((error) => error.message);
-  }, [props.location.state.val]);
-
   const [review, setReview] = useState({});
   const [overAllRating, SetOverAllrating] = useState();
   const [open, setOpen] = React.useState(false);
+
+  //  Added for sharing link for social media
+  const getGarageName = props.location.search.split("?")[1];
+  const getGarageLocation = props.location.search.split("?")[2];
+
+  const sericeCentrename = getGarageName
+    .replace("garageName=", "")
+    .replaceAll("%20", " ");
+  const serviceLocation = getGarageLocation
+    .replace("location=")
+    .replaceAll("%20", " ");
+  const updatedName =
+    props.location.state !== undefined
+      ? props.location.state.val
+      : sericeCentrename;
+  const updatedLocation =
+    props.location.state !== undefined
+      ? props.location.state.val
+      : serviceLocation;
+
+  useEffect(() => {
+    getGaragesByName(updatedName)
+      .then((res) => setGarageName(res.data))
+      .catch((error) => error.message);
+  }, [updatedName]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -57,16 +76,13 @@ const DetailsPage = (props) => {
 
   useEffect(() => {
     setCenterDetails(window.location.href);
-    getReviewRating(props.location.state.val, props.location.state.location)
+    getReviewRating(updatedName, updatedLocation)
       .then((res) => setReview(res.data))
       .catch((error) => error.message);
-    getOverallReviewRating(
-      props.location.state.val,
-      props.location.state.location
-    )
+    getOverallReviewRating(updatedName, updatedLocation)
       .then((res) => SetOverAllrating(res.data))
       .catch((error) => error.message);
-  }, [props.location]);
+  }, [updatedName, updatedLocation]);
 
   const socialShare = () => {
     setShare(!share);
@@ -199,16 +215,19 @@ const DetailsPage = (props) => {
                   <div className="share-icons">
                     <FacebookShareButton
                       url={centerDetails}
-                      quote="Service genie shared a service center"
+                      quote="Service geni shared a service center"
                     >
                       <FacebookIcon size={32} />
                     </FacebookShareButton>
-                    <TwitterShareButton url={centerDetails}>
+                    <TwitterShareButton
+                      quote="Service geni shared a service center"
+                      url={centerDetails}
+                    >
                       <TwitterIcon size={32} />
                     </TwitterShareButton>
                     <WhatsappShareButton
                       url={centerDetails}
-                      title="Service genie shared a service center"
+                      title="Service geni shared a service center"
                     >
                       <WhatsappIcon size={32} />
                     </WhatsappShareButton>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import { getAllGaragesByLatAndLong } from "../../services/services";
+import vector from "../../images/car-marker.png";
 
 const mapStyles = {
   width: "100%",
@@ -57,7 +58,7 @@ export class MapContainer extends Component {
   onMarkerClick = (props, marker, e) => {
     this.props.history.push({
       pathname: "/details",
-      search: `?garageName=${props.name}`,
+      search: `?garageName=${props.name}?location=${props.location}`,
       state: { val: props.name, location: props.location },
     });
     this.setState({
@@ -94,6 +95,9 @@ export class MapContainer extends Component {
                 name={x.garageTitle}
                 location={x.location}
                 position={{ lat: x.latitude, lng: x.longitude }}
+                icon={{
+                  url: vector,
+                }}
               />
             );
           })}
