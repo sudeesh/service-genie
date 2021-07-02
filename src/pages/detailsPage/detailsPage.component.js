@@ -57,7 +57,7 @@ const DetailsPage = (props) => {
       : sericeCentrename;
   const updatedLocation =
     props.location.state !== undefined
-      ? props.location.state.val
+      ? props.location.state.location
       : serviceLocation;
 
   useEffect(() => {
@@ -88,6 +88,7 @@ const DetailsPage = (props) => {
     setShare(!share);
   };
 
+  console.log("review", review);
   return (
     <Grid
       container
