@@ -74,8 +74,9 @@ export default function Search() {
       className="search-container"
       style={{ padding: "10px" }}
     >
-      <Grid item xs={8}>
-        <div className="row center flex-column">
+      <Grid item xs={12}>
+        <div className="row center flex-row">
+          <h3 style={{ marginRight: "20px" }}>Find a mechanic near you</h3>
           <FormControl>
             <FormLabel component="legend" className="option-heading">
               Search by
@@ -95,7 +96,7 @@ export default function Search() {
               <FormControlLabel
                 value="garage"
                 control={<Radio color="primary" />}
-                label="Garage"
+                label="Service Centre"
               />
             </RadioGroup>
           </FormControl>
@@ -118,7 +119,9 @@ export default function Search() {
               <TextField
                 {...params}
                 label={
-                  value === "location" ? "Choose location" : "Choose garage"
+                  value === "location"
+                    ? "Choose Location"
+                    : "Choose Service Centre"
                 }
                 variant="outlined"
                 inputProps={{

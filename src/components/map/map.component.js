@@ -55,6 +55,13 @@ export class MapContainer extends Component {
     }
   }
 
+  onMarkerDragEnd(props, mapProps) {
+    this.setState({
+      latitude: mapProps.center.lat(),
+      longitude: mapProps.center.lng(),
+    });
+  }
+
   onMarkerClick = (props, marker, e) => {
     this.props.history.push({
       pathname: "/details",
@@ -85,6 +92,8 @@ export class MapContainer extends Component {
         initialCenter={{ lat: this.state.latitude, lng: this.state.longitude }}
         center={{ lat: this.state.latitude, lng: this.state.longitude }}
         className="map-holder"
+        onDragend={(props, mapProps) => this.onMarkerDragEnd(props, mapProps)}
+        options={{ streetViewControl: false }}
       >
         {this.state.markerData &&
           this.state.markerData.map((x) => {

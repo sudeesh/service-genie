@@ -249,7 +249,7 @@ const DetailsPage = (props) => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} sm={6} lg={6}>
+        <Grid item xs={12} sm={6} lg={6} style={{ paddingTop: "10px" }}>
           <div className="image-container">
             {name.garageImage === "" ? (
               <img src="http://via.placeholder.com/400x200" alt="garage" />
