@@ -32,8 +32,7 @@ const LocationList = (props) => {
           });
           history.push({
             pathname: "/details",
-            search: `?garageName=${props.location.state.val}`,
-            location: `?location=${location}`,
+            search: `?garageName=${props.location.state.val}?location=${location}`,
             state: { val: name, location: location },
           });
         }
