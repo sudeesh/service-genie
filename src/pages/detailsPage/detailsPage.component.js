@@ -8,11 +8,14 @@ import {
   WhatsappShareButton,
 } from "react-share";
 import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 // image
 import tyre from "../../images/tyre.png";
@@ -34,8 +37,8 @@ import {
 import "./detailsPage.styles.scss";
 
 const DetailsPage = (props) => {
+  let history = useHistory();
   const [name, setGarageName] = useState({});
-  const [share, setShare] = useState(false);
   const [centerDetails, setCenterDetails] = useState();
   const [review, setReview] = useState({});
   const [overAllRating, SetOverAllrating] = useState();
@@ -84,11 +87,12 @@ const DetailsPage = (props) => {
       .catch((error) => error.message);
   }, [updatedName, updatedLocation]);
 
-  const socialShare = () => {
-    setShare(!share);
+  const handleClick = () => {
+    history.push({
+      pathname: "/",
+    });
   };
 
-  console.log("review", review);
   return (
     <Grid
       container
@@ -97,6 +101,11 @@ const DetailsPage = (props) => {
       xs={10}
       className="center-div"
     >
+      <div style={{ textAlign: "right", width: "100%", marginTop: "10px" }}>
+        <Button variant="contained" color="primary" onClick={handleClick}>
+          Back to search
+        </Button>
+      </div>
       <Grid container>
         <Grid
           item
@@ -196,47 +205,38 @@ const DetailsPage = (props) => {
               </div>
 
               <div>
-                <div className="icons-conatner">
-                  <a
-                    className="material-icons cursor-pointer"
-                    href={`http://maps.google.com?q=${name.latitude},${name.longitude}`}
-                    target="_blank"
-                    rel="noreferrer"
+                <div className="share-icons">
+                  <FacebookShareButton
+                    url={centerDetails}
+                    quote="Service geni shared a service center"
                   >
-                    location_on
-                  </a>
-                  <span
-                    className="material-icons cursor-pointer"
-                    onClick={socialShare}
+                    <FacebookIcon size={32} />
+                  </FacebookShareButton>
+                  <TwitterShareButton
+                    quote="Service geni shared a service center"
+                    url={centerDetails}
                   >
-                    share
-                  </span>
+                    <TwitterIcon size={32} />
+                  </TwitterShareButton>
+                  <WhatsappShareButton
+                    url={centerDetails}
+                    title="Service geni shared a service center"
+                  >
+                    <WhatsappIcon size={32} />
+                  </WhatsappShareButton>
                 </div>
-                {share ? (
-                  <div className="share-icons">
-                    <FacebookShareButton
-                      url={centerDetails}
-                      quote="Service geni shared a service center"
-                    >
-                      <FacebookIcon size={32} />
-                    </FacebookShareButton>
-                    <TwitterShareButton
-                      quote="Service geni shared a service center"
-                      url={centerDetails}
-                    >
-                      <TwitterIcon size={32} />
-                    </TwitterShareButton>
-                    <WhatsappShareButton
-                      url={centerDetails}
-                      title="Service geni shared a service center"
-                    >
-                      <WhatsappIcon size={32} />
-                    </WhatsappShareButton>
-                  </div>
-                ) : null}
               </div>
 
               <p className="text-center">
+                <a
+                  className="common-button book-now-btn cursor-pointer"
+                  href={`http://maps.google.com?q=${name.latitude},${name.longitude}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ textDecoration: "none", fontSize: "13px" }}
+                >
+                  Share Location
+                </a>
                 <button
                   className="common-button book-now-btn cursor-pointer"
                   onClick={(e) => {
@@ -265,7 +265,15 @@ const DetailsPage = (props) => {
           <ul className="services-list">
             {name.garageServices && name.garageServices.gsAndOil ? (
               <li>
-                <img src={oil} alt="Tyre" />
+                <img
+                  src={oil}
+                  alt="Tyre"
+                  className="cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = `https://wa.me/919361040506?text=I%20need%20General%20Service%20Oil%20Change%20@%20${name.garageTitle},%20${name.location}`;
+                  }}
+                />
                 <div className="image-caption">
                   General Service & Oil Change
                 </div>
@@ -273,37 +281,85 @@ const DetailsPage = (props) => {
             ) : null}
             {name.garageServices && name.garageServices.pbAndT ? (
               <li>
-                <img src={spray} alt="Painting & Tinkering" />
+                <img
+                  src={spray}
+                  alt="Painting & Tinkering"
+                  className="cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = `https://wa.me/919361040506?text=I%20need%20Painting%20Tinkering%20@%20${name.garageTitle},%20${name.location}`;
+                  }}
+                />
                 <div className="image-caption">Painting & Tinkering</div>
               </li>
             ) : null}
             {name.garageServices && name.garageServices.carWash ? (
               <li>
-                <img src={carWash} alt="CarWash" />
+                <img
+                  src={carWash}
+                  alt="CarWash"
+                  className="cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = `https://wa.me/919361040506?text=I%20need%20Car%20Wash%20@%20${name.garageTitle},%20${name.location}`;
+                  }}
+                />
                 <div className="image-caption">CarWash</div>
               </li>
             ) : null}
             {name.garageServices && name.garageServices.acAndCL ? (
               <li>
-                <img src={ac} alt="AC Reapir & Cleaning" />
+                <img
+                  src={ac}
+                  alt="AC Reapir & Cleaning"
+                  className="cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = `https://wa.me/919361040506?text=I%20need%20AC%20Repair%20Cleaning%20@%20${name.garageTitle},%20${name.location}`;
+                  }}
+                />
                 <div className="image-caption">AC Reapir & Cleaning</div>
               </li>
             ) : null}
             {name.garageServices && name.garageServices.wAndS ? (
               <li>
-                <img src={tyre} alt="Wheels & Spares" />
+                <img
+                  src={tyre}
+                  alt="Wheels & Spares"
+                  className="cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = `https://wa.me/919361040506?text=I%20need%20Wheels%20Spares%20@%20${name.garageTitle},%20${name.location}`;
+                  }}
+                />
                 <div className="image-caption">Wheels & Spares</div>
               </li>
             ) : null}
             {name.garageServices && name.garageServices.engAndEcu ? (
               <li>
-                <img src={ecu} alt="ECU Coding" />
+                <img
+                  src={ecu}
+                  alt="ECU Coding"
+                  className="cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = `https://wa.me/919361040506?text=I%20need%20ECU%20Coding%20@%20${name.garageTitle},%20${name.location}`;
+                  }}
+                />
                 <div className="image-caption">ECU Coding</div>
               </li>
             ) : null}
             {name.garageServices && name.garageServices.acc ? (
               <li>
-                <img src={accessories} alt="Accessories" />
+                <img
+                  src={accessories}
+                  alt="Accessories"
+                  className="cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = `https://wa.me/919361040506?text=I%20need%20Accessories%20@%20${name.garageTitle},%20${name.location}`;
+                  }}
+                />
                 <div className="image-caption">Accessories</div>
               </li>
             ) : null}

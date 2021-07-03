@@ -57,17 +57,6 @@ const TileList = (props) => {
             <Grid item xs={12} sm={4} lg={4}>
               <Grid item container direction="column" spacing={2}>
                 <Grid item xs>
-                  <p>
-                    {x.verified === true ? (
-                      <button className="common-button verified-color">
-                        Verified
-                      </button>
-                    ) : null}
-                    <button className="common-button available-color">
-                      {x.weekOff}
-                    </button>
-                  </p>
-                  <h3>Customer Ratings & Reviews</h3>
                   <div>
                     {x.garageOverallRating.averageGarageRatings === "NaN" ? (
                       "No Reviews"
@@ -83,12 +72,24 @@ const TileList = (props) => {
                           starDimension="20px"
                           starSpacing="3px"
                         />
-                        <span>
-                          {x.garageOverallRating.totalGarageReviews} reviews
+                        <span style={{ paddingLeft: "10px" }}>
+                          {x.garageOverallRating.totalGarageReviews > 1
+                            ? `${x.garageOverallRating.totalGarageReviews} reviews`
+                            : `${x.garageOverallRating.totalGarageReviews} review`}
                         </span>
                       </>
                     )}
                   </div>
+                  <p>
+                    {x.verified === true ? (
+                      <button className="common-button verified-color">
+                        Verified
+                      </button>
+                    ) : null}
+                    <button className="common-button available-color">
+                      {x.weekOff}
+                    </button>
+                  </p>
                 </Grid>
               </Grid>
             </Grid>

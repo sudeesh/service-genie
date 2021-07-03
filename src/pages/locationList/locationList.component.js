@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import Grid from "@material-ui/core/Grid";
+import { Grid, Button } from "@material-ui/core";
 
 /* component */
 import TileList from "../../components/tileList/tileList.component";
@@ -41,15 +41,27 @@ const LocationList = (props) => {
     }
   }, [props.location.state, history]);
 
+  const handleClick = () => {
+    history.push({
+      pathname: "/",
+    });
+  };
+
   return (
     <Grid container spacing={0} alignItems="center" justify="center">
       <Grid item lg={10}>
-        <h2>
-          {props.location.state.searchName === "location"
-            ? `Car Service Centres
+        <h2 style={{ display: "flex", justifyContent: "space-between" }}>
+          <span>
+            {props.location.state.searchName === "location"
+              ? `Car Service Centres
           around ${props.location.state.val}`
-            : `Branches of
+              : `Branches of
           ${props.location.state.val}`}
+          </span>
+
+          <Button variant="contained" color="primary" onClick={handleClick}>
+            Back to search
+          </Button>
         </h2>
         <TileList list={location} />
       </Grid>
