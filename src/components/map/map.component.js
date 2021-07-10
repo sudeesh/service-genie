@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import { getAllGaragesByLatAndLong } from "../../services/services";
-import vector from "../../images/car-marker.png";
+import vector from "../../images/service-geni-marker.png";
 
 const mapStyles = {
   width: "100%",
