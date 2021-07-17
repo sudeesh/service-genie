@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
 // styles
-import "./footer.styles.scss";
+import './footer.styles.scss';
 
 export default function Footer() {
   return (
     <footer className="row center footer-conatiner">
-      <div>
+      {/* <div>
         <ul className="footer-list">
           <li>
             <a href="https://www.servicegeni.in/">HOME</a>
@@ -32,8 +32,8 @@ export default function Footer() {
             </a>
           </li>
         </ul>
-      </div>
-      <div style={{ display: "flex" }}>
+      </div> */}
+      <div style={{ display: 'flex' }}>
         <input type="text" placeholder="Search..." className="input-footer" />
         <p className="copy-right">
           Copyright © 2021 Service Geni - All Rights Reserved.

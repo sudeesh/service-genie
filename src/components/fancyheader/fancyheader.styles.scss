@@ -1,0 +1,117 @@
+@font-face {
+  font-family: Aventir;
+  src: url('../../fonts/Avenir_LT_35_Light.ttf');
+}
+
+header {
+  background: #fff;
+  position: fixed;
+  display: grid;
+  height: auto;
+  width: 100%;
+  min-height: auto;
+  grid-template-rows: 1fr;
+  grid-template-columns: 100%;
+  padding: 5px;
+
+  &.box-effect {
+    -webkit-box-shadow: 0 7px 6px -6px black;
+    -moz-box-shadow: 0 7px 6px -6px black;
+    box-shadow: 0 7px 6px -6px black;
+  }
+
+  .logo-container {
+    position: relative;
+    margin: 6px 0px 7px calc((100% - 980px) * 0.5);
+    left: 0px;
+    grid-area: 1 / 1 / 2 / 2;
+    justify-self: start;
+    align-self: start;
+
+    @media screen and (max-width: 650px) {
+      margin: 0;
+    }
+
+    img {
+      width: 86px;
+      height: 60px;
+      object-fit: contain;
+      object-position: 50% 50%;
+    }
+  }
+
+  .fancy-header-mobile {
+    display: none;
+  }
+
+  .nav-container {
+    .nav-list {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      width: 873px;
+      height: 50px;
+      margin: 14px 0 12px calc((100% - 1070px) * 0.5);
+      left: 108px;
+      grid-area: 1 / 1 / 2 / 2;
+      justify-self: start;
+      align-self: start;
+
+      .list {
+        list-style: none;
+        font-family: Aventir;
+        font-size: 14px;
+        width: calc(100% - (var(--menuTotalBordersX, 0px)));
+        height: calc(100% - (var(--menuTotalBordersY, 0px)));
+        white-space: nowrap;
+        overflow: visible;
+        position: absolute;
+
+        li {
+          width: 89px;
+          height: 50px;
+          position: relative;
+          box-sizing: border-box;
+          overflow: visible;
+          visibility: inherit;
+          text-align: center;
+          display: inline-block;
+
+          a {
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+            text-decoration: none;
+            color: rgb(85, 26, 139);
+          }
+        }
+
+        li:nth-child(2) {
+          width: 187px;
+        }
+        li:nth-child(3) {
+          width: 134px;
+        }
+        li:nth-child(3) {
+          width: 104px;
+        }
+        li:nth-child(3) {
+          width: 92px;
+        }
+        li:nth-child(3) {
+          width: 113px;
+        }
+        li:nth-child(3) {
+          width: 154px;
+        }
+      }
+    }
+  }
+}
