@@ -1,8 +1,24 @@
+@import '../../styles/utility.scss';
+
 .search-container {
-  background-color: rgba(54, 109, 140, 0.3);
+  background-color: rgb(54, 109, 140);
   color: #fff;
+  * {
+    font-family: $avenir-font-family;
+  }
+
+  .find-text {
+    margin-right: 20px;
+  }
+
+  @media screen and (max-width: 600px) {
+    .find-text {
+      margin: 0;
+    }
+  }
 }
 .option-heading {
   color: #fff !important;
   font-size: 18px !important;
+  font-family: $avenir-font-family;
 }

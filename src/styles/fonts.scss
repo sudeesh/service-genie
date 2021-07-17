@@ -1,0 +1,12 @@
+@font-face {
+  font-family: AvenirLight;
+  src: url('./fonts/Avenir_LT_35_Light.ttf');
+}
+
+@font-face {
+  font-family: PlayFairDisplayBold;
+  src: url('./fonts/PlayfairDisplay-Bold.ttf');
+}
+
+$avenir-font-family: AvenirLight;
+$playfair-font-family: PlayFairDisplayBold;

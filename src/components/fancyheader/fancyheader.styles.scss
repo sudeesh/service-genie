@@ -1,7 +1,4 @@
-@font-face {
-  font-family: Aventir;
-  src: url('../../fonts/Avenir_LT_35_Light.ttf');
-}
+@import '../../styles/utility.scss';
 
 header {
   background: #fff;
@@ -65,10 +62,10 @@ header {
 
       .list {
         list-style: none;
-        font-family: Aventir;
+        font-family: $avenir-font-family;
         font-size: 14px;
-        width: calc(100% - (var(--menuTotalBordersX, 0px)));
-        height: calc(100% - (var(--menuTotalBordersY, 0px)));
+        width: 100%;
+        height: 100%;
         white-space: nowrap;
         overflow: visible;
         position: absolute;
@@ -89,7 +86,11 @@ header {
             width: 100%;
             cursor: pointer;
             text-decoration: none;
-            color: rgb(85, 26, 139);
+            color: $fontColor;
+
+            &:hover {
+              color: $hoverColor;
+            }
           }
         }
 

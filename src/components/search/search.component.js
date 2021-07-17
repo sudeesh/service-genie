@@ -1,5 +1,5 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   Radio,
   RadioGroup,
@@ -8,21 +8,21 @@ import {
   FormLabel,
   TextField,
   Grid,
-} from "@material-ui/core";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import { getAllGarages, getAllUniqueGarages } from "../../services/services";
+} from '@material-ui/core';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import { getAllGarages, getAllUniqueGarages } from '../../services/services';
 
 // styles
-import "./search.styles.scss";
+import './search.styles.scss';
 
 export default function Search() {
-  const [value, setValue] = React.useState("location");
+  const [value, setValue] = React.useState('location');
   const [open, setOpen] = React.useState(false);
   const [options, setOptions] = React.useState([]);
   let history = useHistory();
 
   React.useEffect(() => {
-    if (value === "location") {
+    if (value === 'location') {
       (async () => {
         await getAllUniqueGarages()
           .then((response) => setOptions(response.data))
@@ -51,17 +51,17 @@ export default function Search() {
     setValue(event.target.value);
   };
   const selectChange = (event, val) => {
-    if (value === "location") {
+    if (value === 'location') {
       history.push({
-        pathname: "/location-list",
+        pathname: '/location-list',
         search: `?location=${val}`,
-        state: { val, searchName: "location" },
+        state: { val, searchName: 'location' },
       });
     } else {
       history.push({
-        pathname: "/location-list",
+        pathname: '/location-list',
         search: `?garageName=${val}`,
-        state: { val, searchName: "garage" },
+        state: { val, searchName: 'garage' },
       });
     }
   };
@@ -72,15 +72,12 @@ export default function Search() {
       justify="center"
       alignItems="center"
       className="search-container"
-      style={{ padding: "10px" }}
+      style={{ padding: '10px' }}
     >
       <Grid item xs={12}>
         <div className="row center flex-row">
-          <h3 style={{ marginRight: "20px" }}>Find a mechanic near you</h3>
+          <h3 className="find-text">Find a mechanic near you</h3>
           <FormControl>
-            <FormLabel component="legend" className="option-heading">
-              Search by
-            </FormLabel>
             <RadioGroup
               aria-label="search"
               name="search"
@@ -106,7 +103,7 @@ export default function Search() {
             style={{ width: 300 }}
             options={options}
             autoHighlight
-            getOptionLabel={(option) => (option ? option : "")}
+            getOptionLabel={(option) => (option ? option : '')}
             onChange={selectChange}
             onOpen={() => {
               setOpen(true);
@@ -119,9 +116,9 @@ export default function Search() {
               <TextField
                 {...params}
                 label={
-                  value === "location"
-                    ? "Choose Location"
-                    : "Choose Service Centre"
+                  value === 'location'
+                    ? 'Choose Location'
+                    : 'Choose Service Centre'
                 }
                 variant="outlined"
                 inputProps={{
