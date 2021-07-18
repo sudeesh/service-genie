@@ -1,7 +1,19 @@
+@import '../../styles/utility.scss';
+
 .list-container {
   background: #f9fdff;
   border-radius: 10px;
   margin: 10px 0 20px !important;
+  font-family: $avenir-font-family;
+  padding: 10px;
+
+  &-grid {
+    padding: 16px;
+  }
+
+  &__rating-container {
+    margin-top: 10px !important;
+  }
 }
 .float-right {
   float: right;
@@ -20,21 +32,25 @@
   color: #fff;
 }
 .available-color {
-  background-color: #9ac4e3;
-  color: #fff;
+  background-color: $badge-green;
+  color: $black;
+  text-transform: uppercase;
+  font-weight: bolder;
 }
 .top-service-color {
   background-color: #e39a9a;
   color: #fff;
 }
 .book-now-btn {
-  background-color: #dec328;
-  border-radius: 22px 13px 15px 0;
-  color: #555;
+  background-color: $brand-orange;
+  color: $fontColor;
   padding: 15px;
   font-weight: bold;
   min-width: 150px;
   display: inline-block;
+  font-size: 15px;
+  font-family: $playfair-font-family;
+  text-transform: uppercase;
 }
 .text-underline {
   text-decoration: underline;

@@ -32,7 +32,7 @@ export default function FancyHeaderComponent({ device }) {
               </a>
             </li>
             <li>
-              <a href="https://www.servicegeni.in/ecu">ECU CODING & REPAIR</a>
+              <a href="https://www.servicegeni.in/ecu">ECU CODING</a>
             </li>
             <li>
               <a href="https://www.servicegeni.in/about-us">ABOUT US</a>

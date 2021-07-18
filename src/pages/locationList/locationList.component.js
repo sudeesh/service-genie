@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { Grid, Button } from "@material-ui/core";
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Grid, Button } from '@material-ui/core';
 
 /* component */
-import TileList from "../../components/tileList/tileList.component";
+import TileList from '../../components/tileList/tileList.component';
 import {
   getAllGaragesUsingRegex,
   getLocationByLocation,
-} from "../../services/services";
+} from '../../services/services';
+
+import './locationList.styles.scss';
 
 const LocationList = (props) => {
   let history = useHistory();
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState('');
   useEffect(() => {
-    if (props.location.state.searchName === "location") {
+    if (props.location.state.searchName === 'location') {
       getLocationByLocation(props.location.state.val).then((res) => {
         return setLocation(res.data);
       });
@@ -21,17 +23,17 @@ const LocationList = (props) => {
       getAllGaragesUsingRegex(props.location.state.val).then((res) => {
         if (
           res.data.length === 1 &&
-          props.location.state.searchName === "garage"
+          props.location.state.searchName === 'garage'
         ) {
-          let name = "";
-          let location = "";
+          let name = '';
+          let location = '';
           res.data.map((x) => {
             name = x.garageTitle;
             location = x.location;
             return true;
           });
           history.push({
-            pathname: "/details",
+            pathname: '/details',
             search: `?garageName=${props.location.state.val}?location=${location}`,
             state: { val: name, location: location },
           });
@@ -43,23 +45,33 @@ const LocationList = (props) => {
 
   const handleClick = () => {
     history.push({
-      pathname: "/",
+      pathname: '/',
     });
   };
 
   return (
-    <Grid container spacing={0} alignItems="center" justify="center">
+    <Grid
+      container
+      spacing={0}
+      alignItems="center"
+      justify="center"
+      className="location-list"
+    >
       <Grid item lg={10}>
-        <h2 style={{ display: "flex", justifyContent: "space-between" }}>
-          <span>
-            {props.location.state.searchName === "location"
+        <h2 style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <span className="location-list__heading">
+            {props.location.state.searchName === 'location'
               ? `Car Service Centres
           around ${props.location.state.val}`
               : `Branches of
           ${props.location.state.val}`}
           </span>
 
-          <Button variant="contained" color="primary" onClick={handleClick}>
+          <Button
+            variant="contained"
+            onClick={handleClick}
+            className="location-list__search-button location-list--button"
+          >
             Back to search
           </Button>
         </h2>
