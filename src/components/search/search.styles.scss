@@ -16,6 +16,20 @@
       margin: 0;
     }
   }
+
+  .search-radio {
+    & svg.MuiSvgIcon-root {
+      color: $white;
+    }
+  }
+
+  & #garage-select {
+    fieldset {
+      span {
+        color: $white;
+      }
+    }
+  }
 }
 .option-heading {
   color: #fff !important;

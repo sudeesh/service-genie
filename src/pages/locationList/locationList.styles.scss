@@ -1,0 +1,23 @@
+@import '../../styles/utility.scss';
+
+.location {
+  &-list {
+    &__heading {
+      font-family: $playfair-font-family;
+      margin-left: 15px;
+    }
+
+    &--button {
+      background-color: $brand-blue !important;
+
+      span {
+        font-family: $avenir-font-family;
+        color: $white;
+      }
+    }
+
+    &__search-button {
+      margin-right: 15px !important;
+    }
+  }
+}

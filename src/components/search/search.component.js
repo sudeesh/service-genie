@@ -5,9 +5,9 @@ import {
   RadioGroup,
   FormControlLabel,
   FormControl,
-  FormLabel,
   TextField,
   Grid,
+  makeStyles,
 } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { getAllGarages, getAllUniqueGarages } from '../../services/services';
@@ -15,10 +15,19 @@ import { getAllGarages, getAllUniqueGarages } from '../../services/services';
 // styles
 import './search.styles.scss';
 
+const useStyles = makeStyles(() => ({
+  autoCompleteTextFields: {
+    '& input::placeholder': {
+      color: 'white',
+    },
+  },
+}));
+
 export default function Search() {
   const [value, setValue] = React.useState('location');
   const [open, setOpen] = React.useState(false);
   const [options, setOptions] = React.useState([]);
+  const classes = useStyles();
   let history = useHistory();
 
   React.useEffect(() => {
@@ -87,12 +96,12 @@ export default function Search() {
             >
               <FormControlLabel
                 value="location"
-                control={<Radio color="primary" />}
+                control={<Radio color="primary" className="search-radio" />}
                 label="Location"
               />
               <FormControlLabel
                 value="garage"
-                control={<Radio color="primary" />}
+                control={<Radio color="primary" className="search-radio" />}
                 label="Service Centre"
               />
             </RadioGroup>
@@ -124,6 +133,7 @@ export default function Search() {
                 inputProps={{
                   ...params.inputProps,
                 }}
+                classes={{ root: classes.autoCompleteTextFields }}
               />
             )}
           />
