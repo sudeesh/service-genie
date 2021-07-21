@@ -57,8 +57,8 @@ export class MapContainer extends Component {
 
   onMarkerDragEnd(props, mapProps) {
     this.setState({
-      latitude: mapProps.center.lat(),
-      longitude: mapProps.center.lng(),
+      latitude: parseFloat(mapProps.center.lat()),
+      longitude: parseFloat(mapProps.center.lng()),
     });
   }
 
