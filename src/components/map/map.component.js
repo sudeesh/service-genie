@@ -49,11 +49,11 @@ export class MapContainer extends Component {
     this.getPosition();
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.latitude !== this.state.latitude) {
-      this.getPosition();
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.latitude !== this.state.latitude) {
+  //     this.getPosition();
+  //   }
+  // }
 
   onMarkerDragEnd(props, mapProps) {
     this.setState({
@@ -91,7 +91,6 @@ export class MapContainer extends Component {
         style={mapStyles}
         center={{ lat: this.state.latitude, lng: this.state.longitude }}
         className="map-holder"
-        onDragStart={(props, mapProps) => this.onMarkerDragEnd(props, mapProps)}
         onDragEnd={(props, mapProps) => this.onMarkerDragEnd(props, mapProps)}
         options={{ streetViewControl: false }}
       >
