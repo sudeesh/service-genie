@@ -53,20 +53,12 @@ export class MapContainer extends Component {
     if (prevState.latitude !== this.state.latitude) {
       this.getPosition();
     }
-    if (prevProps.location !== this.props.location) {
-      this.mapRef.panTo(
-        new window.google.maps.LatLng(
-          this.props.location.lat,
-          this.props.location.lng
-        )
-      );
-    }
   }
 
   onMarkerDragEnd(props, mapProps) {
     this.setState({
-      latitude: parseFloat(mapProps.center.lat()),
-      longitude: parseFloat(mapProps.center.lng()),
+      latitude: mapProps.center.lat(),
+      longitude: mapProps.center.lng(),
     });
   }
 
@@ -97,13 +89,13 @@ export class MapContainer extends Component {
         google={this.props.google}
         zoom={14}
         style={mapStyles}
+        initialCenter={{ lat: this.state.latitude, lng: this.state.longitude }}
         center={{ lat: this.state.latitude, lng: this.state.longitude }}
         className="map-holder"
-        onDragEnd={(props, mapProps) => this.onMarkerDragEnd(props, mapProps)}
+        onTilesloaded={(props, mapProps) =>
+          this.onMarkerDragEnd(props, mapProps)
+        }
         options={{ streetViewControl: false }}
-        ref={(ref) => {
-          this.mapRef = ref;
-        }}
       >
         {this.state.markerData &&
           this.state.markerData.map((x) => {
