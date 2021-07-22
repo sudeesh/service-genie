@@ -92,7 +92,7 @@ export class MapContainer extends Component {
         initialCenter={{ lat: this.state.latitude, lng: this.state.longitude }}
         center={{ lat: this.state.latitude, lng: this.state.longitude }}
         className="map-holder"
-        onTilesloaded={(props, mapProps) =>
+        onMarkerDragEnd={(props, mapProps) =>
           this.onMarkerDragEnd(props, mapProps)
         }
         options={{ streetViewControl: false }}
