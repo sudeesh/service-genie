@@ -30,11 +30,11 @@ export class MapContainer extends Component {
     };
   }
 
-  getPosition() {
-    getAllGaragesByLatAndLong(5, this.state.latitude, this.state.longitude)
-      .then((res) => this.setState({ markerData: res.data }))
-      .catch((error) => error.message);
-  }
+  // getPosition() {
+  //   getAllGaragesByLatAndLong(5, this.state.latitude, this.state.longitude)
+  //     .then((res) => this.setState({ markerData: res.data }))
+  //     .catch((error) => error.message);
+  // }
 
   componentDidMount() {
     if (navigator.geolocation) {
@@ -46,16 +46,16 @@ export class MapContainer extends Component {
         });
       });
     }
-    this.getPosition();
+    // this.getPosition();
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.latitude !== this.state.latitude) {
-      this.getPosition();
+      // this.getPosition();
     }
   }
 
-  onMarkerDragEnd(props, mapProps) {
+  test(props, mapProps) {
     this.setState({
       latitude: mapProps.center.lat(),
       longitude: mapProps.center.lng(),
@@ -92,9 +92,7 @@ export class MapContainer extends Component {
         initialCenter={{ lat: this.state.latitude, lng: this.state.longitude }}
         center={{ lat: this.state.latitude, lng: this.state.longitude }}
         className="map-holder"
-        onMarkerDragEnd={(props, mapProps) =>
-          this.onMarkerDragEnd(props, mapProps)
-        }
+        onMarkerDragEnd={(props, mapProps) => this.test(props, mapProps)}
         options={{ streetViewControl: false }}
       >
         {this.state.markerData &&
