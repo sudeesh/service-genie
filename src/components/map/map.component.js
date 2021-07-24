@@ -30,11 +30,11 @@ export class MapContainer extends Component {
     };
   }
 
-  // getPosition() {
-  //   getAllGaragesByLatAndLong(5, this.state.latitude, this.state.longitude)
-  //     .then((res) => this.setState({ markerData: res.data }))
-  //     .catch((error) => error.message);
-  // }
+  getPosition() {
+    getAllGaragesByLatAndLong(5, this.state.latitude, this.state.longitude)
+      .then((res) => this.setState({ markerData: res.data }))
+      .catch((error) => error.message);
+  }
 
   componentDidMount() {
     if (navigator.geolocation) {
@@ -46,7 +46,7 @@ export class MapContainer extends Component {
         });
       });
     }
-    // this.getPosition();
+    this.getPosition();
   }
 
   componentDidUpdate(prevProps, prevState) {
