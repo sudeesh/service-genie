@@ -48,6 +48,28 @@ const LocationList = (props) => {
       pathname: '/',
     });
   };
+  console.log('props.device.breakpoints :>> ', props.device);
+  const listHeading = () => {
+    const { breakpoint } = props.device;
+    if (breakpoint !== 'phone') {
+      return `Car Service Centres
+          around ${props.location.state.val}`;
+    } else {
+      return (
+        <>
+          <p>Car Service Centres</p>
+          <p>around {props.location.state.val}</p>
+        </>
+      );
+    }
+  };
+
+  const renderHeading = () => {
+    return props.location.state.searchName === 'location'
+      ? listHeading()
+      : `Branches of
+          ${props.location.state.val}`;
+  };
 
   return (
     <Grid
@@ -59,13 +81,7 @@ const LocationList = (props) => {
     >
       <Grid item lg={10}>
         <h2 style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <span className="location-list__heading">
-            {props.location.state.searchName === 'location'
-              ? `Car Service Centres
-          around ${props.location.state.val}`
-              : `Branches of
-          ${props.location.state.val}`}
-          </span>
+          <span className="location-list__heading">{renderHeading()}</span>
 
           <Button
             variant="contained"

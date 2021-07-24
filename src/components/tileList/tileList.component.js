@@ -75,7 +75,7 @@ const TileList = (props) => {
                   {x.operatingHours}
                 </p>
               </Grid>
-              <Grid item xs={12} sm={4} lg={4}>
+              <Grid item xs={12} sm={4} lg={4} className="rating-panel">
                 <Grid item container direction="column" spacing={2}>
                   <Grid item xs className="list-container__rating-container">
                     <div>
@@ -109,7 +109,13 @@ const TileList = (props) => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={12} sm={3} lg={3} className="text-center">
+              <Grid
+                item
+                xs={12}
+                sm={3}
+                lg={3}
+                className="know-more-panel text-center"
+              >
                 <p>Services starting at</p>
                 <p>
                   <b>&#8377; {x.startingPrice}</b>
@@ -129,7 +135,7 @@ const TileList = (props) => {
                   className="cursor-pointer text-underline"
                   onClick={() => onClickDetail(x.garageTitle, x.location)}
                 >
-                  Know more about the service center and their offerings
+                  {`Know more about ${x.garageTitle}`}
                 </div>
               </Grid>
             </Grid>

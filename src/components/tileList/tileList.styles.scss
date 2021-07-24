@@ -11,8 +11,25 @@
     padding: 16px;
   }
 
+  @media screen and (max-width: $screen-sm-max) {
+    padding: 0 !important;
+
+    .description-panel {
+      padding-bottom: 0 !important;
+    }
+
+    .rating-panel {
+      padding: 0 13px !important;
+    }
+
+    .know-more-panel {
+      padding-top: 0px !important;
+    }
+  }
+
   &__rating-container {
     margin-top: 10px !important;
+    padding: 0 8px !important;
   }
 }
 .float-right {

@@ -1,40 +1,43 @@
-import React, { useEffect, useState } from "react";
-import Grid from "@material-ui/core/Grid";
-import StarRatings from "react-star-ratings";
-import Button from "@material-ui/core/Button";
+import React, { useEffect, useState } from 'react';
+import Grid from '@material-ui/core/Grid';
+import StarRatings from 'react-star-ratings';
+import Button from '@material-ui/core/Button';
 import {
   FacebookShareButton,
   TwitterShareButton,
   WhatsappShareButton,
-} from "react-share";
-import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
+} from 'react-share';
+import { FacebookIcon, TwitterIcon, WhatsappIcon } from 'react-share';
 import {
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
-} from "@material-ui/core";
-import { useHistory } from "react-router-dom";
+  Link,
+} from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
 // image
-import tyre from "../../images/tyre.png";
-import oil from "../../images/oil-bottle.png";
-import spray from "../../images/spray-can.png";
-import carWash from "../../images/car-wash.png";
-import ac from "../../images/ac.png";
-import accessories from "../../images/hubcap.png";
-import ecu from "../../images/ecu.png";
+import tyre from '../../images/tyre.png';
+import oil from '../../images/oil-bottle.png';
+import spray from '../../images/spray-can.png';
+import carWash from '../../images/car-wash.png';
+import ac from '../../images/ac.png';
+import accessories from '../../images/hubcap.png';
+import ecu from '../../images/ecu.png';
 
 // service
 import {
   getGaragesByName,
   getReviewRating,
   getOverallReviewRating,
-} from "../../services/services";
+} from '../../services/services';
 
 // style
-import "./detailsPage.styles.scss";
+import './detailsPage.styles.scss';
+import MobileDetailsPage from './detailsPage.mobile.component';
+import VerifiedTile from '../../components/common/verified.title';
 
 const DetailsPage = (props) => {
   let history = useHistory();
@@ -45,15 +48,15 @@ const DetailsPage = (props) => {
   const [open, setOpen] = React.useState(false);
 
   //  Added for sharing link for social media
-  const getGarageName = props.location.search.split("?")[1];
-  const getGarageLocation = props.location.search.split("?")[2];
+  const getGarageName = props.location.search.split('?')[1];
+  const getGarageLocation = props.location.search.split('?')[2];
 
   const sericeCentrename = getGarageName
-    .replace("garageName=", "")
-    .replaceAll("%20", " ");
+    .replace('garageName=', '')
+    .replaceAll('%20', ' ');
   const serviceLocation = getGarageLocation
-    .replace("location=")
-    .replaceAll("%20", " ");
+    .replace('location=')
+    .replaceAll('%20', ' ');
   const updatedName =
     props.location.state !== undefined
       ? props.location.state.val
@@ -89,9 +92,15 @@ const DetailsPage = (props) => {
 
   const handleClick = () => {
     history.push({
-      pathname: "/",
+      pathname: '/',
     });
   };
+
+  console.log('props.device :>> ', props.device);
+
+  if (props.device.breakpoint === 'phone') {
+    return <MobileDetailsPage {...props} />;
+  }
 
   return (
     <Grid
@@ -99,8 +108,18 @@ const DetailsPage = (props) => {
       justify="center"
       alignItems="center"
       xs={10}
-      className="center-div"
+      className="center-div details-container"
     >
+      <div style={{ textAlign: 'right', width: '100%', marginTop: '10px' }}>
+        <Link
+          variant="contained"
+          className="back-search__button back-search__button--brand-button"
+          color="primary"
+          onClick={handleClick}
+        >
+          Back to search
+        </Link>
+      </div>
       <Grid container>
         <Grid
           item
@@ -108,16 +127,19 @@ const DetailsPage = (props) => {
           sm={6}
           lg={6}
           container
-          style={{ paddingRight: "30px" }}
+          style={{ paddingRight: '30px' }}
         >
           <Grid item xs container direction="column">
             <Grid item xs className="description-panel">
-              <h3 className="text-transform-captilize">{name.garageTitle}</h3>
+              <VerifiedTile
+                garageTitle={name.garageTitle}
+                verified={name.verified}
+              />
               <div>
                 <span>Rating:</span>
                 {overAllRating &&
-                overAllRating.averageGarageRatings === "NaN" ? (
-                  "No Reviews"
+                overAllRating.averageGarageRatings === 'NaN' ? (
+                  'No Reviews'
                 ) : (
                   <>
                     <StarRatings
@@ -137,7 +159,7 @@ const DetailsPage = (props) => {
                         variant="contained"
                         color="primary"
                         onClick={handleClickOpen}
-                        style={{ marginLeft: "10px" }}
+                        style={{ marginLeft: '10px' }}
                       >
                         {review.length && review.length >= 1
                           ? `${review.length} Review`
@@ -199,18 +221,41 @@ const DetailsPage = (props) => {
                 </>
               </div>
 
-              <p className="text-center">
+              <div>
+                <div className="share-icons">
+                  <FacebookShareButton
+                    url={centerDetails}
+                    quote="Service geni shared a service center"
+                  >
+                    <FacebookIcon size={32} />
+                  </FacebookShareButton>
+                  <TwitterShareButton
+                    quote="Service geni shared a service center"
+                    url={centerDetails}
+                  >
+                    <TwitterIcon size={32} />
+                  </TwitterShareButton>
+                  <WhatsappShareButton
+                    url={centerDetails}
+                    title="Service geni shared a service center"
+                  >
+                    <WhatsappIcon size={32} />
+                  </WhatsappShareButton>
+                </div>
+              </div>
+
+              <p className="action-container text-center">
                 <a
-                  className="common-button book-now-btn cursor-pointer"
+                  className="common-button book-now-btn cursor-pointer action__share action__share--button"
                   href={`http://maps.google.com?q=${name.latitude},${name.longitude}`}
                   target="_blank"
                   rel="noreferrer"
-                  style={{ textDecoration: "none", fontSize: "13px" }}
+                  style={{ textDecoration: 'none', fontSize: '13px' }}
                 >
                   Share Location
                 </a>
                 <button
-                  className="common-button book-now-btn cursor-pointer"
+                  className="common-button book-now-btn cursor-pointer action__directions action__direction--button"
                   onClick={(e) => {
                     e.preventDefault();
                     window.location.href = `https://wa.me/919361040506?text=I%20need%20my%20car%20to%20be%20serviced%20@%20${name.garageTitle},%20${name.location}`;
@@ -222,36 +267,9 @@ const DetailsPage = (props) => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} sm={6} lg={6} style={{ paddingTop: "10px" }}>
-          <div style={{ display: "flex" }}>
-            <div className="share-icons">
-              <FacebookShareButton
-                url={centerDetails}
-                quote="Service geni shared a service center"
-              >
-                <FacebookIcon size={32} />
-              </FacebookShareButton>
-              <TwitterShareButton
-                quote="Service geni shared a service center"
-                url={centerDetails}
-              >
-                <TwitterIcon size={32} />
-              </TwitterShareButton>
-              <WhatsappShareButton
-                url={centerDetails}
-                title="Service geni shared a service center"
-              >
-                <WhatsappIcon size={32} />
-              </WhatsappShareButton>
-            </div>
-            <div style={{ textAlign: "right", width: "76%" }}>
-              <Button variant="contained" color="primary" onClick={handleClick}>
-                Back to search
-              </Button>
-            </div>
-          </div>
+        <Grid item xs={12} sm={6} lg={6} style={{ paddingTop: '10px' }}>
           <div className="image-container">
-            {name.garageImage === "" ? (
+            {name.garageImage === '' ? (
               <img src="http://via.placeholder.com/400x200" alt="garage" />
             ) : (
               <img

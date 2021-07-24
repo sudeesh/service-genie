@@ -30,12 +30,12 @@ const App = () => {
         <Route
           exact
           path="/details"
-          render={(props) => <DetailsPage {...props} />}
+          render={(props) => <DetailsPage {...props} device={device} />}
         />
         <Route
           exact
           path="/location-list"
-          render={(props) => <LocationList {...props} />}
+          render={(props) => <LocationList {...props} device={device} />}
         />
       </main>
       <Footer />
