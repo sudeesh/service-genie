@@ -51,7 +51,7 @@ export class MapContainer extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.latitude !== this.state.latitude) {
-      // this.getPosition();
+      this.getPosition();
     }
   }
 
