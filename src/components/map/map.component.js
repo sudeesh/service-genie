@@ -55,7 +55,7 @@ export class MapContainer extends Component {
     }
   }
 
-  test(props, mapProps) {
+  onMarkerDragEnd(props, mapProps) {
     this.setState({
       latitude: mapProps.center.lat(),
       longitude: mapProps.center.lng(),
@@ -92,7 +92,7 @@ export class MapContainer extends Component {
         initialCenter={{ lat: this.state.latitude, lng: this.state.longitude }}
         // center={{ lat: this.state.latitude, lng: this.state.longitude }}
         className="map-holder"
-        // onMarkerDragEnd={(props, mapProps) => this.test(props, mapProps)}
+        onDragend={(props, mapProps) => this.onMarkerDragEnd(props, mapProps)}
         options={{ streetViewControl: false }}
       >
         {this.state.markerData &&
