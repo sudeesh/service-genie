@@ -22,8 +22,28 @@
       padding: 0 13px !important;
     }
 
-    .know-more-panel {
-      padding-top: 0px !important;
+    .know-more {
+      &-panel {
+        padding-top: 0px !important;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        .services__heading {
+          justify-self: flex-start;
+        }
+
+        .schedule-now {
+          &__button {
+            &--width {
+              width: 152px;
+            }
+          }
+        }
+      }
+
+      &__link {
+        grid-column-start: span 3;
+      }
     }
   }
 

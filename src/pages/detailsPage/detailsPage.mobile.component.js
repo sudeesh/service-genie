@@ -17,6 +17,9 @@ import {
   Link,
 } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+//Icon
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
 
 // image
 import tyre from '../../images/tyre.png';
@@ -122,7 +125,7 @@ const MobileDetailsPage = (props) => {
           sm={6}
           lg={6}
           container
-          style={{ paddingRight: '30px' }}
+          className="details-container__grid"
         >
           <Grid item xs container direction="column">
             <Grid item xs className="description-panel">
@@ -130,8 +133,26 @@ const MobileDetailsPage = (props) => {
                 garageTitle={name.garageTitle}
                 verified={name.verified}
               />
+              <p>
+                <div className="address-text-image">
+                  <FontAwesomeIcon
+                    icon={faMapMarkedAlt}
+                    className="offest-margin-right-10"
+                  />
+                  {name.address}
+                </div>
+              </p>
+              <div className="image-container">
+                {name.garageImage === '' ? (
+                  <img src="http://via.placeholder.com/400x200" alt="garage" />
+                ) : (
+                  <img
+                    src={`data:image/jpeg;base64,${name.garageImage}`}
+                    alt="garage"
+                  />
+                )}
+              </div>
               <div>
-                <span>Rating:</span>
                 {overAllRating &&
                 overAllRating.averageGarageRatings === 'NaN' ? (
                   'No Reviews'
@@ -143,33 +164,30 @@ const MobileDetailsPage = (props) => {
                           ? parseInt(overAllRating.averageGarageRatings)
                           : 0
                       }
-                      starRatedColor="rgb(2238, 255, 0)"
+                      starRatedColor="#eea44d"
                       numberOfStars={5}
                       name="rating"
                       starDimension="20px"
                       starSpacing="3px"
                     />
                     {review.length ? (
-                      <Button
+                      <button
                         variant="contained"
                         color="primary"
                         onClick={handleClickOpen}
                         style={{ marginLeft: '10px' }}
+                        className="review__button review__button--color-change"
                       >
                         {review.length && review.length >= 1
                           ? `${review.length} Review`
                           : `${review.length} Reviews`}
-                      </Button>
+                      </button>
                     ) : null}
                   </>
                 )}
               </div>
-              <p>
-                <span>Date of Establish:</span> {name.dateOfEst}
-              </p>
-              <p>
-                <span>Located at:</span> {name.address}
-              </p>
+              <p>Since {name.dateOfEst}</p>
+
               <p>
                 <span>Operating Hours:</span> {name.operatingHours}
               </p>
@@ -177,11 +195,122 @@ const MobileDetailsPage = (props) => {
                 <span>Payment Mode:</span> {name.paymentMode}
               </p>
               <p>
-                <span>About Workshop:</span> {name.garageDescription}
+                <span>Week Off: </span> {name.weekOff}
               </p>
-              <p>
-                <span>weekOff: </span> {name.weekOff}
-              </p>
+
+              <Grid item xs={12} sm={6} lg={6} style={{ paddingTop: '10px' }}>
+                <h4 className="services__title services__title--font-size-change">
+                  Services offered:
+                </h4>
+                <div className="services-wrapper">
+                  <ul className="services-list">
+                    {name.garageServices && name.garageServices.gsAndOil ? (
+                      <li>
+                        <img
+                          src={oil}
+                          alt="Tyre"
+                          className="cursor-pointer"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            window.location.href = `https://wa.me/919361040506?text=I%20need%20General%20Service%20Oil%20Change%20@%20${name.garageTitle},%20${name.location}`;
+                          }}
+                        />
+                        <div className="image-caption">
+                          General Service & Oil Change
+                        </div>
+                      </li>
+                    ) : null}
+                    {name.garageServices && name.garageServices.pbAndT ? (
+                      <li>
+                        <img
+                          src={spray}
+                          alt="Painting & Tinkering"
+                          className="cursor-pointer"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            window.location.href = `https://wa.me/919361040506?text=I%20need%20Painting%20Tinkering%20@%20${name.garageTitle},%20${name.location}`;
+                          }}
+                        />
+                        <div className="image-caption">
+                          Painting & Tinkering
+                        </div>
+                      </li>
+                    ) : null}
+                    {name.garageServices && name.garageServices.carWash ? (
+                      <li>
+                        <img
+                          src={carWash}
+                          alt="CarWash"
+                          className="cursor-pointer"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            window.location.href = `https://wa.me/919361040506?text=I%20need%20Car%20Wash%20@%20${name.garageTitle},%20${name.location}`;
+                          }}
+                        />
+                        <div className="image-caption">CarWash</div>
+                      </li>
+                    ) : null}
+                    {name.garageServices && name.garageServices.acAndCL ? (
+                      <li>
+                        <img
+                          src={ac}
+                          alt="AC Reapir & Cleaning"
+                          className="cursor-pointer"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            window.location.href = `https://wa.me/919361040506?text=I%20need%20AC%20Repair%20Cleaning%20@%20${name.garageTitle},%20${name.location}`;
+                          }}
+                        />
+                        <div className="image-caption">
+                          AC Reapir & Cleaning
+                        </div>
+                      </li>
+                    ) : null}
+                    {name.garageServices && name.garageServices.wAndS ? (
+                      <li>
+                        <img
+                          src={tyre}
+                          alt="Wheels & Spares"
+                          className="cursor-pointer"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            window.location.href = `https://wa.me/919361040506?text=I%20need%20Wheels%20Spares%20@%20${name.garageTitle},%20${name.location}`;
+                          }}
+                        />
+                        <div className="image-caption">Wheels & Spares</div>
+                      </li>
+                    ) : null}
+                    {name.garageServices && name.garageServices.engAndEcu ? (
+                      <li>
+                        <img
+                          src={ecu}
+                          alt="ECU Coding"
+                          className="cursor-pointer"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            window.location.href = `https://wa.me/919361040506?text=I%20need%20ECU%20Coding%20@%20${name.garageTitle},%20${name.location}`;
+                          }}
+                        />
+                        <div className="image-caption">ECU Coding</div>
+                      </li>
+                    ) : null}
+                    {name.garageServices && name.garageServices.acc ? (
+                      <li>
+                        <img
+                          src={accessories}
+                          alt="Accessories"
+                          className="cursor-pointer"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            window.location.href = `https://wa.me/919361040506?text=I%20need%20Accessories%20@%20${name.garageTitle},%20${name.location}`;
+                          }}
+                        />
+                        <div className="image-caption">Accessories</div>
+                      </li>
+                    ) : null}
+                  </ul>
+                </div>
+              </Grid>
 
               <div>
                 <>
@@ -215,6 +344,9 @@ const MobileDetailsPage = (props) => {
                   ) : null}
                 </>
               </div>
+              <p>
+                <span>About Workshop:</span> {name.garageDescription}
+              </p>
 
               <div>
                 <div className="share-icons">
@@ -240,121 +372,6 @@ const MobileDetailsPage = (props) => {
               </div>
             </Grid>
           </Grid>
-        </Grid>
-        <Grid item xs={12} sm={6} lg={6} style={{ paddingTop: '10px' }}>
-          <div className="image-container">
-            {name.garageImage === '' ? (
-              <img src="http://via.placeholder.com/400x200" alt="garage" />
-            ) : (
-              <img
-                src={`data:image/jpeg;base64,${name.garageImage}`}
-                alt="garage"
-              />
-            )}
-          </div>
-          <h4>Common services offered:</h4>
-          <ul className="services-list">
-            {name.garageServices && name.garageServices.gsAndOil ? (
-              <li>
-                <img
-                  src={oil}
-                  alt="Tyre"
-                  className="cursor-pointer"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = `https://wa.me/919361040506?text=I%20need%20General%20Service%20Oil%20Change%20@%20${name.garageTitle},%20${name.location}`;
-                  }}
-                />
-                <div className="image-caption">
-                  General Service & Oil Change
-                </div>
-              </li>
-            ) : null}
-            {name.garageServices && name.garageServices.pbAndT ? (
-              <li>
-                <img
-                  src={spray}
-                  alt="Painting & Tinkering"
-                  className="cursor-pointer"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = `https://wa.me/919361040506?text=I%20need%20Painting%20Tinkering%20@%20${name.garageTitle},%20${name.location}`;
-                  }}
-                />
-                <div className="image-caption">Painting & Tinkering</div>
-              </li>
-            ) : null}
-            {name.garageServices && name.garageServices.carWash ? (
-              <li>
-                <img
-                  src={carWash}
-                  alt="CarWash"
-                  className="cursor-pointer"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = `https://wa.me/919361040506?text=I%20need%20Car%20Wash%20@%20${name.garageTitle},%20${name.location}`;
-                  }}
-                />
-                <div className="image-caption">CarWash</div>
-              </li>
-            ) : null}
-            {name.garageServices && name.garageServices.acAndCL ? (
-              <li>
-                <img
-                  src={ac}
-                  alt="AC Reapir & Cleaning"
-                  className="cursor-pointer"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = `https://wa.me/919361040506?text=I%20need%20AC%20Repair%20Cleaning%20@%20${name.garageTitle},%20${name.location}`;
-                  }}
-                />
-                <div className="image-caption">AC Reapir & Cleaning</div>
-              </li>
-            ) : null}
-            {name.garageServices && name.garageServices.wAndS ? (
-              <li>
-                <img
-                  src={tyre}
-                  alt="Wheels & Spares"
-                  className="cursor-pointer"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = `https://wa.me/919361040506?text=I%20need%20Wheels%20Spares%20@%20${name.garageTitle},%20${name.location}`;
-                  }}
-                />
-                <div className="image-caption">Wheels & Spares</div>
-              </li>
-            ) : null}
-            {name.garageServices && name.garageServices.engAndEcu ? (
-              <li>
-                <img
-                  src={ecu}
-                  alt="ECU Coding"
-                  className="cursor-pointer"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = `https://wa.me/919361040506?text=I%20need%20ECU%20Coding%20@%20${name.garageTitle},%20${name.location}`;
-                  }}
-                />
-                <div className="image-caption">ECU Coding</div>
-              </li>
-            ) : null}
-            {name.garageServices && name.garageServices.acc ? (
-              <li>
-                <img
-                  src={accessories}
-                  alt="Accessories"
-                  className="cursor-pointer"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = `https://wa.me/919361040506?text=I%20need%20Accessories%20@%20${name.garageTitle},%20${name.location}`;
-                  }}
-                />
-                <div className="image-caption">Accessories</div>
-              </li>
-            ) : null}
-          </ul>
         </Grid>
       </Grid>
       {props.device.breakpoint === 'phone' ? (

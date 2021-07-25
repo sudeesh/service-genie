@@ -113,7 +113,11 @@ const DetailsPage = (props) => {
       <div style={{ textAlign: 'right', width: '100%', marginTop: '10px' }}>
         <Link
           variant="contained"
+<<<<<<< HEAD
+          className="cursor-pointer back-search__button back-search__button--brand-button"
+=======
           className="back-search__button back-search__button--brand-button"
+>>>>>>> c4117996 (list and list details init changes)
           color="primary"
           onClick={handleClick}
         >
@@ -148,7 +152,7 @@ const DetailsPage = (props) => {
                           ? parseInt(overAllRating.averageGarageRatings)
                           : 0
                       }
-                      starRatedColor="rgb(2238, 255, 0)"
+                      starRatedColor="#eea44d"
                       numberOfStars={5}
                       name="rating"
                       starDimension="20px"

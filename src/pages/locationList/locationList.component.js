@@ -91,7 +91,7 @@ const LocationList = (props) => {
             Back to search
           </Button>
         </h2>
-        <TileList list={location} />
+        <TileList list={location} device={props.device} />
       </Grid>
     </Grid>
   );
