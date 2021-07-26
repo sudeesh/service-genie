@@ -14,6 +14,7 @@
     "axios": "0.21.1",
     "classnames": "^2.3.1",
     "default-gateway": "^4.2.0",
+    "google-map-react": "^2.1.10",
     "google-maps-react": "^2.0.6",
     "gsap": "3.6.1",
     "material-design-icons": "^3.0.1",

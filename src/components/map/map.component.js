@@ -1,21 +1,16 @@
 import React, { Component } from "react";
-import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+import GoogleMapReact from "google-map-react";
 import { getAllGaragesByLatAndLong } from "../../services/services";
 import vector from "../../images/service-geni-marker.png";
 
-const mapStyles = {
-  width: "100%",
-  height: "75%",
-  overflow: "hidden",
+const Marker = (props) => {
+  return (
+    <div className="SuperAwesomePin">
+      <img src={vector} alt="service geni icon" />
+    </div>
+  );
 };
-
-const config = {
-  SECRET_KEY: "AIzaSyAhnpl8m5jed67sO1DueRlrPk8muzWUtQU",
-};
-
-const secretkey = config.SECRET_KEY;
-
-export class MapContainer extends Component {
+class MapContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -38,6 +33,7 @@ export class MapContainer extends Component {
 
   componentDidMount() {
     if (navigator.geolocation) {
+      debugger;
       navigator.geolocation.watchPosition((position) => {
         this.setState({
           loading: false,
@@ -55,70 +51,158 @@ export class MapContainer extends Component {
     }
   }
 
-  onMarkerDragEnd(props, mapProps) {
+  onMarkerDragEnd = (mapProps, coord, index) => {
     this.setState({
       latitude: mapProps.center.lat(),
       longitude: mapProps.center.lng(),
     });
-  }
-
-  onMarkerClick = (props, marker, e) => {
-    this.props.history.push({
-      pathname: "/details",
-      search: `?garageName=${props.name}?location=${props.location}`,
-      state: { val: props.name, location: props.location },
-    });
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true,
-    });
   };
-
-  onClose = (props) => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null,
-      });
-    }
-  };
-  loadmap() {
-    return (
-      <Map
-        google={this.props.google}
-        zoom={14}
-        style={mapStyles}
-        // initialCenter={{ lat: this.state.latitude, lng: this.state.longitude }}
-        center={{ lat: this.state.latitude, lng: this.state.longitude }}
-        className="map-holder"
-        onDragend={(props, mapProps) => this.onMarkerDragEnd(props, mapProps)}
-        options={{ streetViewControl: false }}
-      >
-        {this.state.markerData &&
-          this.state.markerData.map((x) => {
-            return (
-              <Marker
-                onClick={this.onMarkerClick}
-                title={x.garageTitle}
-                name={x.garageTitle}
-                location={x.location}
-                position={{ lat: x.latitude, lng: x.longitude }}
-                icon={{
-                  url: vector,
-                }}
-              />
-            );
-          })}
-      </Map>
-    );
-  }
 
   render() {
-    return this.state.loading ? this.loadmap() : this.loadmap();
+    console.log("markerData", this.state.markerData);
+    return (
+      <div style={{ height: "66vh", width: "100%" }}>
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: "AIzaSyAhnpl8m5jed67sO1DueRlrPk8muzWUtQU" }}
+          defaultCenter={{
+            lat: this.state.latitude,
+            lng: this.state.longitude,
+          }}
+          defaultZoom={14}
+          onDragEnd={(props, mapProps) => this.onMarkerDragEnd(props, mapProps)}
+        >
+          {this.state.markerData &&
+            this.state.markerData.map((x) => (
+              <Marker lat={x.latitude} lng={x.longitude} />
+            ))}
+        </GoogleMapReact>
+      </div>
+    );
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: secretkey,
-})(MapContainer);
+export default MapContainer;
+// import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+// import { getAllGaragesByLatAndLong } from "../../services/services";
+// import vector from "../../images/service-geni-marker.png";
+
+// const mapStyles = {
+//   width: "100%",
+//   height: "75%",
+//   overflow: "hidden",
+// };
+
+// const config = {
+//   SECRET_KEY: "AIzaSyAhnpl8m5jed67sO1DueRlrPk8muzWUtQU",
+// };
+
+// const secretkey = config.SECRET_KEY;
+
+// export class MapContainer extends Component {
+//   constructor(props) {
+//     super(props);
+
+//     this.state = {
+//       showingInfoWindow: false, //Hides or the shows the infoWindow
+//       activeMarker: {}, //Shows the active marker upon click
+//       selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
+//       markerData: [],
+//       loading: true,
+//       latitude: 13.0827,
+//       longitude: 80.2707,
+//     };
+//   }
+
+//   getPosition() {
+//     getAllGaragesByLatAndLong(5, this.state.latitude, this.state.longitude)
+//       .then((res) => this.setState({ markerData: res.data }))
+//       .catch((error) => error.message);
+//   }
+
+//   componentDidMount() {
+//     if (navigator.geolocation) {
+//       navigator.geolocation.watchPosition((position) => {
+//         this.setState({
+//           loading: false,
+//           latitude: position.coords.latitude,
+//           longitude: position.coords.longitude,
+//         });
+//       });
+//     }
+//     this.getPosition();
+//   }
+
+//   componentDidUpdate(prevProps, prevState) {
+//     if (prevState.latitude !== this.state.latitude) {
+//       this.getPosition();
+//     }
+//   }
+
+//   onMarkerDragEnd(props, mapProps) {
+//     this.setState({
+//       latitude: mapProps.center.lat(),
+//       longitude: mapProps.center.lng(),
+//     });
+//   }
+
+//   onMarkerClick = (props, marker, e) => {
+//     this.props.history.push({
+//       pathname: "/details",
+//       search: `?garageName=${props.name}?location=${props.location}`,
+//       state: { val: props.name, location: props.location },
+//     });
+//     this.setState({
+//       selectedPlace: props,
+//       activeMarker: marker,
+//       showingInfoWindow: true,
+//     });
+//   };
+
+//   onClose = (props) => {
+//     if (this.state.showingInfoWindow) {
+//       this.setState({
+//         showingInfoWindow: false,
+//         activeMarker: null,
+//       });
+//     }
+//   };
+//   loadmap() {
+//     return (
+//       <Map
+//         google={this.props.google}
+//         zoom={14}
+//         style={mapStyles}
+//         // initialCenter={{ lat: this.state.latitude, lng: this.state.longitude }}
+//         center={{ lat: this.state.latitude, lng: this.state.longitude }}
+//         className="map-holder"
+//         onDragend={(props, mapProps) => this.onMarkerDragEnd(props, mapProps)}
+//         options={{ streetViewControl: false }}
+//         scrollwheel={true}
+//       >
+//         {this.state.markerData &&
+//           this.state.markerData.map((x) => {
+//             return (
+//               <Marker
+//                 onClick={this.onMarkerClick}
+//                 title={x.garageTitle}
+//                 name={x.garageTitle}
+//                 location={x.location}
+//                 position={{ lat: x.latitude, lng: x.longitude }}
+//                 icon={{
+//                   url: vector,
+//                 }}
+//               />
+//             );
+//           })}
+//       </Map>
+//     );
+//   }
+
+//   render() {
+//     return this.state.loading ? this.loadmap() : this.loadmap();
+//   }
+// }
+
+// export default GoogleApiWrapper({
+//   apiKey: secretkey,
+// })(MapContainer);
