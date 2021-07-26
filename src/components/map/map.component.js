@@ -5,8 +5,12 @@ import vector from "../../images/service-geni-marker.png";
 
 const Marker = (props) => {
   return (
-    <div className="SuperAwesomePin">
-      <img src={vector} alt="service geni icon" />
+    <div className="SuperAwesomePin" onClick={props.onMarkerClick}>
+      <img
+        style={{ position: "absolute" }}
+        src={vector}
+        alt="service geni icon"
+      />
     </div>
   );
 };
@@ -33,7 +37,6 @@ class MapContainer extends Component {
 
   componentDidMount() {
     if (navigator.geolocation) {
-      debugger;
       navigator.geolocation.watchPosition((position) => {
         this.setState({
           loading: false,
@@ -58,22 +61,49 @@ class MapContainer extends Component {
     });
   };
 
+  onMarkerClick = (props, marker, e) => {};
+
+  handleMarkerClick(props) {
+    console.log("click", props);
+    // this.props.history.push({
+    //   pathname: "/details",
+    //   search: `?garageName=${props.name}?location=${props.location}`,
+    //   state: { val: props.name, location: props.location },
+    // });
+  }
+
+  setPopupInfo(x) {
+    this.props.history.push({
+      pathname: "/details",
+      search: `?garageName=${x.garageTitle}?location=${x.location}`,
+      state: { val: x.garageTitle, location: x.location },
+    });
+  }
+
   render() {
     console.log("markerData", this.state.markerData);
     return (
       <div style={{ height: "66vh", width: "100%" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyAhnpl8m5jed67sO1DueRlrPk8muzWUtQU" }}
-          defaultCenter={{
+          center={{
             lat: this.state.latitude,
             lng: this.state.longitude,
           }}
           defaultZoom={14}
-          onDragEnd={(props, mapProps) => this.onMarkerDragEnd(props, mapProps)}
+          onDrag={(props, mapProps) => this.onMarkerDragEnd(props, mapProps)}
         >
           {this.state.markerData &&
             this.state.markerData.map((x) => (
-              <Marker lat={x.latitude} lng={x.longitude} />
+              <Marker
+                lat={x.latitude}
+                lng={x.longitude}
+                name={x.garageTitle}
+                location={x.location}
+                position={{ lat: x.latitude, lng: x.longitude }}
+                onMarkerClick={() => this.setPopupInfo(x)}
+                title={x.garageTitle}
+              />
             ))}
         </GoogleMapReact>
       </div>
