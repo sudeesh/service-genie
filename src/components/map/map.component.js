@@ -91,7 +91,7 @@ class MapContainer extends Component {
             lng: this.state.longitude,
           }}
           defaultZoom={14}
-          onDrag={(props, mapProps) => this.onMarkerDragEnd(props, mapProps)}
+          onDragEnd={(props, mapProps) => this.onMarkerDragEnd(props, mapProps)}
         >
           {this.state.markerData &&
             this.state.markerData.map((x) => (
