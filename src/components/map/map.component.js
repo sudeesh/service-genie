@@ -26,6 +26,8 @@ class MapContainer extends Component {
       loading: true,
       latitude: 13.0827,
       longitude: 80.2707,
+      newLat: null,
+      newLng: null,
     };
   }
 
@@ -58,6 +60,8 @@ class MapContainer extends Component {
     this.setState({
       latitude: mapProps.center.lat(),
       longitude: mapProps.center.lng(),
+      newLat: mapProps.center.lat(),
+      newLng: mapProps.center.lng(),
     });
   };
 
@@ -81,15 +85,22 @@ class MapContainer extends Component {
   }
 
   render() {
-    console.log("markerData", this.state.markerData);
+    console.log("lat", this.state.newLat);
     return (
       <div style={{ height: "66vh", width: "100%" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyAhnpl8m5jed67sO1DueRlrPk8muzWUtQU" }}
-          center={{
-            lat: this.state.latitude,
-            lng: this.state.longitude,
-          }}
+          center={
+            this.state.newLat !== null
+              ? {
+                  lat: this.state.newLat,
+                  lng: this.state.newLng,
+                }
+              : {
+                  lat: this.state.latitude,
+                  lng: this.state.longitude,
+                }
+          }
           defaultZoom={14}
           onDragEnd={(props, mapProps) => this.onMarkerDragEnd(props, mapProps)}
         >
