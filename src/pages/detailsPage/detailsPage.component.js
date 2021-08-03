@@ -101,11 +101,6 @@ const DetailsPage = (props) => {
       xs={10}
       className="center-div"
     >
-      <div style={{ textAlign: "right", width: "100%", marginTop: "10px" }}>
-        <Button variant="contained" color="primary" onClick={handleClick}>
-          Back to search
-        </Button>
-      </div>
       <Grid container>
         <Grid
           item
@@ -204,29 +199,6 @@ const DetailsPage = (props) => {
                 </>
               </div>
 
-              <div>
-                <div className="share-icons">
-                  <FacebookShareButton
-                    url={centerDetails}
-                    quote="Service geni shared a service center"
-                  >
-                    <FacebookIcon size={32} />
-                  </FacebookShareButton>
-                  <TwitterShareButton
-                    quote="Service geni shared a service center"
-                    url={centerDetails}
-                  >
-                    <TwitterIcon size={32} />
-                  </TwitterShareButton>
-                  <WhatsappShareButton
-                    url={centerDetails}
-                    title="Service geni shared a service center"
-                  >
-                    <WhatsappIcon size={32} />
-                  </WhatsappShareButton>
-                </div>
-              </div>
-
               <p className="text-center">
                 <a
                   className="common-button book-now-btn cursor-pointer"
@@ -251,6 +223,33 @@ const DetailsPage = (props) => {
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6} lg={6} style={{ paddingTop: "10px" }}>
+          <div style={{ display: "flex" }}>
+            <div className="share-icons">
+              <FacebookShareButton
+                url={centerDetails}
+                quote="Service geni shared a service center"
+              >
+                <FacebookIcon size={32} />
+              </FacebookShareButton>
+              <TwitterShareButton
+                quote="Service geni shared a service center"
+                url={centerDetails}
+              >
+                <TwitterIcon size={32} />
+              </TwitterShareButton>
+              <WhatsappShareButton
+                url={centerDetails}
+                title="Service geni shared a service center"
+              >
+                <WhatsappIcon size={32} />
+              </WhatsappShareButton>
+            </div>
+            <div style={{ textAlign: "right", width: "76%" }}>
+              <Button variant="contained" color="primary" onClick={handleClick}>
+                Back to search
+              </Button>
+            </div>
+          </div>
           <div className="image-container">
             {name.garageImage === "" ? (
               <img src="http://via.placeholder.com/400x200" alt="garage" />

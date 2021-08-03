@@ -5,12 +5,12 @@ import vector from "../../images/service-geni-marker.png";
 
 const mapStyles = {
   width: "100%",
-  height: "75%",
+  height: "83%",
   overflow: "hidden",
 };
 
 const config = {
-  SECRET_KEY: "AIzaSyAhnpl8m5jed67sO1DueRlrPk8muzWUtQU",
+  SECRET_KEY: "AIzaSyDBhrZsd9SRO27aS8D69MNn2kJ1zsaXdUM",
 };
 
 const secretkey = config.SECRET_KEY;
