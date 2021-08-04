@@ -93,7 +93,7 @@ export class MapContainer extends Component {
         google={this.props.google}
         zoom={14}
         style={mapStyles}
-        initialCenter={{ lat: this.state.latitude, lng: this.state.longitude }}
+        // initialCenter={{ lat: this.state.latitude, lng: this.state.longitude }}
         center={
           this.state.newLat === null
             ? {

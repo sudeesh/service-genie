@@ -20,7 +20,7 @@ header {
 
   .logo-container {
     position: relative;
-    margin: 6px 0px 7px calc((100% - 980px) * 0.5);
+    margin: 6px 0px 7px 0;
     left: 0px;
     grid-area: 1 / 1 / 2 / 2;
     justify-self: start;
@@ -31,7 +31,7 @@ header {
     }
 
     img {
-      width: 86px;
+      width: 200px;
       height: 60px;
       object-fit: contain;
       object-position: 50% 50%;
@@ -112,6 +112,59 @@ header {
         }
         li:nth-child(3) {
           width: 154px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  header {
+    img {
+      width: 120px !important;
+    }
+  }
+  header .nav-container .nav-list {
+    margin: 0;
+  }
+  .nav-container {
+    .nav-list {
+      .list {
+        margin-top: 25px;
+        li {
+          width: auto !important;
+          padding: 3px;
+          a {
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+            text-decoration: none;
+            color: $fontColor;
+
+            &:hover {
+              color: $hoverColor;
+            }
+          }
+        }
+
+        li:nth-child(2) {
+          width: auto !important;
+        }
+        li:nth-child(3) {
+          width: auto !important;
+        }
+        li:nth-child(3) {
+          width: auto !important;
+        }
+        li:nth-child(3) {
+          width: auto !important;
+        }
+        li:nth-child(3) {
+          width: auto !important;
+        }
+        li:nth-child(3) {
+          width: auto !important;
         }
       }
     }

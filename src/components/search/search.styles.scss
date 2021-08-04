@@ -1,8 +1,8 @@
-@import '../../styles/utility.scss';
+@import "../../styles/utility.scss";
 
 .search-container {
-  background-color: rgb(54, 109, 140);
-  color: #fff;
+  background-color: #fff;
+  color: #3a404f;
   * {
     font-family: $avenir-font-family;
   }
@@ -19,14 +19,14 @@
 
   .search-radio {
     & svg.MuiSvgIcon-root {
-      color: $white;
+      color: #3a404f;
     }
   }
 
   & #garage-select {
     fieldset {
       span {
-        color: $white;
+        color: #3a404f;
       }
     }
   }
