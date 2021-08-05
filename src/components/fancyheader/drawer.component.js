@@ -2,11 +2,10 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import CloseIcon from '@material-ui/icons/Close';
 
 const drawerWidth = 240;
 
@@ -42,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: 0,
   },
   drawerPaper: {
-    width: drawerWidth,
+    width: '100%',
   },
   drawerHeader: {
     display: 'flex',
@@ -50,7 +49,10 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-end',
+  },
+  closeIcon: {
+    fontSize: '35px',
   },
   content: {
     flexGrow: 1,
@@ -68,9 +70,20 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginRight: 0,
   },
+  listWrapper: {
+    display: 'grid',
+    justifyItems: 'center',
+    alignItems: 'center',
+  },
   list: {
     listStyle: 'none',
     fontFamily: 'Aventir',
+    margin: 0,
+    padding: 0,
+    display: 'grid',
+    justifyItems: 'center',
+    alignItems: 'center',
+    rowGap: '35px',
   },
   listItem: {
     height: '30px',
@@ -78,6 +91,9 @@ const useStyles = makeStyles((theme) => ({
   anchorTag: {
     textDecoration: 'none',
     cursor: 'pointer',
+    fontFamily: 'AvenirLight',
+    fontSize: '22px',
+    color: 'rgb(47, 46, 46)',
   },
 }));
 
@@ -116,70 +132,69 @@ export default function PersistentDrawerRight({ device }) {
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
+            <CloseIcon className={classes.closeIcon} />
           </IconButton>
         </div>
-        <Divider />
-        <ul className={classes.list}>
-          <li className={classes.listItem}>
-            <a className={classes.anchorTag} href="https://www.servicegeni.in/">
-              HOME
-            </a>
-          </li>
-          <li className={classes.listItem}>
-            <a
-              className={classes.anchorTag}
-              href="https://www.servicegeni.in/doorstep"
-            >
-              DOORSTEP SERVICES
-            </a>
-          </li>
-          <li className={classes.listItem}>
-            <a
-              className={classes.anchorTag}
-              href="https://www.servicegeni.in/ecu"
-            >
-              ECU CODING & REPAIR
-            </a>
-          </li>
-          <li className={classes.listItem}>
-            <a
-              className={classes.anchorTag}
-              href="https://www.servicegeni.in/about-us"
-            >
-              ABOUT US
-            </a>
-          </li>
-          <li className={classes.listItem}>
-            <a
-              className={classes.anchorTag}
-              href="https://www.servicegeni.in/contact-us"
-            >
-              CONTACT
-            </a>
-          </li>
-          <li className={classes.listItem}>
-            <a
-              className={classes.anchorTag}
-              href="https://www.servicegeni.in/blogs"
-            >
-              BLOGS
-            </a>
-          </li>
-          <li className={classes.listItem}>
-            <a
-              className={classes.anchorTag}
-              href="https://www.servicegeni.in/viral-kindness"
-            >
-              VIRAL KINDNESS
-            </a>
-          </li>
-        </ul>
-        <Divider />
+        <div className={classes.listWrapper}>
+          <ul className={classes.list}>
+            <li className={classes.listItem}>
+              <a
+                className={classes.anchorTag}
+                href="https://www.servicegeni.in/"
+              >
+                HOME
+              </a>
+            </li>
+            <li className={classes.listItem}>
+              <a
+                className={classes.anchorTag}
+                href="https://www.servicegeni.in/doorstep"
+              >
+                DOORSTEP SERVICES
+              </a>
+            </li>
+            <li className={classes.listItem}>
+              <a
+                className={classes.anchorTag}
+                href="https://www.servicegeni.in/ecu"
+              >
+                ECU CODING & REPAIR
+              </a>
+            </li>
+            <li className={classes.listItem}>
+              <a
+                className={classes.anchorTag}
+                href="https://www.servicegeni.in/about-us"
+              >
+                ABOUT US
+              </a>
+            </li>
+            <li className={classes.listItem}>
+              <a
+                className={classes.anchorTag}
+                href="https://www.servicegeni.in/contact-us"
+              >
+                CONTACT
+              </a>
+            </li>
+            <li className={classes.listItem}>
+              <a
+                className={classes.anchorTag}
+                href="https://www.servicegeni.in/blogs"
+              >
+                BLOGS
+              </a>
+            </li>
+            <li className={classes.listItem}>
+              <a
+                className={classes.anchorTag}
+                href="https://www.servicegeni.in/viral-kindness"
+              >
+                VIRAL KINDNESS
+              </a>
+            </li>
+          </ul>
+        </div>
       </Drawer>
     </div>
   ) : null;

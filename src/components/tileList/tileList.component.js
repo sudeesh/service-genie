@@ -75,7 +75,7 @@ const TileList = (props) => {
                   {x.operatingHours}
                 </p>
               </Grid>
-              <Grid item xs={12} sm={4} lg={4}>
+              <Grid item xs={12} sm={4} lg={4} className="rating-panel">
                 <Grid item container direction="column" spacing={2}>
                   <Grid item xs className="list-container__rating-container">
                     <div>
@@ -109,28 +109,64 @@ const TileList = (props) => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={12} sm={3} lg={3} className="text-center">
-                <p>Services starting at</p>
-                <p>
-                  <b>&#8377; {x.startingPrice}</b>
-                </p>
-                <p>
-                  <button
-                    className="common-button book-now-btn cursor-pointer"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      window.location.href = `https://wa.me/919361040506?text=I%20need%20my%20car%20to%20be%20serviced%20@%20${x.garageTitle},%20${x.location}`;
-                    }}
-                  >
-                    Schedule Now
-                  </button>
-                </p>
-                <div
-                  className="cursor-pointer text-underline"
-                  onClick={() => onClickDetail(x.garageTitle, x.location)}
-                >
-                  Know more about the service center and their offerings
-                </div>
+              <Grid
+                item
+                xs={12}
+                sm={3}
+                lg={3}
+                className="know-more-panel text-center"
+              >
+                {props.device.breakpoint !== 'phone' ? (
+                  <>
+                    <p>Services starting at</p>
+                    <p>
+                      <b>&#8377; {x.startingPrice}</b>
+                    </p>
+                    <p>
+                      <button
+                        className="common-button book-now-btn cursor-pointer"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.location.href = `https://wa.me/919361040506?text=I%20need%20my%20car%20to%20be%20serviced%20@%20${x.garageTitle},%20${x.location}`;
+                        }}
+                      >
+                        Schedule Now
+                      </button>
+                    </p>
+                    <div
+                      className="cursor-pointer text-underline"
+                      onClick={() => onClickDetail(x.garageTitle, x.location)}
+                    >
+                      {`Know more about ${x.garageTitle}`}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="services__heading">
+                      <p>Services starting at</p>
+                      <p>
+                        <b>&#8377; {x.startingPrice}</b>
+                      </p>
+                    </div>
+                    <p>
+                      <button
+                        className="common-button book-now-btn cursor-pointer schedule-now__button--width"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.location.href = `https://wa.me/919361040506?text=I%20need%20my%20car%20to%20be%20serviced%20@%20${x.garageTitle},%20${x.location}`;
+                        }}
+                      >
+                        Schedule Now
+                      </button>
+                    </p>
+                    <div
+                      className="cursor-pointer text-underline know-more__link"
+                      onClick={() => onClickDetail(x.garageTitle, x.location)}
+                    >
+                      {`Know more about ${x.garageTitle}`}
+                    </div>
+                  </>
+                )}
               </Grid>
             </Grid>
           </Paper>
