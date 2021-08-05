@@ -113,11 +113,7 @@ const DetailsPage = (props) => {
       <div style={{ textAlign: 'right', width: '100%', marginTop: '10px' }}>
         <Link
           variant="contained"
-<<<<<<< HEAD
           className="cursor-pointer back-search__button back-search__button--brand-button"
-=======
-          className="back-search__button back-search__button--brand-button"
->>>>>>> c4117996 (list and list details init changes)
           color="primary"
           onClick={handleClick}
         >
