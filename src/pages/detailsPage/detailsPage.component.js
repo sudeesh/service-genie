@@ -14,9 +14,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Link,
 } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
 
 // image
 import tyre from '../../images/tyre.png';
@@ -38,9 +36,9 @@ import {
 import './detailsPage.styles.scss';
 import MobileDetailsPage from './detailsPage.mobile.component';
 import VerifiedTile from '../../components/common/verified.title';
+import BackToSearchButton from '../../components/backtosearch/backtosearch';
 
 const DetailsPage = (props) => {
-  let history = useHistory();
   const [name, setGarageName] = useState({});
   const [centerDetails, setCenterDetails] = useState();
   const [review, setReview] = useState({});
@@ -90,14 +88,6 @@ const DetailsPage = (props) => {
       .catch((error) => error.message);
   }, [updatedName, updatedLocation]);
 
-  const handleClick = () => {
-    history.push({
-      pathname: '/',
-    });
-  };
-
-  console.log('props.device :>> ', props.device);
-
   if (props.device.breakpoint === 'phone') {
     return <MobileDetailsPage {...props} />;
   }
@@ -110,16 +100,7 @@ const DetailsPage = (props) => {
       xs={10}
       className="center-div details-container"
     >
-      <div style={{ textAlign: 'right', width: '100%', marginTop: '10px' }}>
-        <Link
-          variant="contained"
-          className="cursor-pointer back-search__button back-search__button--brand-button"
-          color="primary"
-          onClick={handleClick}
-        >
-          Back to search
-        </Link>
-      </div>
+      <BackToSearchButton />
       <Grid container>
         <Grid
           item

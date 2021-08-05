@@ -93,13 +93,7 @@
 }
 
 .details-container {
-  .back-search {
-    &__button {
-      &--brand-button {
-        background-color: $brand-blue;
-      }
-    }
-  }
+  margin-top: 10px !important;
 }
 
 @media screen and (max-width: 767px) {
@@ -111,18 +105,16 @@
     margin-right: 0;
     font-size: 16px !important;
     font-family: $avenir-font-family;
+    background-color: $brand-orange;
+    color: $fontColor;
   }
   .details {
     &-container {
-      .back-search {
-        &__button {
-          background-color: $white;
-        }
-      }
+      margin-top: 0 !important;
+
       .action {
         &-container {
           position: fixed;
-          background: white;
           width: 100%;
           bottom: -16px;
           height: 67px;
@@ -141,8 +133,7 @@
             @extend %details-actions-button;
             font-size: 15px;
             padding: 23px;
-            background-color: $white;
-            color: $black;
+            border-right: 1px solid $white;
           }
         }
         &__direction {
@@ -203,6 +194,14 @@
               text-align: left;
               padding-top: 0;
             }
+          }
+        }
+      }
+
+      .image {
+        &-container {
+          img {
+            border-radius: 0;
           }
         }
       }

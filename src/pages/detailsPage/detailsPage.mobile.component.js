@@ -14,9 +14,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Link,
 } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
 //Icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
@@ -40,9 +38,9 @@ import {
 // style
 import './detailsPage.styles.scss';
 import VerifiedTile from '../../components/common/verified.title';
+import BackToSearchButton from '../../components/backtosearch/backtosearch';
 
 const MobileDetailsPage = (props) => {
-  let history = useHistory();
   const [name, setGarageName] = useState({});
   const [centerDetails, setCenterDetails] = useState();
   const [review, setReview] = useState({});
@@ -92,14 +90,6 @@ const MobileDetailsPage = (props) => {
       .catch((error) => error.message);
   }, [updatedName, updatedLocation]);
 
-  const handleClick = () => {
-    history.push({
-      pathname: '/',
-    });
-  };
-
-  console.log('props.device :>> ', props.device);
-
   return (
     <Grid
       container
@@ -108,16 +98,7 @@ const MobileDetailsPage = (props) => {
       xs={10}
       className="center-div details-container"
     >
-      <div style={{ textAlign: 'right', width: '100%', marginTop: '10px' }}>
-        <Link
-          variant="contained"
-          className="back-search__button back-search__button--brand-button"
-          color="primary"
-          onClick={handleClick}
-        >
-          Back to search
-        </Link>
-      </div>
+      <BackToSearchButton />
       <Grid container>
         <Grid
           item

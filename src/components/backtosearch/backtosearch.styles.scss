@@ -1,0 +1,12 @@
+@import '../../styles/utility.scss';
+
+.back-search {
+  &__button {
+    &--brand-button {
+      background-color: $white;
+      color: $brand-blue;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+  }
+}
