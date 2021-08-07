@@ -193,7 +193,7 @@
         &-list {
           display: grid;
           grid-template-columns: repeat(2, 170px);
-          row-gap: 10px;
+          row-gap: 25px;
 
           li {
             width: initial;
@@ -204,6 +204,7 @@
             display: grid;
             grid-template-columns: 1fr 4.5fr;
             column-gap: 10px;
+            cursor: pointer;
 
             img {
               width: 30px;

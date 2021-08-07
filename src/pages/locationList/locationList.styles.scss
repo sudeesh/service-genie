@@ -5,9 +5,11 @@
     &__heading {
       font-family: $playfair-font-family;
       margin-left: 15px;
-      line-height: 1pt;
 
       @media screen and (max-width: $screen-sm-max) {
+        p {
+          margin: 0;
+        }
       }
     }
 

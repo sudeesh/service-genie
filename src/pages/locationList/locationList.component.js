@@ -53,18 +53,18 @@ const LocationList = (props) => {
     } else {
       return (
         <>
-          <p>Car Service Centres</p>
-          <p>around {props.location.state.val}</p>
+          <p>Car Service Centres around {props.location.state.val}</p>
         </>
       );
     }
   };
 
   const renderHeading = () => {
-    return props.location.state.searchName === 'location'
-      ? listHeading()
-      : `Branches of
-          ${props.location.state.val}`;
+    return props.location.state.searchName === 'location' ? (
+      listHeading()
+    ) : (
+      <p>Branches of {props.location.state.val}</p>
+    );
   };
 
   return (

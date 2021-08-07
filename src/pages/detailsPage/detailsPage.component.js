@@ -37,6 +37,7 @@ import './detailsPage.styles.scss';
 import MobileDetailsPage from './detailsPage.mobile.component';
 import VerifiedTile from '../../components/common/verified.title';
 import BackToSearchButton from '../../components/backtosearch/backtosearch';
+import Loader from '../../components/loader/loader';
 
 const DetailsPage = (props) => {
   const [name, setGarageName] = useState({});
@@ -87,6 +88,10 @@ const DetailsPage = (props) => {
       .then((res) => SetOverAllrating(res.data))
       .catch((error) => error.message);
   }, [updatedName, updatedLocation]);
+
+  if (Object.keys(name).length === 0) {
+    return <Loader />;
+  }
 
   if (props.device.breakpoint === 'phone') {
     return <MobileDetailsPage {...props} />;
