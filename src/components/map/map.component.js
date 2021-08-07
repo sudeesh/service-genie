@@ -42,6 +42,7 @@ export class MapContainer extends Component {
   }
 
   componentDidMount() {
+    this.setState({ open: true });
     if (navigator.geolocation) {
       navigator.geolocation.watchPosition((position) => {
         this.setState({
@@ -52,6 +53,7 @@ export class MapContainer extends Component {
       });
     }
     this.getPosition();
+    this.setState({ open: false });
   }
 
   componentDidUpdate(prevProps, prevState) {
