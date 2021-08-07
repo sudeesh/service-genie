@@ -15,6 +15,7 @@ import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
 //Styles
 import './tileList.styles.scss';
 import { makeStyles, Paper } from '@material-ui/core';
+import TileListMobile from './tileList.mobile.component';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -39,6 +40,10 @@ const TileList = (props) => {
     });
   };
   const { list } = props;
+
+  if (props.device.breakpoint === 'phone') {
+    return <TileListMobile {...props} />;
+  }
 
   return (
     list &&
@@ -122,9 +127,9 @@ const TileList = (props) => {
                     <p>
                       <b>&#8377; {x.startingPrice}</b>
                     </p>
-                    <p>
+                    <p className="schedule-now__container">
                       <button
-                        className="common-button book-now-btn cursor-pointer"
+                        className="common-button book-now-btn cursor-pointer schedule-now__button--width"
                         onClick={(e) => {
                           e.preventDefault();
                           window.location.href = `https://wa.me/919361040506?text=I%20need%20my%20car%20to%20be%20serviced%20@%20${x.garageTitle},%20${x.location}`;
@@ -134,7 +139,7 @@ const TileList = (props) => {
                       </button>
                     </p>
                     <div
-                      className="cursor-pointer text-underline"
+                      className="cursor-pointer text-underline know-more__link"
                       onClick={() => onClickDetail(x.garageTitle, x.location)}
                     >
                       {`Know more about ${x.garageTitle}`}
@@ -148,7 +153,7 @@ const TileList = (props) => {
                         <b>&#8377; {x.startingPrice}</b>
                       </p>
                     </div>
-                    <p>
+                    <p className="schedule-now__container">
                       <button
                         className="common-button book-now-btn cursor-pointer schedule-now__button--width"
                         onClick={(e) => {

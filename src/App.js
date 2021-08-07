@@ -14,8 +14,7 @@ import useDevice from './customHooks/findDevice/useDevice';
 
 const App = () => {
   const breakpoints = [
-    { name: 'miniphone', min: 0, max: 320 },
-    { name: 'phone', min: 320, max: 640 },
+    { name: 'phone', min: 0, max: 640 },
     { name: 'tablet', min: 640, max: 1080 },
     { name: 'desktop', min: 1080, max: Infinity },
   ];

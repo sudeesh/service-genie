@@ -113,16 +113,48 @@ const MobileDetailsPage = (props) => {
               <VerifiedTile
                 garageTitle={name.garageTitle}
                 verified={name.verified}
+                renderedIn="details-page"
               />
-              <p>
-                <div className="address-text-image">
-                  <FontAwesomeIcon
-                    icon={faMapMarkedAlt}
-                    className="offest-margin-right-10"
-                  />
-                  {name.address}
+              <div className="details-container__far-reaching">
+                <div className="details-container__ratings">
+                  {overAllRating &&
+                  overAllRating.averageGarageRatings === 'NaN' ? (
+                    'No Reviews'
+                  ) : (
+                    <>
+                      <StarRatings
+                        rating={
+                          overAllRating && overAllRating.averageGarageRatings
+                            ? parseInt(overAllRating.averageGarageRatings)
+                            : 0
+                        }
+                        starRatedColor="#eea44d"
+                        numberOfStars={5}
+                        name="rating"
+                        starDimension="20px"
+                        starSpacing="3px"
+                      />
+                      {review.length ? (
+                        <button
+                          variant="contained"
+                          color="primary"
+                          onClick={handleClickOpen}
+                          style={{ marginLeft: '10px' }}
+                          className="review__button review__button--color-change"
+                        >
+                          {review.length && review.length >= 1
+                            ? `${review.length} Review`
+                            : `${review.length} Reviews`}
+                        </button>
+                      ) : null}
+                    </>
+                  )}
                 </div>
-              </p>
+                <p>Since {name.dateOfEst}</p>
+                <button className="details-container__weekoff-button details-container__weekoff-button--badge">
+                  {name.weekOff}
+                </button>
+              </div>
               <div className="image-container">
                 {name.garageImage === '' ? (
                   <img src="http://via.placeholder.com/400x200" alt="garage" />
@@ -133,41 +165,15 @@ const MobileDetailsPage = (props) => {
                   />
                 )}
               </div>
-              <div>
-                {overAllRating &&
-                overAllRating.averageGarageRatings === 'NaN' ? (
-                  'No Reviews'
-                ) : (
-                  <>
-                    <StarRatings
-                      rating={
-                        overAllRating && overAllRating.averageGarageRatings
-                          ? parseInt(overAllRating.averageGarageRatings)
-                          : 0
-                      }
-                      starRatedColor="#eea44d"
-                      numberOfStars={5}
-                      name="rating"
-                      starDimension="20px"
-                      starSpacing="3px"
-                    />
-                    {review.length ? (
-                      <button
-                        variant="contained"
-                        color="primary"
-                        onClick={handleClickOpen}
-                        style={{ marginLeft: '10px' }}
-                        className="review__button review__button--color-change"
-                      >
-                        {review.length && review.length >= 1
-                          ? `${review.length} Review`
-                          : `${review.length} Reviews`}
-                      </button>
-                    ) : null}
-                  </>
-                )}
-              </div>
-              <p>Since {name.dateOfEst}</p>
+              <p>
+                <div className="address-text-image">
+                  <FontAwesomeIcon
+                    icon={faMapMarkedAlt}
+                    className="offest-margin-right-10"
+                  />
+                  {name.address}
+                </div>
+              </p>
 
               <p>
                 <span>Operating Hours:</span> {name.operatingHours}
@@ -175,14 +181,11 @@ const MobileDetailsPage = (props) => {
               <p>
                 <span>Payment Mode:</span> {name.paymentMode}
               </p>
-              <p>
-                <span>Week Off: </span> {name.weekOff}
-              </p>
 
-              <Grid item xs={12} sm={6} lg={6} style={{ paddingTop: '10px' }}>
-                <h4 className="services__title services__title--font-size-change">
+              <p>
+                <span className="services__title services__title--font-size-change">
                   Services offered:
-                </h4>
+                </span>
                 <div className="services-wrapper">
                   <ul className="services-list">
                     {name.garageServices && name.garageServices.gsAndOil ? (
@@ -291,7 +294,7 @@ const MobileDetailsPage = (props) => {
                     ) : null}
                   </ul>
                 </div>
-              </Grid>
+              </p>
 
               <div>
                 <>
@@ -365,7 +368,7 @@ const MobileDetailsPage = (props) => {
               rel="noreferrer"
               style={{ textDecoration: 'none', fontSize: '13px' }}
             >
-              Share Location
+              Navigate
             </a>
             <button
               className="common-button book-now-btn cursor-pointer action__directions action__direction--button"

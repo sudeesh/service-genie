@@ -23,14 +23,22 @@ export default function VerifiedTile({
   onClick,
   verified,
   classNames,
+  renderedIn,
 }) {
   const classes = useStyles();
   const badgeClassName = cx(classNames, classes.verifiedBadge);
+  const handleClick = (e) => {
+    if (renderedIn === 'details-page') {
+      return e.preventDefault();
+    }
+    onClick(garageTitle, location);
+  };
+
   return (
     <div className={classes.root}>
       <h3
         className="text-transform-captilize cursor-pointer"
-        onClick={() => onClick(garageTitle, location)}
+        onClick={handleClick}
       >
         {garageTitle}
       </h3>

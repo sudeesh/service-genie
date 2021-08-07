@@ -4,7 +4,7 @@
   &__button {
     &--brand-button {
       background-color: $white;
-      color: $brand-blue;
+      color: $brand-blue !important;
       text-transform: uppercase;
       font-size: 12px;
     }
