@@ -135,6 +135,48 @@
         }
       }
 
+      .redirect {
+        &__container {
+          background: rgb(2, 0, 36);
+          background: linear-gradient(
+            90deg,
+            rgba(2, 0, 36, 1) 0%,
+            rgba(148, 148, 148, 1) 100%,
+            rgba(0, 212, 255, 1) 100%
+          );
+          position: fixed;
+          bottom: 9vh;
+          display: flex;
+          flex-direction: column;
+          font-family: $avenir-font-family;
+          color: $white;
+        }
+        &__content {
+          display: flex;
+          flex-direction: row;
+        }
+        &__close-icon {
+          &-container {
+            text-align: right;
+          }
+        }
+        &__logo {
+          width: 30px;
+          height: 50px;
+          margin-top: 2%;
+        }
+        &__text-container {
+          margin-left: 10px;
+        }
+        &__text {
+        }
+        &__button {
+          float: right;
+          margin-top: -8px;
+          margin-bottom: 10px;
+        }
+      }
+
       .action {
         &-container {
           position: fixed;
@@ -239,7 +281,7 @@
         &__button {
           &--transform {
             position: fixed;
-            top: 59%;
+            top: 40%;
             right: calc(0% - 55px);
             transform: rotate(90deg);
             background-color: $brand-blue;

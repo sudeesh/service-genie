@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import StarRatings from 'react-star-ratings';
 import Button from '@material-ui/core/Button';
+import OrangeIcon from '../../images/orange icon.png';
+
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -40,6 +42,7 @@ import {
 import './detailsPage.styles.scss';
 import VerifiedTile from '../../components/common/verified.title';
 import BackToSearchButton from '../../components/backtosearch/backtosearch';
+import Close from '@material-ui/icons/Close';
 
 const MobileDetailsPage = (props) => {
   const [name, setGarageName] = useState({});
@@ -103,6 +106,8 @@ const MobileDetailsPage = (props) => {
 
   const openShare = Boolean(anchorEl);
   const shareId = open ? 'simple-popover' : undefined;
+
+  const [showRedirect, setShowRedirect] = useState(true);
 
   return (
     <Grid
@@ -352,6 +357,33 @@ const MobileDetailsPage = (props) => {
           </Grid>
         </Grid>
       </Grid>
+      {showRedirect ? (
+        <div className="redirect__container">
+          <div
+            className="redirect__close-icon-container"
+            onClick={() => setShowRedirect(false)}
+          >
+            <Close className="redirect__close-icon" />
+          </div>
+          <div className="redirect__content">
+            <img className="redirect__logo" src={OrangeIcon} alt="logo"></img>
+            <div className="redirect__text-container">
+              <p className="redirect__text">
+                Why take the hassle of driving down, check out our hand-picked
+                doorstep packages.
+              </p>
+              <button
+                className="common-button redirect__button"
+                onClick={() => {
+                  window.location.href = 'https://www.servicegeni.in/doorstep';
+                }}
+              >
+                BOOK NOW
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
       {props.device.breakpoint === 'phone' ? (
         <div>
           <p className="action-container text-center">
