@@ -14,6 +14,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Popover,
 } from '@material-ui/core';
 //Icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -89,6 +90,19 @@ const MobileDetailsPage = (props) => {
       .then((res) => SetOverAllrating(res.data))
       .catch((error) => error.message);
   }, [updatedName, updatedLocation]);
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleCloseShare = () => {
+    setAnchorEl(null);
+  };
+
+  const openShare = Boolean(anchorEl);
+  const shareId = open ? 'simple-popover' : undefined;
 
   return (
     <Grid
@@ -334,29 +348,6 @@ const MobileDetailsPage = (props) => {
               <p>
                 <span>About Workshop:</span> {name.garageDescription}
               </p>
-
-              <div>
-                <div className="share-icons">
-                  <FacebookShareButton
-                    url={centerDetails}
-                    quote="Service geni shared a service center"
-                  >
-                    <FacebookIcon size={32} />
-                  </FacebookShareButton>
-                  <TwitterShareButton
-                    quote="Service geni shared a service center"
-                    url={centerDetails}
-                  >
-                    <TwitterIcon size={32} />
-                  </TwitterShareButton>
-                  <WhatsappShareButton
-                    url={centerDetails}
-                    title="Service geni shared a service center"
-                  >
-                    <WhatsappIcon size={32} />
-                  </WhatsappShareButton>
-                </div>
-              </div>
             </Grid>
           </Grid>
         </Grid>
@@ -384,6 +375,51 @@ const MobileDetailsPage = (props) => {
           </p>
         </div>
       ) : null}
+      <button
+        className="share__button share__button--transform common-button"
+        aria-describedby={shareId}
+        onClick={handleClick}
+      >
+        LIKE TO SHARE
+      </button>
+      <Popover
+        id={shareId}
+        open={openShare}
+        anchorEl={anchorEl}
+        onClose={handleCloseShare}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+        className="share__popper"
+      >
+        <div>
+          <div className="share-icons">
+            <FacebookShareButton
+              url={centerDetails}
+              quote="Service geni shared a service center"
+            >
+              <FacebookIcon size={32} />
+            </FacebookShareButton>
+            <TwitterShareButton
+              quote="Service geni shared a service center"
+              url={centerDetails}
+            >
+              <TwitterIcon size={32} />
+            </TwitterShareButton>
+            <WhatsappShareButton
+              url={centerDetails}
+              title="Service geni shared a service center"
+            >
+              <WhatsappIcon size={32} />
+            </WhatsappShareButton>
+          </div>
+        </div>
+      </Popover>
     </Grid>
   );
 };
