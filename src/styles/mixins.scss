@@ -4,3 +4,18 @@
     0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
   background-color: #e0e0e0;
 }
+
+@mixin badge {
+  border-radius: 3px;
+  border: none;
+  padding: 8px;
+  margin-right: 10px;
+  background-color: $badge-green;
+  color: $black;
+  text-transform: uppercase;
+  font-weight: bolder;
+
+  :focus {
+    outline: none;
+  }
+}

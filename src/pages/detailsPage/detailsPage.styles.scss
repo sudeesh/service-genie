@@ -106,11 +106,34 @@
     font-size: 16px !important;
     font-family: $avenir-font-family;
     background-color: $brand-orange;
-    color: $fontColor;
+    color: $black;
   }
   .details {
     &-container {
       margin-top: 0 !important;
+
+      &__grid {
+        font-family: $avenir-font-family;
+      }
+
+      &__far-reaching {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 25px 1fr;
+        margin-bottom: 10px;
+      }
+
+      &__ratings {
+        grid-column: 1 / span 2;
+      }
+
+      &__weekoff-button {
+        &--badge {
+          @include badge;
+          font-size: 10px;
+          margin: 5px;
+        }
+      }
 
       .action {
         &-container {
@@ -167,6 +190,7 @@
         &-wrapper {
           display: grid;
           margin-bottom: 15px;
+          margin-top: 10px;
         }
         &-list {
           display: grid;

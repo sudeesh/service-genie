@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Grid, Button } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 /* component */
 import TileList from '../../components/tileList/tileList.component';
@@ -10,6 +10,7 @@ import {
 } from '../../services/services';
 
 import './locationList.styles.scss';
+import BackToSearchButton from '../../components/backtosearch/backtosearch';
 
 const LocationList = (props) => {
   let history = useHistory();
@@ -43,11 +44,6 @@ const LocationList = (props) => {
     }
   }, [props.location.state, history]);
 
-  const handleClick = () => {
-    history.push({
-      pathname: '/',
-    });
-  };
   console.log('props.device.breakpoints :>> ', props.device);
   const listHeading = () => {
     const { breakpoint } = props.device;
@@ -80,16 +76,15 @@ const LocationList = (props) => {
       className="location-list"
     >
       <Grid item lg={10}>
-        <h2 style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <BackToSearchButton renderedIn={'list-page'} />
+        <h2
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            margin: 0,
+          }}
+        >
           <span className="location-list__heading">{renderHeading()}</span>
-
-          <Button
-            variant="contained"
-            onClick={handleClick}
-            className="location-list__search-button location-list--button"
-          >
-            Back to search
-          </Button>
         </h2>
         <TileList list={location} device={props.device} />
       </Grid>
