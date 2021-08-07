@@ -5,6 +5,7 @@ import {
   WhatsappShareButton,
 } from "react-share";
 import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
+import instagram from "../../images/instagram-icon.png";
 
 // styles
 import "./footer.styles.scss";
@@ -46,17 +47,30 @@ export default function Footer() {
       >
         <p
           className="copy-right"
-          style={{ justifyContent: "ceter", alignItems: "center" }}
+          style={{
+            justifyContent: "ceter",
+            alignItems: "center",
+            paddingTop: "30px",
+          }}
         >
-          <FacebookShareButton quote="Service geni shared a service center">
+          <FacebookShareButton
+            quote="Service geni shared a service center"
+            url="https://www.facebook.com/servicegeni"
+          >
             <FacebookIcon size={32} />
           </FacebookShareButton>
-          <TwitterShareButton quote="Service geni shared a service center">
+          <TwitterShareButton
+            quote="Service geni shared a service center"
+            url="https://twitter.com/GeniService"
+          >
             <TwitterIcon size={32} />
           </TwitterShareButton>
           <WhatsappShareButton title="Service geni shared a service center">
             <WhatsappIcon size={32} />
           </WhatsappShareButton>
+          <a href="https://www.instagram.com/servicegeni/">
+            <img src={instagram} alt="instagram" />
+          </a>
           <span
             style={{
               display: "inline-block",

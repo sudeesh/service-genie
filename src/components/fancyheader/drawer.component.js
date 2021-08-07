@@ -117,7 +117,14 @@ export default function PersistentDrawerRight({ device }) {
         onClick={handleDrawerOpen}
         className={clsx(open && classes.hide)}
       >
-        <MenuIcon style={{ fontSize: "35", right: "20" }} />
+        <MenuIcon
+          style={{
+            fontSize: "35",
+            right: "20",
+            position: "relative",
+            top: "-9px",
+          }}
+        />
       </IconButton>
       <Drawer
         className={classes.drawer}
