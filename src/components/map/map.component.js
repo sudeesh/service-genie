@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Backdrop from "@material-ui/core/Backdrop";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import { getAllGaragesByLatAndLong } from "../../services/services";
 import vector from "../../images/service-geni-marker.png";
@@ -29,6 +31,7 @@ export class MapContainer extends Component {
       longitude: 80.2707,
       newLat: null,
       newLng: null,
+      open: false,
     };
   }
 
@@ -89,43 +92,54 @@ export class MapContainer extends Component {
   };
   loadmap() {
     return (
-      <Map
-        google={this.props.google}
-        zoom={14}
-        style={mapStyles}
-        // initialCenter={{ lat: this.state.latitude, lng: this.state.longitude }}
-        center={
-          this.state.newLat === null
-            ? {
-                lat: this.state.latitude,
-                lng: this.state.longitude,
-              }
-            : {
-                lat: this.state.newLat,
-                lng: this.state.newLng,
-              }
-        }
-        className="map-holder"
-        onDragend={(props, mapProps) => this.onMarkerDragEnd(props, mapProps)}
-        options={{ streetViewControl: false }}
-        scrollwheel={true}
-      >
-        {this.state.markerData &&
-          this.state.markerData.map((x) => {
-            return (
-              <Marker
-                onClick={this.onMarkerClick}
-                title={x.garageTitle}
-                name={x.garageTitle}
-                location={x.location}
-                position={{ lat: x.latitude, lng: x.longitude }}
-                icon={{
-                  url: vector,
-                }}
-              />
-            );
-          })}
-      </Map>
+      <>
+        {this.state.newLat === null ? (
+          <Backdrop
+            open={this.state.open}
+            style={{ zIndex: 1000, color: "#fff" }}
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
+        ) : null}
+
+        <Map
+          google={this.props.google}
+          zoom={14}
+          style={mapStyles}
+          // initialCenter={{ lat: this.state.latitude, lng: this.state.longitude }}
+          center={
+            this.state.newLat === null
+              ? {
+                  lat: this.state.latitude,
+                  lng: this.state.longitude,
+                }
+              : {
+                  lat: this.state.newLat,
+                  lng: this.state.newLng,
+                }
+          }
+          className="map-holder"
+          onDragend={(props, mapProps) => this.onMarkerDragEnd(props, mapProps)}
+          options={{ streetViewControl: false }}
+          scrollwheel={true}
+        >
+          {this.state.markerData &&
+            this.state.markerData.map((x) => {
+              return (
+                <Marker
+                  onClick={this.onMarkerClick}
+                  title={x.garageTitle}
+                  name={x.garageTitle}
+                  location={x.location}
+                  position={{ lat: x.latitude, lng: x.longitude }}
+                  icon={{
+                    url: vector,
+                  }}
+                />
+              );
+            })}
+        </Map>
+      </>
     );
   }
 

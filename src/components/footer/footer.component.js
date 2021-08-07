@@ -1,7 +1,13 @@
-import React from 'react';
+import React from "react";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+} from "react-share";
+import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
 
 // styles
-import './footer.styles.scss';
+import "./footer.styles.scss";
 
 export default function Footer() {
   return (
@@ -33,10 +39,34 @@ export default function Footer() {
           </li>
         </ul>
       </div> */}
-      <div style={{ display: 'flex' }}>
-        <input type="text" placeholder="Search..." className="input-footer" />
-        <p className="copy-right">
-          Copyright © 2021 Service Geni - All Rights Reserved.
+      <div
+        style={{
+          display: "flex",
+        }}
+      >
+        <p
+          className="copy-right"
+          style={{ justifyContent: "ceter", alignItems: "center" }}
+        >
+          <FacebookShareButton quote="Service geni shared a service center">
+            <FacebookIcon size={32} />
+          </FacebookShareButton>
+          <TwitterShareButton quote="Service geni shared a service center">
+            <TwitterIcon size={32} />
+          </TwitterShareButton>
+          <WhatsappShareButton title="Service geni shared a service center">
+            <WhatsappIcon size={32} />
+          </WhatsappShareButton>
+          <span
+            style={{
+              display: "inline-block",
+              verticalAlign: "top",
+              marginTop: "12px",
+              marginLeft: "10px",
+            }}
+          >
+            Copyright © 2021 Service Geni - All Rights Reserved.
+          </span>
         </p>
       </div>
     </footer>
