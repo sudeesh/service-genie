@@ -361,15 +361,14 @@ const MobileDetailsPage = (props) => {
       {props.device.breakpoint === 'phone' ? (
         <div>
           <p className="action-container text-center">
-            <a
+            <button
               className="common-button book-now-btn cursor-pointer action__share action__share--button"
-              href={`http://maps.google.com?q=${name.latitude},${name.longitude}`}
-              target="_blank"
-              rel="noreferrer"
-              style={{ textDecoration: 'none', fontSize: '13px' }}
+              onClick={() =>
+                (window.location.href = `http://maps.google.com?q=${name.latitude},${name.longitude}`)
+              }
             >
               Navigate
-            </a>
+            </button>
             <button
               className="common-button book-now-btn cursor-pointer action__directions action__direction--button"
               onClick={(e) => {

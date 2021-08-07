@@ -154,8 +154,6 @@
         &__share {
           &--button {
             @extend %details-actions-button;
-            font-size: 15px;
-            padding: 23px;
             border-right: 1px solid $white;
           }
         }
