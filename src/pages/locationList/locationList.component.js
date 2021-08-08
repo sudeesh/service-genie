@@ -11,6 +11,7 @@ import {
 
 import './locationList.styles.scss';
 import BackToSearchButton from '../../components/backtosearch/backtosearch';
+import Loader from '../../components/loader/loader';
 
 const LocationList = (props) => {
   let history = useHistory();
@@ -66,6 +67,10 @@ const LocationList = (props) => {
       <p>Branches of {props.location.state.val}</p>
     );
   };
+
+  if (Object.keys(location).length === 0) {
+    return <Loader />;
+  }
 
   return (
     <Grid

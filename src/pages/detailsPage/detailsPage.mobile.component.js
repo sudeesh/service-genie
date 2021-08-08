@@ -43,6 +43,7 @@ import './detailsPage.styles.scss';
 import VerifiedTile from '../../components/common/verified.title';
 import BackToSearchButton from '../../components/backtosearch/backtosearch';
 import Close from '@material-ui/icons/Close';
+import Loader from '../../components/loader/loader';
 
 const MobileDetailsPage = (props) => {
   const [name, setGarageName] = useState({});
@@ -108,6 +109,10 @@ const MobileDetailsPage = (props) => {
   const shareId = open ? 'simple-popover' : undefined;
 
   const [showRedirect, setShowRedirect] = useState(true);
+
+  if (Object.keys(name).length === 0) {
+    return <Loader />;
+  }
 
   return (
     <Grid
