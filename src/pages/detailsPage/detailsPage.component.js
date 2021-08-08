@@ -1,43 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import Grid from '@material-ui/core/Grid';
-import StarRatings from 'react-star-ratings';
-import Button from '@material-ui/core/Button';
+import React, { useEffect, useState } from "react";
+import Grid from "@material-ui/core/Grid";
+import StarRatings from "react-star-ratings";
+import Button from "@material-ui/core/Button";
 import {
   FacebookShareButton,
   TwitterShareButton,
   WhatsappShareButton,
-} from 'react-share';
-import { FacebookIcon, TwitterIcon, WhatsappIcon } from 'react-share';
+} from "react-share";
+import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
 import {
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
-} from '@material-ui/core';
+} from "@material-ui/core";
+import ReviewDialog from "../../components/review/reviewDialog";
 
 // image
-import tyre from '../../images/tyre.png';
-import oil from '../../images/oil-bottle.png';
-import spray from '../../images/spray-can.png';
-import carWash from '../../images/car-wash.png';
-import ac from '../../images/ac.png';
-import accessories from '../../images/hubcap.png';
-import ecu from '../../images/ecu.png';
+import tyre from "../../images/tyre.png";
+import oil from "../../images/oil-bottle.png";
+import spray from "../../images/spray-can.png";
+import carWash from "../../images/car-wash.png";
+import ac from "../../images/ac.png";
+import accessories from "../../images/hubcap.png";
+import ecu from "../../images/ecu.png";
 
 // service
 import {
   getGaragesByName,
   getReviewRating,
   getOverallReviewRating,
-} from '../../services/services';
+} from "../../services/services";
 
 // style
-import './detailsPage.styles.scss';
-import MobileDetailsPage from './detailsPage.mobile.component';
-import VerifiedTile from '../../components/common/verified.title';
-import BackToSearchButton from '../../components/backtosearch/backtosearch';
-import Loader from '../../components/loader/loader';
+import "./detailsPage.styles.scss";
+import MobileDetailsPage from "./detailsPage.mobile.component";
+import VerifiedTile from "../../components/common/verified.title";
+import BackToSearchButton from "../../components/backtosearch/backtosearch";
+import Loader from "../../components/loader/loader";
 
 const DetailsPage = (props) => {
   const [name, setGarageName] = useState({});
@@ -45,17 +46,18 @@ const DetailsPage = (props) => {
   const [review, setReview] = useState({});
   const [overAllRating, SetOverAllrating] = useState();
   const [open, setOpen] = React.useState(false);
+  const [reviewDialogStatus, setReviewDialogStatus] = useState(false);
 
   //  Added for sharing link for social media
-  const getGarageName = props.location.search.split('?')[1];
-  const getGarageLocation = props.location.search.split('?')[2];
+  const getGarageName = props.location.search.split("?")[1];
+  const getGarageLocation = props.location.search.split("?")[2];
 
   const sericeCentrename = getGarageName
-    .replace('garageName=', '')
-    .replaceAll('%20', ' ');
+    .replace("garageName=", "")
+    .replaceAll("%20", " ");
   const serviceLocation = getGarageLocation
-    .replace('location=')
-    .replaceAll('%20', ' ');
+    .replace("location=")
+    .replaceAll("%20", " ");
   const updatedName =
     props.location.state !== undefined
       ? props.location.state.val
@@ -93,9 +95,20 @@ const DetailsPage = (props) => {
     return <Loader />;
   }
 
-  if (props.device.breakpoint === 'phone') {
+  if (props.device.breakpoint === "phone") {
     return <MobileDetailsPage {...props} />;
   }
+
+  const openReviewDialog = () => {
+    setReviewDialogStatus(true);
+  };
+
+  const handleCancel = () => {
+    setReviewDialogStatus(false);
+  };
+  const handleSubmit = () => {
+    setReviewDialogStatus(false);
+  };
 
   return (
     <Grid
@@ -113,7 +126,7 @@ const DetailsPage = (props) => {
           sm={6}
           lg={6}
           container
-          style={{ paddingRight: '30px' }}
+          style={{ paddingRight: "30px" }}
         >
           <Grid item xs container direction="column">
             <Grid item xs className="description-panel">
@@ -124,8 +137,8 @@ const DetailsPage = (props) => {
               <div>
                 <span>Rating:</span>
                 {overAllRating &&
-                overAllRating.averageGarageRatings === 'NaN' ? (
-                  'No Reviews'
+                overAllRating.averageGarageRatings === "NaN" ? (
+                  "No Reviews"
                 ) : (
                   <>
                     <StarRatings
@@ -145,7 +158,7 @@ const DetailsPage = (props) => {
                         variant="contained"
                         color="primary"
                         onClick={handleClickOpen}
-                        style={{ marginLeft: '10px' }}
+                        style={{ marginLeft: "10px" }}
                       >
                         {review.length && review.length >= 1
                           ? `${review.length} Review`
@@ -154,6 +167,19 @@ const DetailsPage = (props) => {
                     ) : null}
                   </>
                 )}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  style={{ marginLeft: "10px" }}
+                  onClick={openReviewDialog}
+                >
+                  Write a review
+                </Button>
+                <ReviewDialog
+                  status={reviewDialogStatus}
+                  onSubmit={handleSubmit}
+                  onCancel={handleCancel}
+                />
               </div>
               <p>
                 <span>Date of Establish:</span> {name.dateOfEst}
@@ -236,7 +262,7 @@ const DetailsPage = (props) => {
                   href={`http://maps.google.com?q=${name.latitude},${name.longitude}`}
                   target="_blank"
                   rel="noreferrer"
-                  style={{ textDecoration: 'none', fontSize: '13px' }}
+                  style={{ textDecoration: "none", fontSize: "13px" }}
                 >
                   Share Location
                 </a>
@@ -253,9 +279,9 @@ const DetailsPage = (props) => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} sm={6} lg={6} style={{ paddingTop: '10px' }}>
+        <Grid item xs={12} sm={6} lg={6} style={{ paddingTop: "10px" }}>
           <div className="image-container">
-            {name.garageImage === '' ? (
+            {name.garageImage === "" ? (
               <img src="http://via.placeholder.com/400x200" alt="garage" />
             ) : (
               <img
