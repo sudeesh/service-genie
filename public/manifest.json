@@ -1,6 +1,5 @@
 {
-  "short_name": "Service Geni",
-  "name": "Find service centres in the neighborhood",
+  "name": "Service Geni",
   "icons": [
     {
       "src": "favicon.ico",
@@ -13,7 +12,7 @@
       "sizes": "192x192"
     },
     {
-      "src": "logo.png",
+      "src": "logo192.png",
       "type": "image/png",
       "sizes": "512x512"
     }

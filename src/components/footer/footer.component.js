@@ -10,9 +10,13 @@ import instagram from "../../images/instagram-icon.png";
 // styles
 import "./footer.styles.scss";
 
-export default function Footer() {
+export default function Footer(props) {
   return (
-    <footer className="row center footer-conatiner">
+    <footer
+      className={`row center footer-conatiner ${
+        props.path === "/details" ? "hide-footer" : ""
+      }`}
+    >
       {/* <div>
         <ul className="footer-list">
           <li>
