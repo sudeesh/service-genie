@@ -20,6 +20,12 @@ const App = () => {
   ];
   const device = useDevice({ breakpoints });
 
+  console.log(`device`, device)
+
+  if (device.os.includes('Mac OS') || device.browser.includes('Safari')) {
+    import('./reset.scss')
+  }
+
   return (
     <div className="grid-container">
       <FancyHeaderComponent device={device} />
