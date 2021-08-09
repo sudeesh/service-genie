@@ -18,8 +18,6 @@ const ReviewDialog = (props) => {
     setValue({ ...value, [event.target.name]: event.target.value });
   };
 
-  console.log("value", value);
-
   return (
     <Dialog
       open={status}

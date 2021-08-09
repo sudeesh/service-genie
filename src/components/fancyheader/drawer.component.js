@@ -169,17 +169,9 @@ export default function PersistentDrawerRight({ device }) {
             <li className={classes.listItem}>
               <a
                 className={classes.anchorTag}
-                href="https://www.servicegeni.in/about-us"
+                href="https://www.servicegeni.in/gallery"
               >
-                ABOUT US
-              </a>
-            </li>
-            <li className={classes.listItem}>
-              <a
-                className={classes.anchorTag}
-                href="https://www.servicegeni.in/contact-us"
-              >
-                CONTACT
+                Gallery
               </a>
             </li>
             <li className={classes.listItem}>
@@ -188,6 +180,14 @@ export default function PersistentDrawerRight({ device }) {
                 href="https://www.servicegeni.in/blogs"
               >
                 BLOGS
+              </a>
+            </li>
+            <li className={classes.listItem}>
+              <a
+                className={classes.anchorTag}
+                href="https://www.servicegeni.in/contact-us"
+              >
+                CONTACT
               </a>
             </li>
             <li className={classes.listItem}>
