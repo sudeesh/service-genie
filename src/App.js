@@ -20,8 +20,6 @@ const App = () => {
   ];
   const device = useDevice({ breakpoints });
 
-  console.log("url", window.location.pathname);
-
   return (
     <div className="grid-container">
       <FancyHeaderComponent device={device} />
