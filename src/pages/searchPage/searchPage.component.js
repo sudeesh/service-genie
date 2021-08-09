@@ -10,13 +10,8 @@ const SearchPage = (props) => {
   return (
     <>
       <CookieConsent
-        buttonText="Accept Cookies"
-        cookieName="myAwesomeCookieName2"
-        expires={150}
-      ></CookieConsent>
-      <CookieConsent
         location="bottom"
-        buttonText="Accept Cookies"
+        buttonText="Accept"
         enableDeclineButton
         onDecline={() => {}}
         style={{ background: "#2B373B" }}
