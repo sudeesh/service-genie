@@ -144,4 +144,7 @@ a:hover {
     width: 230px;
     height: 30px;
   }
+  .map-holder {
+    height: calc(100% - 230px) !important;
+  }
 }

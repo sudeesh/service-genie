@@ -1,6 +1,7 @@
 {
-  "short_name": "Service Geni",
-  "name": "Find service centres in the neighborhood",
+  "short_name": "Service",
+  "name": "Service Geni",
+  "description": "Find service centers in your neighborhood",
   "icons": [
     {
       "src": "favicon.ico",
