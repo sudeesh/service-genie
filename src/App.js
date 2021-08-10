@@ -11,6 +11,8 @@ import LocationList from "./pages/locationList/locationList.component";
 import Footer from "../src/components/footer/footer.component";
 import FancyHeaderComponent from "./components/fancyheader/fancyheader.component";
 import useDevice from "./customHooks/findDevice/useDevice";
+import AddNewGarage from "./pages/AddNewGarage/addnewgarage";
+import LandscapeScreen from "./components/landscapeScreen/landscapeScreen";
 
 const App = () => {
   const breakpoints = [
@@ -19,6 +21,12 @@ const App = () => {
     { name: "desktop", min: 1080, max: Infinity },
   ];
   const device = useDevice({ breakpoints });
+
+  console.log('device :>> ', device);
+
+  if (device.orientation === "landscape") {
+    return <LandscapeScreen />
+  }
 
   return (
     <div className="grid-container">
@@ -35,6 +43,11 @@ const App = () => {
           exact
           path="/location-list"
           render={(props) => <LocationList {...props} device={device} />}
+        />
+        <Route
+          exact
+          path="/add-new-garage"
+          render={(props) => <AddNewGarage {...props} device={device} />}
         />
       </main>
       <Footer path={window.location.pathname} />
