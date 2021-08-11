@@ -1,3 +1,4 @@
+import { Grid } from "@material-ui/core";
 import React from "react";
 import {
   FacebookShareButton,
@@ -14,7 +15,7 @@ export default function Footer(props) {
   return (
     <footer
       className={`row center footer-conatiner ${
-        props.path.includes('/details') ? "hide-footer" : ""
+        props.path.includes("/details") ? "hide-footer" : ""
       }`}
     >
       {/* <div>
@@ -44,49 +45,67 @@ export default function Footer(props) {
           </li>
         </ul>
       </div> */}
-      <div
-        style={{
-          display: "flex",
-        }}
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+        spacing={3}
+        style={{ width: "60%" }}
       >
-        <p
-          className="copy-right"
-          style={{
-            justifyContent: "ceter",
-            alignItems: "center",
-            paddingTop: "30px",
-          }}
-        >
-          <FacebookShareButton
-            quote="Service geni shared a service center"
-            url="https://www.facebook.com/servicegeni"
-          >
-            <FacebookIcon size={32} />
-          </FacebookShareButton>
-          <TwitterShareButton
-            quote="Service geni shared a service center"
-            url="https://twitter.com/GeniService"
-          >
-            <TwitterIcon size={32} />
-          </TwitterShareButton>
-          <WhatsappShareButton title="Service geni shared a service center">
-            <WhatsappIcon size={32} />
-          </WhatsappShareButton>
-          <a href="https://www.instagram.com/servicegeni/">
-            <img src={instagram} alt="instagram" />
-          </a>
-          <span
-            style={{
-              display: "inline-block",
-              verticalAlign: "top",
-              marginTop: "12px",
-              marginLeft: "10px",
-            }}
-          >
-            Copyright © 2021 Service Geni - All Rights Reserved.
-          </span>
-        </p>
-      </div>
+        <Grid item xs={12} md={4} alignContent="center" alignItems="center">
+          <div>Copyright © 2021 Service Geni - All Rights Reserved.</div>
+          <div>
+            <FacebookShareButton
+              quote="Service geni shared a service center"
+              url="https://www.facebook.com/servicegeni"
+            >
+              <FacebookIcon size={32} />
+            </FacebookShareButton>
+            <TwitterShareButton
+              quote="Service geni shared a service center"
+              url="https://twitter.com/GeniService"
+            >
+              <TwitterIcon size={32} />
+            </TwitterShareButton>
+            <WhatsappShareButton title="Service geni shared a service center">
+              <WhatsappIcon size={32} />
+            </WhatsappShareButton>
+            <a href="https://www.instagram.com/servicegeni/">
+              <img src={instagram} alt="instagram" />
+            </a>
+          </div>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <ul className="footer-list">
+            <li>
+              <a href="https://www.servicegeni.in/doorstep">
+                Doorstep Services
+              </a>
+            </li>
+            <li>
+              <a href="https://www.servicegeni.in/car-inspection">
+                Car Inspection
+              </a>
+            </li>
+            <li>
+              <a href="https://www.servicegeni.in/jumpstart-services">
+                Jumpstart Services
+              </a>
+            </li>
+            <li>
+              <a href="https://www.servicegeni.in/faq">FAQs</a>
+            </li>
+            <li>
+              <a href="https://www.servicegeni.in/about-us">About Us</a>
+            </li>
+            <li>
+              <a href="https://www.servicegeni.in/terms-conditions">
+                Terms & condition
+              </a>
+            </li>
+          </ul>
+        </Grid>
+      </Grid>
     </footer>
   );
 }

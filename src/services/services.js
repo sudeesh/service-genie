@@ -12,6 +12,11 @@ export const getLocationByLocation = (location) =>
 export const getGaragesByName = (name) =>
   sgServices.get({ endpoint: `/getGarageDetailsByName?garageName=${name}` });
 
+export const getGaragesByNameandLocation = (name, location) =>
+  sgServices.get({
+    endpoint: `/getAllGaragesWithNameOnLocation?garageName=${name}&location=${location}`,
+  });
+
 export const getAllGaragesUsingRegex = (name) =>
   sgServices.get({
     endpoint: `/getAllGaragesUsingRegex?garageNameContaining=${name}`,

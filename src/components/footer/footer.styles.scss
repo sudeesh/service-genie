@@ -1,23 +1,26 @@
-@import '../../styles/utility.scss';
+@import "../../styles/utility.scss";
 
 .footer-list {
-  background: #fff;
   padding: 10px;
 }
 .footer-list li {
   list-style-type: none;
   display: inline-block;
-  color: #9e3b1b;
+  color: #fff;
   padding: 0 10px;
   font-size: 14px;
+  margin-bottom: 10px;
 }
 .footer-list li a {
-  color: #9e3b1b;
-  text-decoration: none;
+  color: #fff;
 }
 .footer-conatiner {
   flex-direction: column;
   flex-wrap: nowrap !important;
+  button {
+    margin-right: 10px;
+    margin-top: 10px;
+  }
 }
 .input-footer {
   width: 300px;

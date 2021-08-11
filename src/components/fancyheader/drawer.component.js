@@ -163,7 +163,7 @@ export default function PersistentDrawerRight({ device }) {
                 className={classes.anchorTag}
                 href="https://www.servicegeni.in/ecu"
               >
-                ECU CODING & REPAIR
+                ECU CODING
               </a>
             </li>
             <li className={classes.listItem}>
@@ -171,7 +171,7 @@ export default function PersistentDrawerRight({ device }) {
                 className={classes.anchorTag}
                 href="https://www.servicegeni.in/gallery"
               >
-                Gallery
+                GALLERY
               </a>
             </li>
             <li className={classes.listItem}>

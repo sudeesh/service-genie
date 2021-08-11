@@ -27,7 +27,7 @@ import ecu from "../../images/ecu.png";
 
 // service
 import {
-  getGaragesByName,
+  getGaragesByNameandLocation,
   getReviewRating,
   getOverallReviewRating,
 } from "../../services/services";
@@ -67,10 +67,10 @@ const DetailsPage = (props) => {
       : serviceLocation;
 
   useEffect(() => {
-    getGaragesByName(updatedName)
-      .then((res) => setGarageName(res.data))
+    getGaragesByNameandLocation(updatedName, updatedLocation)
+      .then((res) => setGarageName(res.data[0]))
       .catch((error) => error.message);
-  }, [updatedName]);
+  }, [updatedName, updatedLocation]);
 
   const handleClickOpen = () => {
     setOpen(true);
