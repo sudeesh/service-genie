@@ -375,7 +375,7 @@ const MobileDetailsPage = (props) => {
             <div className="redirect__text-container">
               <p className="redirect__text">
                 Why take the hassle of driving down, check out our hand-picked
-                doorstep packages.
+                Doorstep Packages.
               </p>
               <button
                 className="common-button redirect__button"
