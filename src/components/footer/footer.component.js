@@ -1,5 +1,6 @@
-import { Grid } from "@material-ui/core";
 import React from "react";
+import { Grid } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -52,59 +53,63 @@ export default function Footer(props) {
         spacing={3}
         className="footer"
       >
-        <Grid item xs={12} md={4} alignContent="center" alignItems="center">
-          <div>Copyright © 2021 Service Geni - All Rights Reserved.</div>
-          <div>
-            <FacebookShareButton
-              quote="Service geni shared a service center"
-              url="https://www.facebook.com/servicegeni"
-            >
-              <FacebookIcon size={32} />
-            </FacebookShareButton>
-            <TwitterShareButton
-              quote="Service geni shared a service center"
-              url="https://twitter.com/GeniService"
-            >
-              <TwitterIcon size={32} />
-            </TwitterShareButton>
-            <WhatsappShareButton title="Service geni shared a service center">
-              <WhatsappIcon size={32} />
-            </WhatsappShareButton>
-            <a href="https://www.instagram.com/servicegeni/">
-              <img src={instagram} alt="instagram" />
-            </a>
-          </div>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <ul className="footer-list">
-            <li>
-              <a href="https://www.servicegeni.in/doorstep">
-                Doorstep Services
+        <Box clone order={{ xs: 2, sm: 2 }}>
+          <Grid item xs={12} md={4} alignContent="center" alignItems="center">
+            <div>Copyright © 2021 Service Geni - All Rights Reserved.</div>
+            <div>
+              <FacebookShareButton
+                quote="Service geni shared a service center"
+                url="https://www.facebook.com/servicegeni"
+              >
+                <FacebookIcon size={32} />
+              </FacebookShareButton>
+              <TwitterShareButton
+                quote="Service geni shared a service center"
+                url="https://twitter.com/GeniService"
+              >
+                <TwitterIcon size={32} />
+              </TwitterShareButton>
+              <WhatsappShareButton title="Service geni shared a service center">
+                <WhatsappIcon size={32} />
+              </WhatsappShareButton>
+              <a href="https://www.instagram.com/servicegeni/">
+                <img src={instagram} alt="instagram" />
               </a>
-            </li>
-            <li>
-              <a href="https://www.servicegeni.in/car-inspection">
-                Car Inspection
-              </a>
-            </li>
-            <li>
-              <a href="https://www.servicegeni.in/jumpstart-services">
-                Jumpstart Services
-              </a>
-            </li>
-            <li>
-              <a href="https://www.servicegeni.in/faq">FAQs</a>
-            </li>
-            <li>
-              <a href="https://www.servicegeni.in/about-us">About Us</a>
-            </li>
-            <li>
-              <a href="https://www.servicegeni.in/terms-conditions">
-                Terms & condition
-              </a>
-            </li>
-          </ul>
-        </Grid>
+            </div>
+          </Grid>
+        </Box>
+        <Box clone order={{ xs: 1, sm: 1 }}>
+          <Grid item xs={12} md={6}>
+            <ul className="footer-list">
+              <li>
+                <a href="https://www.servicegeni.in/doorstep">
+                  Doorstep Services
+                </a>
+              </li>
+              <li>
+                <a href="https://www.servicegeni.in/car-inspection">
+                  Car Inspection
+                </a>
+              </li>
+              <li>
+                <a href="https://www.servicegeni.in/jumpstart-services">
+                  Jumpstart Services
+                </a>
+              </li>
+              <li>
+                <a href="https://www.servicegeni.in/faq">FAQs</a>
+              </li>
+              <li>
+                <a href="https://www.servicegeni.in/about-us">About Us</a>
+              </li>
+              <li>
+                <a href="https://www.servicegeni.in/terms-conditions">
+                  Terms & condition
+                </a>
+              </li>
+            </ul>
+          </Grid>
+        </Box>
       </Grid>
     </footer>
   );
