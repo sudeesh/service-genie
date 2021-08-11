@@ -15,7 +15,6 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@material-ui/core";
-import ReviewDialog from "../../components/review/reviewDialog";
 
 // image
 import tyre from "../../images/tyre.png";
@@ -46,7 +45,7 @@ const DetailsPage = (props) => {
   const [review, setReview] = useState({});
   const [overAllRating, SetOverAllrating] = useState();
   const [open, setOpen] = React.useState(false);
-  const [reviewDialogStatus, setReviewDialogStatus] = useState(false);
+  // const [reviewDialogStatus, setReviewDialogStatus] = useState(false);
 
   //  Added for sharing link for social media
   const getGarageName = props.location.search.split("?")[1];
@@ -99,16 +98,18 @@ const DetailsPage = (props) => {
     return <MobileDetailsPage {...props} />;
   }
 
-  const openReviewDialog = () => {
-    setReviewDialogStatus(true);
-  };
+  // for future
 
-  const handleCancel = () => {
-    setReviewDialogStatus(false);
-  };
-  const handleSubmit = () => {
-    setReviewDialogStatus(false);
-  };
+  // const openReviewDialog = () => {
+  //   setReviewDialogStatus(true);
+  // };
+
+  // const handleCancel = () => {
+  //   setReviewDialogStatus(false);
+  // };
+  // const handleSubmit = () => {
+  //   setReviewDialogStatus(false);
+  // };
 
   return (
     <Grid
@@ -118,7 +119,6 @@ const DetailsPage = (props) => {
       xs={10}
       className="center-div details-container"
     >
-      <BackToSearchButton />
       <Grid container>
         <Grid
           item
@@ -167,7 +167,7 @@ const DetailsPage = (props) => {
                     ) : null}
                   </>
                 )}
-                <Button
+                {/* <Button
                   variant="contained"
                   color="primary"
                   style={{ marginLeft: "10px" }}
@@ -179,7 +179,7 @@ const DetailsPage = (props) => {
                   status={reviewDialogStatus}
                   onSubmit={handleSubmit}
                   onCancel={handleCancel}
-                />
+                /> */}
               </div>
               <p>
                 <span>Date of Establish:</span> {name.dateOfEst}
@@ -280,6 +280,7 @@ const DetailsPage = (props) => {
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6} lg={6} style={{ paddingTop: "10px" }}>
+          <BackToSearchButton />
           <div className="image-container">
             {name.garageImage === "" ? (
               <img src="http://via.placeholder.com/400x200" alt="garage" />
