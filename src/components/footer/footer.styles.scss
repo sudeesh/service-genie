@@ -1,5 +1,9 @@
 @import "../../styles/utility.scss";
 
+.footer {
+  width: 60%;
+}
+
 .footer-list {
   padding: 10px;
 }
@@ -39,5 +43,8 @@
   }
   .footer-conatiner {
     height: 300px;
+  }
+  .footer {
+    width: 78%;
   }
 }
