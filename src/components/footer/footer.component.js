@@ -50,7 +50,7 @@ export default function Footer(props) {
         justify="center"
         alignItems="center"
         spacing={3}
-        style={{ width: "60%" }}
+        className="footer"
       >
         <Grid item xs={12} md={4} alignContent="center" alignItems="center">
           <div>Copyright © 2021 Service Geni - All Rights Reserved.</div>
