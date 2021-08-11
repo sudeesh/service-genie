@@ -24,7 +24,7 @@ const App = () => {
 
   console.log('device :>> ', device);
 
-  if (device.orientation === "landscape") {
+  if (device.breakpoint === 'phone' && device.orientation === "landscape") {
     return <LandscapeScreen />
   }
 
