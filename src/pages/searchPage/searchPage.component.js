@@ -18,12 +18,12 @@ const SearchPage = (props) => {
         buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
       >
         This website uses cookies to enhance the user experience. For more info,
-        see
+        see our
         <a
           href="https://www.servicegeni.in/terms-conditions"
           style={{ color: "#fff", paddingLeft: "3px" }}
         >
-          our Terms and Conditions & Privacy Policy
+          Terms and Conditions & Privacy Policy
         </a>
       </CookieConsent>
       <Search />
