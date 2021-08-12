@@ -2,6 +2,8 @@
 
 .footer {
   width: 60%;
+  height: 130px;
+  margin-top: 25px;
 }
 
 .footer-list {
@@ -42,11 +44,14 @@
     display: none;
   }
   .footer-conatiner {
-    height: 300px;
-    padding-top: 45px;
-    text-align: center;
+    height: 278px;
+    padding: 10px;
+    li {
+      width: 50%;
+    }
   }
   .footer {
     width: 78%;
+    height: auto;
   }
 }

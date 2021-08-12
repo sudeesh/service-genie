@@ -46,16 +46,9 @@ export default function Footer(props) {
           </li>
         </ul>
       </div> */}
-      <Grid
-        container
-        justify="center"
-        alignItems="center"
-        spacing={3}
-        className="footer"
-      >
+      <Grid container justify="center" alignItems="center" className="footer">
         <Box clone order={{ xs: 2, sm: 2 }}>
           <Grid item xs={12} md={4} alignContent="center" alignItems="center">
-            <div>Copyright © 2021 Service Geni - All Rights Reserved.</div>
             <div>
               <FacebookShareButton
                 quote="Service geni shared a service center"
@@ -76,6 +69,9 @@ export default function Footer(props) {
                 <img src={instagram} alt="instagram" />
               </a>
             </div>
+            <div style={{ marginTop: "10px" }}>
+              Copyright © 2021 Service Geni - All Rights Reserved.
+            </div>
           </Grid>
         </Box>
         <Box clone order={{ xs: 1, sm: 1 }}>
@@ -83,12 +79,12 @@ export default function Footer(props) {
             <ul className="footer-list">
               <li>
                 <a href="https://www.servicegeni.in/doorstep">
-                  Doorstep Services
+                  Periodic Services
                 </a>
               </li>
               <li>
                 <a href="https://www.servicegeni.in/car-inspection">
-                  Car Inspection
+                  Inspection Services
                 </a>
               </li>
               <li>
