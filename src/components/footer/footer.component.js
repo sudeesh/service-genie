@@ -17,7 +17,7 @@ export default function Footer(props) {
     <footer
       className={`row center footer-conatiner ${
         props.path.includes("/details") ? "hide-footer" : ""
-      }`}
+      } ${props.path.includes("/location-list") ? "list-footer" : ""}`}
     >
       {/* <div>
         <ul className="footer-list">

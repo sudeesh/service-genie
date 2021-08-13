@@ -33,9 +33,9 @@ import ecu from "../../images/ecu.png";
 
 // service
 import {
-  getGaragesByName,
   getReviewRating,
   getOverallReviewRating,
+  getGaragesByNameandLocation,
 } from "../../services/services";
 
 // style
@@ -60,7 +60,7 @@ const MobileDetailsPage = (props) => {
     .replace("garageName=", "")
     .replaceAll("%20", " ");
   const serviceLocation = getGarageLocation
-    .replace("location=")
+    .replace("location=", "")
     .replaceAll("%20", " ");
   const updatedName =
     props.location.state !== undefined
@@ -72,10 +72,10 @@ const MobileDetailsPage = (props) => {
       : serviceLocation;
 
   useEffect(() => {
-    getGaragesByName(updatedName)
-      .then((res) => setGarageName(res.data))
+    getGaragesByNameandLocation(updatedName, updatedLocation)
+      .then((res) => setGarageName(res.data[0]))
       .catch((error) => error.message);
-  }, [updatedName]);
+  }, [updatedName, updatedLocation]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -110,9 +110,11 @@ const MobileDetailsPage = (props) => {
 
   const [showRedirect, setShowRedirect] = useState(true);
 
-  if (Object.keys(name).length === 0) {
+  if (name && Object.keys(name).length === 0) {
     return <Loader />;
   }
+
+  console.log("name", name);
 
   return (
     <Grid
