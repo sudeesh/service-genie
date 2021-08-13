@@ -22,11 +22,10 @@ const App = () => {
   ];
   const device = useDevice({ breakpoints });
 
+  if (device.os.includes('Mac OS') || device.browser.includes('Safari')) {
+    import('./reset.scss')
+  }
   console.log("device :>> ", device);
-
-  // if (device.device === "phone" && device.orientation === "landscape") {
-  //   return <LandscapeScreen />;
-  // }
 
   return (
     <div className="grid-container">
