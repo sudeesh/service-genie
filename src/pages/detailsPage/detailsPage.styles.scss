@@ -107,11 +107,12 @@
     font-family: $avenir-font-family;
     background-color: $brand-orange;
     color: $black;
+    padding: 0;
   }
   .details {
     &-container {
       margin-top: 0 !important;
-      
+
       &__grid {
         font-family: $avenir-font-family;
       }
@@ -186,11 +187,8 @@
           display: grid;
           justify-items: center;
           align-items: center;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 3fr 1fr;
           z-index: 1;
-          -webkit-box-shadow: 0px -1px 7px 0px rgba(0, 0, 0, 0.75);
-          -moz-box-shadow: 0px -1px 7px 0px rgba(0, 0, 0, 0.75);
-          box-shadow: 0px -1px 7px 0px rgba(0, 0, 0, 0.75);
           left: 0;
         }
         &__share {
@@ -202,6 +200,13 @@
         &__direction {
           &--button {
             @extend %details-actions-button;
+            background-color: #3a404f;
+            padding-top: 5px;
+
+            img {
+              width: 40px;
+              height: 40px;
+            }
           }
         }
       }
