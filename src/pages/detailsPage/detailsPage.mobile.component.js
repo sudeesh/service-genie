@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import Grid from '@material-ui/core/Grid';
-import StarRatings from 'react-star-ratings';
-import Button from '@material-ui/core/Button';
-import OrangeIcon from '../../images/orange icon.png';
+import React, { useEffect, useState } from "react";
+import Grid from "@material-ui/core/Grid";
+import StarRatings from "react-star-ratings";
+import Button from "@material-ui/core/Button";
+import OrangeIcon from "../../images/orange icon.png";
 
 import {
   FacebookShareButton,
   TwitterShareButton,
   WhatsappShareButton,
-} from 'react-share';
-import { FacebookIcon, TwitterIcon, WhatsappIcon } from 'react-share';
+} from "react-share";
+import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
 import {
   Dialog,
   DialogActions,
@@ -17,33 +17,33 @@ import {
   DialogContentText,
   DialogTitle,
   Popover,
-} from '@material-ui/core';
+} from "@material-ui/core";
 //Icon
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
 
 // image
-import tyre from '../../images/tyre.png';
-import oil from '../../images/oil-bottle.png';
-import spray from '../../images/spray-can.png';
-import carWash from '../../images/car-wash.png';
-import ac from '../../images/ac.png';
-import accessories from '../../images/hubcap.png';
-import ecu from '../../images/ecu.png';
+import tyre from "../../images/tyre.png";
+import oil from "../../images/oil-bottle.png";
+import spray from "../../images/spray-can.png";
+import carWash from "../../images/car-wash.png";
+import ac from "../../images/ac.png";
+import accessories from "../../images/hubcap.png";
+import ecu from "../../images/ecu.png";
 
 // service
 import {
   getGaragesByName,
   getReviewRating,
   getOverallReviewRating,
-} from '../../services/services';
+} from "../../services/services";
 
 // style
-import './detailsPage.styles.scss';
-import VerifiedTile from '../../components/common/verified.title';
-import BackToSearchButton from '../../components/backtosearch/backtosearch';
-import Close from '@material-ui/icons/Close';
-import Loader from '../../components/loader/loader';
+import "./detailsPage.styles.scss";
+import VerifiedTile from "../../components/common/verified.title";
+import BackToSearchButton from "../../components/backtosearch/backtosearch";
+import Close from "@material-ui/icons/Close";
+import Loader from "../../components/loader/loader";
 
 const MobileDetailsPage = (props) => {
   const [name, setGarageName] = useState({});
@@ -53,15 +53,15 @@ const MobileDetailsPage = (props) => {
   const [open, setOpen] = React.useState(false);
 
   //  Added for sharing link for social media
-  const getGarageName = props.location.search.split('?')[1];
-  const getGarageLocation = props.location.search.split('?')[2];
+  const getGarageName = props.location.search.split("?")[1];
+  const getGarageLocation = props.location.search.split("?")[2];
 
   const sericeCentrename = getGarageName
-    .replace('garageName=', '')
-    .replaceAll('%20', ' ');
+    .replace("garageName=", "")
+    .replaceAll("%20", " ");
   const serviceLocation = getGarageLocation
-    .replace('location=')
-    .replaceAll('%20', ' ');
+    .replace("location=")
+    .replaceAll("%20", " ");
   const updatedName =
     props.location.state !== undefined
       ? props.location.state.val
@@ -106,7 +106,7 @@ const MobileDetailsPage = (props) => {
   };
 
   const openShare = Boolean(anchorEl);
-  const shareId = open ? 'simple-popover' : undefined;
+  const shareId = open ? "simple-popover" : undefined;
 
   const [showRedirect, setShowRedirect] = useState(true);
 
@@ -142,8 +142,8 @@ const MobileDetailsPage = (props) => {
               <div className="details-container__far-reaching">
                 <div className="details-container__ratings">
                   {overAllRating &&
-                  overAllRating.averageGarageRatings === 'NaN' ? (
-                    'No Reviews'
+                  overAllRating.averageGarageRatings === "NaN" ? (
+                    "No Reviews"
                   ) : (
                     <>
                       <StarRatings
@@ -163,7 +163,7 @@ const MobileDetailsPage = (props) => {
                           variant="contained"
                           color="primary"
                           onClick={handleClickOpen}
-                          style={{ marginLeft: '10px' }}
+                          style={{ marginLeft: "10px" }}
                           className="review__button review__button--color-change"
                         >
                           {review.length && review.length >= 1
@@ -180,7 +180,7 @@ const MobileDetailsPage = (props) => {
                 </button>
               </div>
               <div className="image-container">
-                {name.garageImage === '' ? (
+                {name.garageImage === "" ? (
                   <img src="http://via.placeholder.com/400x200" alt="garage" />
                 ) : (
                   <img
@@ -355,7 +355,7 @@ const MobileDetailsPage = (props) => {
                   ) : null}
                 </>
               </div>
-              <p>
+              <p style={{ marginBottom: "100px" }}>
                 <span>About Workshop:</span> {name.garageDescription}
               </p>
             </Grid>
@@ -375,12 +375,12 @@ const MobileDetailsPage = (props) => {
             <div className="redirect__text-container">
               <p className="redirect__text">
                 Why take the hassle of driving down, check out our hand-picked
-                doorstep packages.
+                Doorstep Packages.
               </p>
               <button
                 className="common-button redirect__button"
                 onClick={() => {
-                  window.location.href = 'https://www.servicegeni.in/doorstep';
+                  window.location.href = "https://www.servicegeni.in/doorstep";
                 }}
               >
                 BOOK NOW
@@ -389,7 +389,7 @@ const MobileDetailsPage = (props) => {
           </div>
         </div>
       ) : null}
-      {props.device.breakpoint === 'phone' ? (
+      {props.device.breakpoint === "phone" ? (
         <div>
           <p className="action-container text-center">
             <button
@@ -425,12 +425,12 @@ const MobileDetailsPage = (props) => {
         anchorEl={anchorEl}
         onClose={handleCloseShare}
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
+          vertical: "bottom",
+          horizontal: "left",
         }}
         transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
+          vertical: "top",
+          horizontal: "left",
         }}
         className="share__popper"
       >

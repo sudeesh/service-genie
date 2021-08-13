@@ -1,30 +1,30 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Grid from '@material-ui/core/Grid';
-import StarRatings from 'react-star-ratings';
+import React from "react";
+import { useHistory } from "react-router-dom";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import Grid from "@material-ui/core/Grid";
+import StarRatings from "react-star-ratings";
 
 // image
-import verifiedBadge from '../../images/Verified.png';
+import verifiedBadge from "../../images/Verified.png";
 
 //Icon
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
 
 //Styles
-import './tileList.styles.scss';
-import { makeStyles, Paper } from '@material-ui/core';
-import TileListMobile from './tileList.mobile.component';
+import "./tileList.styles.scss";
+import { makeStyles, Paper } from "@material-ui/core";
+import TileListMobile from "./tileList.mobile.component";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    minWidth: '100%',
+    minWidth: "100%",
   },
   verifiedBadge: {
-    width: '20px',
-    height: '20px',
-    marginLeft: '5px',
+    width: "20px",
+    height: "20px",
+    marginLeft: "5px",
   },
 }));
 
@@ -34,14 +34,14 @@ const TileList = (props) => {
   let history = useHistory();
   const onClickDetail = (name, location) => {
     history.push({
-      pathname: '/details',
+      pathname: "/details",
       search: `?garageName=${name}?location=${location}`,
       state: { val: name, location: location },
     });
   };
   const { list } = props;
 
-  if (props.device.breakpoint === 'phone') {
+  if (props.device.breakpoint === "phone") {
     return <TileListMobile {...props} />;
   }
 
@@ -49,6 +49,7 @@ const TileList = (props) => {
     list &&
     list.map((x) => (
       <List className="list-container" key={x.garageTitle}>
+        {console.log("x", x)}
         <ListItem>
           <Paper elevation="3" className={classes.paper}>
             <Grid container spacing={3} className="list-container-grid">
@@ -84,8 +85,8 @@ const TileList = (props) => {
                 <Grid item container direction="column" spacing={2}>
                   <Grid item xs className="list-container__rating-container">
                     <div>
-                      {x.garageOverallRating.averageGarageRatings === 'NaN' ? (
-                        'No Reviews'
+                      {x.garageOverallRating.averageGarageRatings === "NaN" ? (
+                        "No Reviews"
                       ) : (
                         <>
                           <StarRatings
@@ -98,7 +99,7 @@ const TileList = (props) => {
                             starDimension="20px"
                             starSpacing="3px"
                           />
-                          <span style={{ paddingLeft: '10px' }}>
+                          <span style={{ paddingLeft: "10px" }}>
                             {x.garageOverallRating.totalGarageReviews > 1
                               ? `${x.garageOverallRating.totalGarageReviews} reviews`
                               : `${x.garageOverallRating.totalGarageReviews} review`}
@@ -121,7 +122,7 @@ const TileList = (props) => {
                 lg={3}
                 className="know-more-panel text-center"
               >
-                {props.device.breakpoint !== 'phone' ? (
+                {props.device.breakpoint !== "phone" ? (
                   <>
                     <p>Services starting at</p>
                     <p>

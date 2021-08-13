@@ -1,14 +1,14 @@
-import React from 'react';
-import Logo from '../../images/logo.png';
-import './fancyheader.styles.scss';
-import cx from 'classnames';
-import PersistentDrawerRight from './drawer.component';
+import React from "react";
+import Logo from "../../images/logo.png";
+import "./fancyheader.styles.scss";
+import cx from "classnames";
+import PersistentDrawerRight from "./drawer.component";
 
 export default function FancyHeaderComponent({ device }) {
   const { breakpoint } = device;
-  const classForContainer = cx('nav-container', {
-    'fancy-header-desktop': breakpoint === 'desktop',
-    'fancy-header-mobile': breakpoint === 'phone' || breakpoint === 'miniphone',
+  const classForContainer = cx("nav-container", {
+    "fancy-header-desktop": breakpoint === "desktop",
+    "fancy-header-mobile": breakpoint === "phone" || breakpoint === "miniphone",
   });
 
   return (
@@ -35,13 +35,13 @@ export default function FancyHeaderComponent({ device }) {
               <a href="https://www.servicegeni.in/ecu">ECU CODING</a>
             </li>
             <li>
-              <a href="https://www.servicegeni.in/about-us">ABOUT US</a>
-            </li>
-            <li>
-              <a href="https://www.servicegeni.in/contact-us">CONTACT</a>
+              <a href="https://www.servicegeni.in/gallery">GALLERY</a>
             </li>
             <li>
               <a href="https://www.servicegeni.in/blogs">BLOGS</a>
+            </li>
+            <li>
+              <a href="https://www.servicegeni.in/contact-us">CONTACT</a>
             </li>
             <li>
               <a href="https://www.servicegeni.in/viral-kindness">
