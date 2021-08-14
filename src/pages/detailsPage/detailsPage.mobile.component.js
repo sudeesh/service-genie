@@ -267,11 +267,11 @@ const MobileDetailsPage = (props) => {
                       >
                         <img
                           src={ac}
-                          alt="AC Reapir & Cleaning"
+                          alt="AC Repair & Cleaning"
                           className="cursor-pointer"
                         />
                         <div className="image-caption">
-                          AC Reapir & Cleaning
+                          AC Repair & Cleaning
                         </div>
                       </li>
                     ) : null}

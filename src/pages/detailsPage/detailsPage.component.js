@@ -349,14 +349,14 @@ const DetailsPage = (props) => {
                 <li>
                   <img
                     src={ac}
-                    alt="AC Reapir & Cleaning"
+                    alt="AC Repair & Cleaning"
                     className="cursor-pointer"
                     onClick={(e) => {
                       e.preventDefault();
                       window.location.href = `https://wa.me/919361040506?text=I%20need%20AC%20Repair%20Cleaning%20@%20${name.garageTitle},%20${name.location}`;
                     }}
                   />
-                  <div className="image-caption">AC Reapir & Cleaning</div>
+                  <div className="image-caption">AC Repair & Cleaning</div>
                 </li>
               ) : null}
               {name.garageServices && name.garageServices.wAndS ? (
