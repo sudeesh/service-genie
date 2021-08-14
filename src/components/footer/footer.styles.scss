@@ -1,0 +1,57 @@
+@import "../../styles/utility.scss";
+
+.footer {
+  width: 60%;
+  height: 130px;
+  margin-top: 25px;
+}
+
+.footer-list {
+  padding: 10px;
+}
+.footer-list li {
+  list-style-type: none;
+  display: inline-block;
+  color: #fff;
+  padding: 0 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.footer-list li a {
+  color: #fff;
+}
+.footer-conatiner {
+  flex-direction: column;
+  flex-wrap: nowrap !important;
+  button {
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+}
+.input-footer {
+  width: 300px;
+  padding: 8px;
+}
+.copy-right {
+  margin-left: 20px;
+  button {
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: $screen-sm-max) {
+  .hide-footer {
+    display: none;
+  }
+  .footer-conatiner {
+    height: 278px;
+    padding: 10px;
+    li {
+      width: 50%;
+    }
+  }
+  .footer {
+    width: 78%;
+    height: auto;
+  }
+}

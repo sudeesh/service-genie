@@ -1,8 +1,38 @@
+@import "../../styles/utility.scss";
+
 .search-container {
-  background-color: rgba(54, 109, 140, 0.3);
-  color: #fff;
+  background-color: #fff;
+  color: #3a404f;
+  * {
+    font-family: $avenir-font-family;
+  }
+
+  .find-text {
+    margin-right: 20px;
+  }
+
+  @media screen and (max-width: 600px) {
+    .find-text {
+      margin: 0;
+    }
+  }
+
+  .search-radio {
+    & svg.MuiSvgIcon-root {
+      color: #3a404f;
+    }
+  }
+
+  & #garage-select {
+    fieldset {
+      span {
+        color: #3a404f;
+      }
+    }
+  }
 }
 .option-heading {
   color: #fff !important;
-  font-size: 20px !important;
+  font-size: 18px !important;
+  font-family: $avenir-font-family;
 }

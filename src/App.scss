@@ -23,7 +23,7 @@ body {
 }
 
 body {
-  background: #ced6dc !important;
+  background: #fff !important;
 }
 
 .grid-container {
@@ -33,21 +33,23 @@ body {
     "main"
     "footer";
   grid-template-columns: 1fr;
-  grid-template-rows: 0 1fr 5rem;
+  grid-template-rows: 8rem 1fr 10rem;
   height: 100%;
 }
 header {
   grid-area: header;
   background-color: #203040;
+  padding: 10px;
 }
 main {
   grid-area: main;
-  background: #e6ebef;
+  background: #fff;
+  margin-top: 15px;
 }
 footer {
   grid-area: footer;
-  background-color: #eeff00;
-  color: #555;
+  background-color: rgb(54, 109, 140);
+  color: #fff;
   font-size: 10px;
 }
 
@@ -128,4 +130,18 @@ a:hover {
 
   /* Support for IE. */
   font-feature-settings: "liga";
+}
+
+.map-holder {
+  height: calc(100% - 150px) !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .footer-list {
+    padding: 20x;
+  }
+  .input-footer {
+    width: 230px;
+    height: 30px;
+  }
 }

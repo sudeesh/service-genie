@@ -1,26 +1,38 @@
-import axios from "axios";
+import { sgServices } from "./apiUtils";
+
 export const getAllUniqueGarages = () =>
-  axios.get("http://20.197.28.152:8080/api/v1/getAllUniqueGarageLocations");
+  sgServices.get({ endpoint: "/getAllUniqueGarageLocations" });
 
 export const getAllGarages = () =>
-  axios.get("http://20.197.28.152:8080/api/v1/getAllGarages");
+  sgServices.get({ endpoint: "/getAllGarages" });
 
 export const getLocationByLocation = (location) =>
-  axios.get(
-    `http://20.197.28.152:8080/api/v1/getGaragesOnLocation?location=${location}`
-  );
+  sgServices.get({ endpoint: `/getGaragesOnLocation?location=${location}` });
 
 export const getGaragesByName = (name) =>
-  axios.get(
-    `http://20.197.28.152:8080/api/v1/getGarageDetailsByName?garageName=${name}`
-  );
+  sgServices.get({ endpoint: `/getGarageDetailsByName?garageName=${name}` });
+
+export const getGaragesByNameandLocation = (name, location) =>
+  sgServices.get({
+    endpoint: `/getAllGaragesWithNameOnLocation?garageName=${name}&location=${location}`,
+  });
 
 export const getAllGaragesUsingRegex = (name) =>
-  axios.get(
-    `http://20.197.28.152:8080/api/v1/getAllGaragesUsingRegex?garageNameContaining=${name}`
-  );
+  sgServices.get({
+    endpoint: `/getAllGaragesUsingRegex?garageNameContaining=${name}`,
+  });
 
 export const getAllGaragesByLatAndLong = (distance, latitude, longitude) =>
-  axios.get(
-    `http://20.197.28.152:8080/api/v1/getGaragesByLatAndLong?distanceInKms=${distance}&latitude=${latitude}&longitude=${longitude}`
-  );
+  sgServices.get({
+    endpoint: `/getGaragesByLatAndLong?distanceInKms=${distance}&latitude=${latitude}&longitude=${longitude}`,
+  });
+
+export const getReviewRating = (value, location) =>
+  sgServices.get({
+    endpoint: `getReviewsOfGarage?garageName=${value}&location=${location}`,
+  });
+
+export const getOverallReviewRating = (value, location) =>
+  sgServices.get({
+    endpoint: `getOverallReviewRatingsOfGarage?garageName=${value}&location=${location}`,
+  });

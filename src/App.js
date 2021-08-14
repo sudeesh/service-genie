@@ -1,5 +1,5 @@
 import "./App.scss";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Route } from "react-router-dom";
 // commenting homepage for temporary purpose
 // import Homepage from "./components/homePage/homePage.component";
@@ -8,49 +8,48 @@ import DetailsPage from "./pages/detailsPage/detailsPage.component";
 import LocationList from "./pages/locationList/locationList.component";
 
 // component
-// import Header from "../src/common/header/header.component";
-// import Footer from "../src/common/footer/footer.component";
+import Footer from "../src/components/footer/footer.component";
+import FancyHeaderComponent from "./components/fancyheader/fancyheader.component";
+import useDevice from "./customHooks/findDevice/useDevice";
+import AddNewGarage from "./pages/AddNewGarage/addnewgarage";
+// import LandscapeScreen from './components/landscapeScreen/landscapeScreen';
 
 const App = () => {
-  const [latitude, setLatitude] = useState(0);
-  const [longitude, setLongitude] = useState(0);
+  const breakpoints = [
+    { name: "phone", min: 0, max: 640 },
+    { name: "tablet", min: 640, max: 1080 },
+    { name: "desktop", min: 1080, max: Infinity },
+  ];
+  const device = useDevice({ breakpoints });
 
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.watchPosition(showPosition);
-    }
-  });
+  if (device.os.includes('Mac OS') || device.browser.includes('Safari')) {
+    import('./reset.scss')
+  }
+  console.log("device :>> ", device);
 
-  const showPosition = (position) => {
-    setLatitude(position.coords.latitude);
-    setLongitude(position.coords.longitude);
-  };
   return (
     <div className="grid-container">
-      {/* Hidded header for time being as we are integrating with wix */}
-      {/* <Header /> */}
+      <FancyHeaderComponent device={device} />
       <main>
         {/* <Route exact path="/" render={(props) => <Homepage {...props} />} /> */}
-        <Route
-          exact
-          path="/"
-          render={(props) => (
-            <SearchPage {...props} latitude={latitude} longitude={longitude} />
-          )}
-        />
+        <Route exact path="/" render={(props) => <SearchPage {...props} />} />
         <Route
           exact
           path="/details"
-          render={(props) => <DetailsPage {...props} />}
+          render={(props) => <DetailsPage {...props} device={device} />}
         />
         <Route
           exact
           path="/location-list"
-          render={(props) => <LocationList {...props} />}
+          render={(props) => <LocationList {...props} device={device} />}
+        />
+        <Route
+          exact
+          path="/add-new-garage"
+          render={(props) => <AddNewGarage {...props} device={device} />}
         />
       </main>
-      {/* Hidded footer for time being as we are integrating with wix */}
-      {/* <Footer /> */}
+      <Footer path={window.location.pathname} />
     </div>
   );
 };
