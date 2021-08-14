@@ -169,9 +169,9 @@ const DetailsPage = (props) => {
                           style={{ marginLeft: "10px" }}
                           className="material-ui-review-btn"
                         >
-                          {review.length && review.length >= 1
-                            ? `${review.length} Reviews`
-                            : `${review.length} Review`}
+                          {review.length && review.length === 1
+                            ? `${review.length} Review`
+                            : `${review.length} Reviews`}
                         </Button>
                       ) : null}
                     </>
