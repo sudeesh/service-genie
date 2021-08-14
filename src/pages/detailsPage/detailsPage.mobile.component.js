@@ -30,6 +30,7 @@ import carWash from "../../images/car-wash.png";
 import ac from "../../images/ac.png";
 import accessories from "../../images/hubcap.png";
 import ecu from "../../images/ecu.png";
+import compass from "../../images/compass-svgrepo-com.svg";
 
 // service
 import {
@@ -113,8 +114,6 @@ const MobileDetailsPage = (props) => {
   if (name && Object.keys(name).length === 0) {
     return <Loader />;
   }
-
-  console.log("name", name);
 
   return (
     <Grid
@@ -396,20 +395,20 @@ const MobileDetailsPage = (props) => {
           <p className="action-container text-center">
             <button
               className="common-button book-now-btn cursor-pointer action__share action__share--button"
-              onClick={() =>
-                (window.location.href = `http://maps.google.com?q=${name.latitude},${name.longitude}`)
-              }
-            >
-              Navigate
-            </button>
-            <button
-              className="common-button book-now-btn cursor-pointer action__directions action__direction--button"
               onClick={(e) => {
                 e.preventDefault();
                 window.location.href = `https://wa.me/919361040506?text=I%20need%20my%20car%20to%20be%20serviced%20@%20${name.garageTitle},%20${name.location}`;
               }}
             >
               Schedule Now
+            </button>
+            <button
+              className="common-button book-now-btn cursor-pointer action__directions action__direction--button"
+              onClick={() =>
+                (window.location.href = `http://maps.google.com?q=${name.latitude},${name.longitude}`)
+              }
+            >
+              <img src={compass} alt="Navigate" />
             </button>
           </p>
         </div>
