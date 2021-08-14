@@ -70,7 +70,7 @@ export default function Footer(props) {
               </a>
             </div>
             <div style={{ marginTop: "10px" }}>
-              Copyright © 2021 Service Geni - All Rights Reserved.
+              Copyright © 2021 BRN Technologies - All Rights Reserved.
             </div>
           </Grid>
         </Box>
