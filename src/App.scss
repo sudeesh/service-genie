@@ -44,7 +44,6 @@ header {
 main {
   grid-area: main;
   background: #fff;
-  margin-top: 15px;
 }
 footer {
   grid-area: footer;
@@ -143,5 +142,8 @@ a:hover {
   .input-footer {
     width: 230px;
     height: 30px;
+  }
+  .map-holder {
+    height: calc(100% - 194px) !important;
   }
 }

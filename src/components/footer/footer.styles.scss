@@ -44,8 +44,13 @@
     display: none;
   }
   .footer-conatiner {
-    height: 278px;
+    height: 230px;
     padding: 10px;
+    padding-bottom: 100px;
+    ul {
+      margin: 0;
+      padding: 0;
+    }
     li {
       width: 50%;
     }

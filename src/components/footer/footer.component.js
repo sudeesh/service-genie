@@ -14,11 +14,7 @@ import "./footer.styles.scss";
 
 export default function Footer(props) {
   return (
-    <footer
-      className={`row center footer-conatiner ${
-        props.path.includes("/details") ? "hide-footer" : ""
-      } ${props.path.includes("/location-list") ? "list-footer" : ""}`}
-    >
+    <footer className="row center footer-conatiner">
       {/* <div>
         <ul className="footer-list">
           <li>
