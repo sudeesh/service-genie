@@ -271,9 +271,9 @@ const DetailsPage = (props) => {
                     href={`http://maps.google.com?q=${name.latitude},${name.longitude}`}
                     target="_blank"
                     rel="noreferrer"
-                    style={{ textDecoration: "none", fontSize: "13px" }}
+                    style={{ textDecoration: "none" }}
                   >
-                    Share Location
+                    Direction
                   </a>
                   <button
                     className="common-button book-now-btn cursor-pointer action__directions action__direction--button"
