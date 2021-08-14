@@ -168,8 +168,8 @@ const MobileDetailsPage = (props) => {
                           className="review__button review__button--color-change"
                         >
                           {review.length && review.length >= 1
-                            ? `${review.length} Review`
-                            : `${review.length} Reviews`}
+                            ? `${review.length} Reviews`
+                            : `${review.length} Review`}
                         </button>
                       ) : null}
                     </>

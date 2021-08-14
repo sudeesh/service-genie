@@ -167,10 +167,11 @@ const DetailsPage = (props) => {
                           color="primary"
                           onClick={handleClickOpen}
                           style={{ marginLeft: "10px" }}
+                          className="material-ui-review-btn"
                         >
                           {review.length && review.length >= 1
-                            ? `${review.length} Review`
-                            : `${review.length} Reviews`}
+                            ? `${review.length} Reviews`
+                            : `${review.length} Review`}
                         </Button>
                       ) : null}
                     </>
@@ -205,7 +206,7 @@ const DetailsPage = (props) => {
                   <span>About Workshop:</span> {name.garageDescription}
                 </p>
                 <p>
-                  <span>weekOff: </span> {name.weekOff}
+                  <span>Week Off: </span> {name.weekOff}
                 </p>
 
                 <div>
