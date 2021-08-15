@@ -1,13 +1,10 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
-import {
-  FacebookShareButton,
-  TwitterShareButton,
-  WhatsappShareButton,
-} from "react-share";
-import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
 import instagram from "../../images/instagram-icon.png";
+import facebook from "../../images/facebook.png";
+import twitter from "../../images/twitter.png";
+import youtube from "../../images/youtube.png";
 
 // styles
 import "./footer.styles.scss";
@@ -46,22 +43,32 @@ export default function Footer(props) {
         <Box clone order={{ xs: 2, sm: 2 }}>
           <Grid item xs={12} md={4} alignContent="center" alignItems="center">
             <div>
-              <FacebookShareButton
-                quote="Service geni shared a service center"
-                url="https://www.facebook.com/servicegeni"
+              <a
+                href="https://www.facebook.com/servicegeni"
+                target="_blank"
+                rel="noreferrer"
               >
-                <FacebookIcon size={32} />
-              </FacebookShareButton>
-              <TwitterShareButton
-                quote="Service geni shared a service center"
-                url="https://twitter.com/GeniService"
+                <img src={facebook} alt="facebook" />
+              </a>
+              <a
+                href="https://twitter.com/GeniService"
+                target="_blank"
+                rel="noreferrer"
               >
-                <TwitterIcon size={32} />
-              </TwitterShareButton>
-              <WhatsappShareButton title="Service geni shared a service center">
-                <WhatsappIcon size={32} />
-              </WhatsappShareButton>
-              <a href="https://www.instagram.com/servicegeni/">
+                <img src={twitter} alt="twitter" />
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UC7rSwsw7lqxQ4477gzlyAOg"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={youtube} alt="youtube" />
+              </a>
+              <a
+                href="https://www.instagram.com/servicegeni/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <img src={instagram} alt="instagram" />
               </a>
             </div>
@@ -96,7 +103,7 @@ export default function Footer(props) {
               </li>
               <li>
                 <a href="https://www.servicegeni.in/terms-conditions">
-                  Terms & condition
+                  Terms & Conditions
                 </a>
               </li>
             </ul>
