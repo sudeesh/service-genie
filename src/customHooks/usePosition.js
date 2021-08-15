@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 const defaultSettings = {
   enableHighAccuracy: false,
@@ -26,7 +26,7 @@ export const usePosition = (watch = false, settings = defaultSettings) => {
 
   useEffect(() => {
     if (!navigator || !navigator.geolocation) {
-      setError("Geolocation is not supported");
+      setError('Geolocation is not supported');
       return;
     }
 
@@ -42,7 +42,13 @@ export const usePosition = (watch = false, settings = defaultSettings) => {
     }
 
     return () => watcher && navigator.geolocation.clearWatch(watcher);
-  }, [settings.enableHighAccuracy, settings.timeout, settings.maximumAge]);
+  }, [
+    settings.enableHighAccuracy,
+    settings.timeout,
+    settings.maximumAge,
+    watch,
+    settings,
+  ]);
 
   return { ...position, error };
 };
