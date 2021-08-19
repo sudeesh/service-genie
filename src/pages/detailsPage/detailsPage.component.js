@@ -105,10 +105,6 @@ const DetailsPage = (props) => {
     return <Loader />;
   }
 
-  if (props.device.breakpoint === 'phone') {
-    return <MobileDetailsPage {...props} />;
-  }
-
   // for future
 
   // const openReviewDialog = () => {
