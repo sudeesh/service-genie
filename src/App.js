@@ -1,6 +1,6 @@
 import "./App.scss";
-import React from "react";
-import { Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Route, withRouter } from "react-router-dom";
 // commenting homepage for temporary purpose
 // import Homepage from "./components/homePage/homePage.component";
 import SearchPage from "./pages/searchPage/searchPage.component";
@@ -14,6 +14,13 @@ import useDevice from "./customHooks/findDevice/useDevice";
 import AddNewGarage from "./pages/AddNewGarage/addnewgarage";
 // import LandscapeScreen from './components/landscapeScreen/landscapeScreen';
 
+import ReactGA from "react-ga";
+
+ReactGA.initialize("UA 205741741-1", {
+  debug: true,
+  titleCase: false,
+});
+
 const App = () => {
   const breakpoints = [
     { name: "phone", min: 0, max: 640 },
@@ -25,6 +32,10 @@ const App = () => {
   if (device.os.includes("Mac OS") || device.browser.includes("Safari")) {
     import("./reset.scss");
   }
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  });
 
   return (
     <div className="grid-container">
@@ -53,4 +64,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withRouter(App);
