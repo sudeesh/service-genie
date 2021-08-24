@@ -4,8 +4,10 @@ import CookieConsent, { Cookies } from "react-cookie-consent";
 // components
 import Search from "../../components/search/search.component";
 import Map from "../../components/map/map.component";
+import useGaTracker from "../../useGaTracker";
 
 const SearchPage = (props) => {
+  useGaTracker();
   const { latitude, longitude, history } = props;
   return (
     <>

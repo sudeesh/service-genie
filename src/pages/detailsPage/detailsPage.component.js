@@ -38,8 +38,10 @@ import MobileDetailsPage from "./detailsPage.mobile.component";
 import VerifiedTile from "../../components/common/verified.title";
 import BackToSearchButton from "../../components/backtosearch/backtosearch";
 import Loader from "../../components/loader/loader";
+import useGaTracker from "../../useGaTracker";
 
 const DetailsPage = (props) => {
+  useGaTracker();
   const [name, setGarageName] = useState({});
   const [centerDetails, setCenterDetails] = useState();
   const [review, setReview] = useState({});

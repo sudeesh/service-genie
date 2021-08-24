@@ -13,15 +13,10 @@ import FancyHeaderComponent from "./components/fancyheader/fancyheader.component
 import useDevice from "./customHooks/findDevice/useDevice";
 import AddNewGarage from "./pages/AddNewGarage/addnewgarage";
 // import LandscapeScreen from './components/landscapeScreen/landscapeScreen';
-
-import ReactGA from "react-ga";
-
-ReactGA.initialize("UA 205741741-1", {
-  debug: true,
-  titleCase: false,
-});
+import useGaTracker from "./useGaTracker";
 
 const App = () => {
+  useGaTracker();
   const breakpoints = [
     { name: "phone", min: 0, max: 640 },
     { name: "tablet", min: 640, max: 1080 },
@@ -32,10 +27,6 @@ const App = () => {
   if (device.os.includes("Mac OS") || device.browser.includes("Safari")) {
     import("./reset.scss");
   }
-
-  useEffect(() => {
-    ReactGA.pageview(window.location.pathname + window.location.search);
-  });
 
   return (
     <div className="grid-container">

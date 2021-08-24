@@ -45,8 +45,10 @@ import VerifiedTile from "../../components/common/verified.title";
 import BackToSearchButton from "../../components/backtosearch/backtosearch";
 import Close from "@material-ui/icons/Close";
 import Loader from "../../components/loader/loader";
+import useGaTracker from "../../useGaTracker";
 
 const MobileDetailsPage = (props) => {
+  useGaTracker();
   const [name, setGarageName] = useState({});
   const [centerDetails, setCenterDetails] = useState();
   const [review, setReview] = useState({});
