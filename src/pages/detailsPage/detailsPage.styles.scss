@@ -20,10 +20,10 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin-top: 10px;
 
   li {
     width: 140px;
-    border: 1px solid #555;
     border-radius: 10px;
     margin: 0 5px 30px;
     padding: 5px;
@@ -68,7 +68,6 @@
 }
 .image-container img {
   width: 100%;
-  border-radius: 10px;
 }
 .share-icons svg {
   margin-right: 5px;
@@ -94,6 +93,60 @@
 
 .details-container {
   margin-top: 10px !important;
+  font-family: $avenir-font-family;
+
+  & .review {
+    &__button {
+      &--color-change {
+        background-color: $white;
+        color: $brand-blue;
+        border: 0;
+        border-bottom: 1px solid $brand-blue;
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+
+  &__since-weekoff-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-items: flex-start;
+    align-items: center;
+  }
+
+  &__weekoff-button {
+    &--badge {
+      @include badge;
+      font-size: 10px;
+      margin: 5px;
+    }
+  }
+
+  .share {
+    &__popper {
+      .MuiPopover-paper {
+        background-color: $black;
+      }
+    }
+
+    &__button {
+      &--transform {
+        position: fixed;
+        top: 40%;
+        right: calc(0% - 55px);
+        transform: rotate(90deg);
+        background-color: $brand-blue;
+        color: $white;
+      }
+    }
+  }
+}
+
+.share {
+  &-icons {
+    display: flex !important;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -126,14 +179,6 @@
 
       &__ratings {
         grid-column: 1 / span 2;
-      }
-
-      &__weekoff-button {
-        &--badge {
-          @include badge;
-          font-size: 10px;
-          margin: 5px;
-        }
       }
 
       .redirect {
@@ -211,19 +256,6 @@
         }
       }
 
-      .review {
-        &__button {
-          &--color-change {
-            background-color: $white;
-            color: $brand-blue;
-            border: 0;
-            border-bottom: 1px solid $brand-blue;
-            margin: 0;
-            padding: 0;
-          }
-        }
-      }
-
       .services {
         &__title {
           &--font-size-change {
@@ -296,17 +328,18 @@
       }
     }
   }
+}
 
-  .share {
-    &__popper {
-      .MuiPopover-paper {
-        background-color: transparent !important;
-        transform: rotate(90deg) !important;
+.share {
+  &__popper {
+    .MuiPopover-paper {
+      background-color: transparent !important;
+      transform: rotate(90deg) !important;
+      overflow: hidden;
 
-        .share-icons {
-          button {
-            transform: rotate(-90deg);
-          }
+      .share-icons {
+        button {
+          transform: rotate(-90deg);
         }
       }
     }

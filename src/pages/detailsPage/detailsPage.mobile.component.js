@@ -169,9 +169,9 @@ const MobileDetailsPage = (props) => {
                           style={{ marginLeft: "10px" }}
                           className="review__button review__button--color-change"
                         >
-                          {review.length && review.length >= 1
-                            ? `${review.length} Reviews`
-                            : `${review.length} Review`}
+                          {review.length && review.length === 1
+                            ? `${review.length} Review`
+                            : `${review.length} Reviews`}
                         </button>
                       ) : null}
                     </>
@@ -436,6 +436,7 @@ const MobileDetailsPage = (props) => {
           horizontal: "left",
         }}
         className="share__popper"
+        disableScrollLock
       >
         <div>
           <div className="share-icons">
