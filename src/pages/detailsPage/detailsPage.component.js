@@ -39,7 +39,6 @@ import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
 
 // style
 import "./detailsPage.styles.scss";
-import MobileDetailsPage from "./detailsPage.mobile.component";
 import VerifiedTile from "../../components/common/verified.title";
 import BackToSearchButton from "../../components/backtosearch/backtosearch";
 import Loader from "../../components/loader/loader";
@@ -61,11 +60,11 @@ const DetailsPage = (props) => {
   const getGarageLocation = props.location.search.split("?")[2];
 
   const sericeCentrename = getGarageName
-    .replace("garageName=", "")
-    .replaceAll("%20", " ");
+    ?.replace("garageName=", "")
+    ?.replaceAll("%20", " ");
   const serviceLocation = getGarageLocation
-    .replace("location=", "")
-    .replaceAll("%20", " ");
+    ?.replace("location=", "")
+    ?.replaceAll("%20", " ");
   const updatedName =
     props.location.state !== undefined
       ? props.location.state.val
@@ -101,10 +100,6 @@ const DetailsPage = (props) => {
 
   if (name && Object.keys(name).length === 0) {
     return <Loader />;
-  }
-
-  if (props.device.breakpoint === "phone") {
-    return <MobileDetailsPage {...props} />;
   }
 
   // for future
@@ -174,7 +169,6 @@ const DetailsPage = (props) => {
                   </div>
                 </p>
                 <div>
-                  <span>Rating:</span>
                   {overAllRating &&
                   overAllRating.averageGarageRatings === "NaN" ? (
                     "No Reviews"
@@ -282,7 +276,7 @@ const DetailsPage = (props) => {
                             window.location.href = `https://wa.me/919361040506?text=I%20need%20Car%20Wash%20@%20${name.garageTitle},%20${name.location}`;
                           }}
                         />
-                        <div className="image-caption">CarWash</div>
+                        <div className="image-caption">Car Wash</div>
                       </li>
                     ) : null}
                     {name.garageServices && name.garageServices.acAndCL ? (
@@ -417,7 +411,7 @@ const DetailsPage = (props) => {
                   (window.location.href = `http://maps.google.com?q=${name.latitude},${name.longitude}`)
                 }
               >
-                Directions
+                Direction
               </button>
             </p>
           </Grid>
