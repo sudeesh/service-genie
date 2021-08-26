@@ -36,6 +36,7 @@ import {
 //Icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
+import NearMeIcon from "@material-ui/icons/NearMe";
 
 // style
 import "./detailsPage.styles.scss";
@@ -411,7 +412,7 @@ const DetailsPage = (props) => {
                   (window.location.href = `http://maps.google.com?q=${name.latitude},${name.longitude}`)
                 }
               >
-                Direction
+                <NearMeIcon style={{ color: "#fff", fontSize: "40px" }} />
               </button>
             </p>
           </Grid>
