@@ -1,3 +1,4 @@
+import { fieldNames } from './fieldNames';
 import { fieldTypes } from './fieldTypes';
 
 export const bufferValues = [
@@ -12,6 +13,7 @@ export const bufferValues = [
     touched: false,
     allowValidation: true,
     fieldType: fieldTypes.text,
+    name: fieldNames.title,
   },
   {
     value: '',
@@ -24,6 +26,7 @@ export const bufferValues = [
     touched: false,
     allowValidation: true,
     fieldType: fieldTypes.text,
+    name: fieldNames.description,
   },
   {
     value: '',
@@ -36,6 +39,7 @@ export const bufferValues = [
     touched: false,
     allowValidation: true,
     fieldType: fieldTypes.number,
+    name: fieldNames.primaryContactNumber,
   },
   {
     value: '',
@@ -48,10 +52,12 @@ export const bufferValues = [
     touched: false,
     allowValidation: false,
     fieldType: fieldTypes.number,
+    name: fieldNames.alternateContactNumber,
   },
   {
     value: '',
     label: 'Payment Mode',
+    placeHolderText: 'How the customer can pay for your services/offerings?',
     validations: {
       message: 'Please Select Payment Mode',
       isValid: true,
@@ -59,6 +65,7 @@ export const bufferValues = [
     touched: false,
     allowValidation: true,
     fieldType: fieldTypes.multiselectbutton,
+    name: fieldNames.paymentMode,
   },
   {
     value: '',
@@ -71,6 +78,7 @@ export const bufferValues = [
     touched: false,
     allowValidation: true,
     fieldType: fieldTypes.text,
+    name: fieldNames.since,
   },
   {
     value: '',
@@ -84,6 +92,7 @@ export const bufferValues = [
     touched: false,
     allowValidation: true,
     fieldType: fieldTypes.text,
+    name: fieldNames.location,
   },
   {
     value: '',
@@ -96,6 +105,7 @@ export const bufferValues = [
     touched: false,
     allowValidation: true,
     fieldType: fieldTypes.textarea,
+    name: fieldNames.address,
   },
   {
     value: '',
@@ -108,6 +118,7 @@ export const bufferValues = [
     touched: false,
     allowValidation: true,
     fieldType: fieldTypes.number,
+    name: fieldNames.pincode,
   },
   {
     value: '',
@@ -120,6 +131,7 @@ export const bufferValues = [
     touched: false,
     allowValidation: true,
     fieldType: fieldTypes.text,
+    name: fieldNames.operationHours,
   },
   {
     value: '',
@@ -132,6 +144,7 @@ export const bufferValues = [
     touched: false,
     allowValidation: true,
     fieldType: fieldTypes.text,
+    name: fieldNames.weekOff,
   },
   {
     value: '',
@@ -144,6 +157,7 @@ export const bufferValues = [
     touched: false,
     allowValidation: true,
     fieldType: fieldTypes.number,
+    name: fieldNames.startingAt,
   },
   {
     value: '',
@@ -154,7 +168,11 @@ export const bufferValues = [
     },
     touched: false,
     allowValidation: true,
+    fieldExtras: {
+      isBoolean: true,
+    },
     fieldType: fieldTypes.radio,
+    name: fieldNames.generalServicesAndOilChange,
   },
   {
     value: '',
@@ -165,18 +183,41 @@ export const bufferValues = [
     },
     touched: false,
     allowValidation: true,
+    fieldExtras: {
+      isBoolean: true,
+    },
     fieldType: fieldTypes.radio,
+    name: fieldNames.paintAndTinkering,
   },
   {
     value: '',
-    label: 'Car Wash, AC Repair and Cleaning',
+    label: 'AC Repair and Cleaning',
     validations: {
       message: 'Please Select CarWash AC Repair & Cleaning',
       isValid: true,
     },
     touched: false,
     allowValidation: true,
+    fieldExtras: {
+      isBoolean: true,
+    },
     fieldType: fieldTypes.radio,
+    name: fieldNames.acAndCleaning,
+  },
+  {
+    value: '',
+    label: 'Car Wash',
+    validations: {
+      message: 'Please Select CarWash',
+      isValid: true,
+    },
+    touched: false,
+    allowValidation: true,
+    fieldExtras: {
+      isBoolean: true,
+    },
+    fieldType: fieldTypes.radio,
+    name: fieldNames.carWash,
   },
   {
     value: '',
@@ -187,7 +228,11 @@ export const bufferValues = [
     },
     touched: false,
     allowValidation: true,
+    fieldExtras: {
+      isBoolean: true,
+    },
     fieldType: fieldTypes.radio,
+    name: fieldNames.wheelsAndSpares,
   },
   {
     value: '',
@@ -198,7 +243,11 @@ export const bufferValues = [
     },
     touched: false,
     allowValidation: true,
+    fieldExtras: {
+      isBoolean: true,
+    },
     fieldType: fieldTypes.radio,
+    name: fieldNames.ecuCoding,
   },
   {
     value: '',
@@ -209,6 +258,10 @@ export const bufferValues = [
     },
     touched: false,
     allowValidation: true,
+    fieldExtras: {
+      isBoolean: true,
+    },
     fieldType: fieldTypes.radio,
+    name: fieldNames.accessories,
   },
 ];
