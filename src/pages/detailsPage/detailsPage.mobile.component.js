@@ -43,7 +43,7 @@ import {
 import './detailsPage.styles.scss';
 import VerifiedTile from '../../components/common/verified.title';
 import BackToSearchButton from '../../components/backtosearch/backtosearch';
-import Close from '@material-ui/icons/Close';
+// import Close from '@material-ui/icons/Close';
 import Loader from '../../components/loader/loader';
 import CustomCarousel from '../../components/carousel/carousel';
 
@@ -110,7 +110,8 @@ const MobileDetailsPage = (props) => {
   const openShare = Boolean(anchorEl);
   const shareId = open ? 'simple-popover' : undefined;
 
-  const [showRedirect, setShowRedirect] = useState(true);
+  // Commented based on suggestions from @praveen
+  // const [showRedirect, setShowRedirect] = useState(true);
 
   if (name && Object.keys(name).length === 0) {
     return <Loader />;
@@ -365,6 +366,8 @@ const MobileDetailsPage = (props) => {
           </Grid>
         </Grid>
       </Grid>
+      {/*
+      // Commented based on suggestions from @praveen
       {showRedirect ? (
         <div className="redirect__container">
           <div
@@ -391,7 +394,7 @@ const MobileDetailsPage = (props) => {
             </div>
           </div>
         </div>
-      ) : null}
+      ) : null} */}
       {props.device.breakpoint === 'phone' ? (
         <div>
           <p className="action-container text-center">

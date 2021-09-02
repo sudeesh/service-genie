@@ -419,7 +419,7 @@ const DetailsPage = (props) => {
                     (window.location.href = `http://maps.google.com?q=${name.latitude},${name.longitude}`)
                   }
                 >
-                  <NearMeIcon style={{ color: "#fff", fontSize: "40px" }} />
+                  Direction
                 </button>
               </p>
             </Grid>
