@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import Grid from '@material-ui/core/Grid';
-import StarRatings from 'react-star-ratings';
-import Button from '@material-ui/core/Button';
+import React, { useEffect, useState } from "react";
+import Grid from "@material-ui/core/Grid";
+import StarRatings from "react-star-ratings";
+import Button from "@material-ui/core/Button";
 import {
   FacebookShareButton,
   TwitterShareButton,
   WhatsappShareButton,
-} from 'react-share';
-import { FacebookIcon, TwitterIcon, WhatsappIcon } from 'react-share';
+} from "react-share";
+import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
 import {
   Dialog,
   DialogActions,
@@ -15,36 +15,36 @@ import {
   DialogContentText,
   DialogTitle,
   Popover,
-} from '@material-ui/core';
+} from "@material-ui/core";
 
 // image
-import tyre from '../../images/tyre.png';
-import oil from '../../images/oil-bottle.png';
-import spray from '../../images/spray-can.png';
-import carWash from '../../images/car-wash.png';
-import ac from '../../images/ac.png';
-import accessories from '../../images/hubcap.png';
-import ecu from '../../images/ecu.png';
+import tyre from "../../images/tyre.png";
+import oil from "../../images/oil-bottle.png";
+import spray from "../../images/spray-can.png";
+import carWash from "../../images/car-wash.png";
+import ac from "../../images/ac.png";
+import accessories from "../../images/hubcap.png";
+import ecu from "../../images/ecu.png";
 
 // service
 import {
   getGaragesByNameandLocation,
   getReviewRating,
   getOverallReviewRating,
-} from '../../services/services';
+} from "../../services/services";
 
 //Icon
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
-import NearMeIcon from "@material-ui/icons/NearMe";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
+// import NearMeIcon from "@material-ui/icons/NearMe";
 
 // style
-import './detailsPage.styles.scss';
-import MobileDetailsPage from './detailsPage.mobile.component';
-import VerifiedTile from '../../components/common/verified.title';
-import BackToSearchButton from '../../components/backtosearch/backtosearch';
-import Loader from '../../components/loader/loader';
-import CustomCarousel from '../../components/carousel/carousel';
+import "./detailsPage.styles.scss";
+import MobileDetailsPage from "./detailsPage.mobile.component";
+import VerifiedTile from "../../components/common/verified.title";
+import BackToSearchButton from "../../components/backtosearch/backtosearch";
+import Loader from "../../components/loader/loader";
+import CustomCarousel from "../../components/carousel/carousel";
 import useGaTracker from "../../useGaTracker";
 
 const DetailsPage = (props) => {
@@ -59,15 +59,15 @@ const DetailsPage = (props) => {
   // const [reviewDialogStatus, setReviewDialogStatus] = useState(false);
 
   //  Added for sharing link for social media
-  const getGarageName = props.location.search.split('?')[1];
-  const getGarageLocation = props.location.search.split('?')[2];
+  const getGarageName = props.location.search.split("?")[1];
+  const getGarageLocation = props.location.search.split("?")[2];
 
   const sericeCentrename = getGarageName
-    ?.replace('garageName=', '')
-    ?.replaceAll('%20', ' ');
+    ?.replace("garageName=", "")
+    ?.replaceAll("%20", " ");
   const serviceLocation = getGarageLocation
-    ?.replace('location=', '')
-    ?.replaceAll('%20', ' ');
+    ?.replace("location=", "")
+    ?.replaceAll("%20", " ");
   const updatedName =
     props.location.state !== undefined
       ? props.location.state.val
@@ -127,11 +127,11 @@ const DetailsPage = (props) => {
   };
 
   const openShare = Boolean(anchorEl);
-  const shareId = open ? 'simple-popover' : undefined;
+  const shareId = open ? "simple-popover" : undefined;
 
   if (name === undefined) {
     return (
-      <p style={{ textAlign: 'center', paddingTop: '10px', width: '100%' }}>
+      <p style={{ textAlign: "center", paddingTop: "10px", width: "100%" }}>
         Service center description is not available currently, Admin will update
         soon
       </p>
@@ -155,7 +155,7 @@ const DetailsPage = (props) => {
               sm={6}
               lg={6}
               container
-              style={{ paddingRight: '30px' }}
+              style={{ paddingRight: "30px" }}
             >
               <Grid item xs container direction="column">
                 <Grid item xs className="description-panel">
@@ -174,8 +174,8 @@ const DetailsPage = (props) => {
                   </p>
                   <div>
                     {overAllRating &&
-                    overAllRating.averageGarageRatings === 'NaN' ? (
-                      'No Reviews'
+                    overAllRating.averageGarageRatings === "NaN" ? (
+                      "No Reviews"
                     ) : (
                       <>
                         <StarRatings
@@ -195,7 +195,7 @@ const DetailsPage = (props) => {
                             variant="contained"
                             color="primary"
                             onClick={handleClickOpen}
-                            style={{ marginLeft: '10px' }}
+                            style={{ marginLeft: "10px" }}
                             className="material-ui-review-btn review__button review__button--color-change"
                           >
                             {review.length && review.length === 1
@@ -383,11 +383,11 @@ const DetailsPage = (props) => {
               xs={12}
               sm={6}
               lg={6}
-              style={{ paddingTop: '10px' }}
+              style={{ paddingTop: "10px" }}
               className="description-panel"
             >
               <div className="image-container">
-                {name.garageImage === '' ? (
+                {name.garageImage === "" ? (
                   <img src="http://via.placeholder.com/400x200" alt="garage" />
                 ) : (
                   <img
@@ -404,7 +404,10 @@ const DetailsPage = (props) => {
                   className="common-button book-now-btn cursor-pointer action__share action__share--button"
                   onClick={(e) => {
                     e.preventDefault();
-                    window.location.href = `https://wa.me/919361040506?text=I%20need%20my%20car%20to%20be%20serviced%20@%20${name.garageTitle},%20${name.location}`;
+                    window.open(
+                      `https://wa.me/919361040506?text=I%20need%20my%20car%20to%20be%20serviced%20@%20${name.garageTitle},%20${name.location}`,
+                      "_blank"
+                    );
                   }}
                 >
                   Schedule Now
@@ -412,7 +415,10 @@ const DetailsPage = (props) => {
                 <button
                   className="common-button book-now-btn cursor-pointer action__directions action__direction--button"
                   onClick={() =>
-                    (window.location.href = `http://maps.google.com?q=${name.latitude},${name.longitude}`)
+                    window.open(
+                      `http://maps.google.com?q=${name.latitude},${name.longitude}`,
+                      "_blank"
+                    )
                   }
                 >
                   Direction
@@ -433,12 +439,12 @@ const DetailsPage = (props) => {
             anchorEl={anchorEl}
             onClose={handleCloseShare}
             anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
+              vertical: "bottom",
+              horizontal: "left",
             }}
             transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
+              vertical: "top",
+              horizontal: "left",
             }}
             className="share__popper"
             disableScrollLock
