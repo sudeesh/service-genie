@@ -30,20 +30,22 @@ import carWash from "../../images/car-wash.png";
 import ac from "../../images/ac.png";
 import accessories from "../../images/hubcap.png";
 import ecu from "../../images/ecu.png";
+import compass from "../../images/compass-svgrepo-com.svg";
 
 // service
 import {
-  getGaragesByName,
   getReviewRating,
   getOverallReviewRating,
+  getGaragesByNameandLocation,
 } from "../../services/services";
 
 // style
 import "./detailsPage.styles.scss";
 import VerifiedTile from "../../components/common/verified.title";
 import BackToSearchButton from "../../components/backtosearch/backtosearch";
-import Close from "@material-ui/icons/Close";
+// import Close from '@material-ui/icons/Close';
 import Loader from "../../components/loader/loader";
+import CustomCarousel from "../../components/carousel/carousel";
 
 const MobileDetailsPage = (props) => {
   const [name, setGarageName] = useState({});
@@ -60,7 +62,7 @@ const MobileDetailsPage = (props) => {
     .replace("garageName=", "")
     .replaceAll("%20", " ");
   const serviceLocation = getGarageLocation
-    .replace("location=")
+    .replace("location=", "")
     .replaceAll("%20", " ");
   const updatedName =
     props.location.state !== undefined
@@ -72,10 +74,10 @@ const MobileDetailsPage = (props) => {
       : serviceLocation;
 
   useEffect(() => {
-    getGaragesByName(updatedName)
-      .then((res) => setGarageName(res.data))
+    getGaragesByNameandLocation(updatedName, updatedLocation)
+      .then((res) => setGarageName(res.data[0]))
       .catch((error) => error.message);
-  }, [updatedName]);
+  }, [updatedName, updatedLocation]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -108,9 +110,10 @@ const MobileDetailsPage = (props) => {
   const openShare = Boolean(anchorEl);
   const shareId = open ? "simple-popover" : undefined;
 
-  const [showRedirect, setShowRedirect] = useState(true);
+  // Commented based on suggestions from @praveen
+  // const [showRedirect, setShowRedirect] = useState(true);
 
-  if (Object.keys(name).length === 0) {
+  if (name && Object.keys(name).length === 0) {
     return <Loader />;
   }
 
@@ -123,6 +126,7 @@ const MobileDetailsPage = (props) => {
       className="center-div details-container"
     >
       <BackToSearchButton />
+      <CustomCarousel device={props.device} />
       <Grid container>
         <Grid
           item
@@ -166,7 +170,7 @@ const MobileDetailsPage = (props) => {
                           style={{ marginLeft: "10px" }}
                           className="review__button review__button--color-change"
                         >
-                          {review.length && review.length >= 1
+                          {review.length && review.length === 1
                             ? `${review.length} Review`
                             : `${review.length} Reviews`}
                         </button>
@@ -254,7 +258,7 @@ const MobileDetailsPage = (props) => {
                           alt="CarWash"
                           className="cursor-pointer"
                         />
-                        <div className="image-caption">CarWash</div>
+                        <div className="image-caption">Car Wash</div>
                       </li>
                     ) : null}
                     {name.garageServices && name.garageServices.acAndCL ? (
@@ -266,11 +270,11 @@ const MobileDetailsPage = (props) => {
                       >
                         <img
                           src={ac}
-                          alt="AC Reapir & Cleaning"
+                          alt="AC Repair & Cleaning"
                           className="cursor-pointer"
                         />
                         <div className="image-caption">
-                          AC Reapir & Cleaning
+                          AC Repair & Cleaning
                         </div>
                       </li>
                     ) : null}
@@ -362,6 +366,8 @@ const MobileDetailsPage = (props) => {
           </Grid>
         </Grid>
       </Grid>
+      {/*
+      // Commented based on suggestions from @praveen
       {showRedirect ? (
         <div className="redirect__container">
           <div
@@ -380,7 +386,7 @@ const MobileDetailsPage = (props) => {
               <button
                 className="common-button redirect__button"
                 onClick={() => {
-                  window.location.href = "https://www.servicegeni.in/doorstep";
+                  window.location.href = 'https://www.servicegeni.in/doorstep';
                 }}
               >
                 BOOK NOW
@@ -388,26 +394,32 @@ const MobileDetailsPage = (props) => {
             </div>
           </div>
         </div>
-      ) : null}
+      ) : null} */}
       {props.device.breakpoint === "phone" ? (
         <div>
           <p className="action-container text-center">
             <button
               className="common-button book-now-btn cursor-pointer action__share action__share--button"
-              onClick={() =>
-                (window.location.href = `http://maps.google.com?q=${name.latitude},${name.longitude}`)
-              }
-            >
-              Navigate
-            </button>
-            <button
-              className="common-button book-now-btn cursor-pointer action__directions action__direction--button"
               onClick={(e) => {
                 e.preventDefault();
-                window.location.href = `https://wa.me/919361040506?text=I%20need%20my%20car%20to%20be%20serviced%20@%20${name.garageTitle},%20${name.location}`;
+                window.open(
+                  `https://wa.me/919361040506?text=I%20need%20my%20car%20to%20be%20serviced%20@%20${name.garageTitle},%20${name.location}`,
+                  "_blank"
+                );
               }}
             >
               Schedule Now
+            </button>
+            <button
+              className="common-button book-now-btn cursor-pointer action__directions action__direction--button"
+              onClick={() =>
+                window.open(
+                  `http://maps.google.com?q=${name.latitude},${name.longitude}`,
+                  "_blank"
+                )
+              }
+            >
+              <img src={compass} alt="Navigate" />
             </button>
           </p>
         </div>
@@ -433,6 +445,7 @@ const MobileDetailsPage = (props) => {
           horizontal: "left",
         }}
         className="share__popper"
+        disableScrollLock
       >
         <div>
           <div className="share-icons">

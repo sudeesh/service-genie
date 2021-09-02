@@ -44,7 +44,6 @@ header {
 main {
   grid-area: main;
   background: #fff;
-  margin-top: 15px;
 }
 footer {
   grid-area: footer;
@@ -144,4 +143,10 @@ a:hover {
     width: 230px;
     height: 30px;
   }
+  .map-holder {
+    height: calc(100% - 194px) !important;
+  }
+}
+.CookieConsent {
+  z-index: 10001 !important;
 }

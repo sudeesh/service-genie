@@ -4,6 +4,7 @@
   width: 60%;
   height: 130px;
   margin-top: 25px;
+  z-index: 1000;
 }
 
 .footer-list {
@@ -23,7 +24,7 @@
 .footer-conatiner {
   flex-direction: column;
   flex-wrap: nowrap !important;
-  button {
+  a {
     margin-right: 10px;
     margin-top: 10px;
   }
@@ -39,13 +40,18 @@
   }
 }
 
-@media screen and (max-width: $screen-sm-max) {
+@media screen and (max-width: 768px) {
   .hide-footer {
     display: none;
   }
   .footer-conatiner {
-    height: 278px;
+    height: 230px;
     padding: 10px;
+    padding-bottom: 100px;
+    ul {
+      margin: 0;
+      padding: 0;
+    }
     li {
       width: 50%;
     }
@@ -53,5 +59,9 @@
   .footer {
     width: 78%;
     height: auto;
+  }
+  .list-footer {
+    height: 220px;
+    padding-top: 0;
   }
 }

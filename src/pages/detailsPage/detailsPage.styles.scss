@@ -20,10 +20,10 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin-top: 10px;
 
   li {
     width: 140px;
-    border: 1px solid #555;
     border-radius: 10px;
     margin: 0 5px 30px;
     padding: 5px;
@@ -68,7 +68,6 @@
 }
 .image-container img {
   width: 100%;
-  border-radius: 10px;
 }
 .share-icons svg {
   margin-right: 5px;
@@ -94,6 +93,66 @@
 
 .details-container {
   margin-top: 10px !important;
+  font-family: $avenir-font-family;
+
+  & .review {
+    &__button {
+      &--color-change {
+        background-color: $white;
+        color: $brand-blue;
+        border: 0;
+        border-bottom: 1px solid $brand-blue;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__since-weekoff-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-items: flex-start;
+    align-items: center;
+
+    span {
+      color: rgb(2, 0, 36) !important;
+      font-weight: normal !important;
+    }
+  }
+
+  &__weekoff-button {
+    &--badge {
+      @include badge;
+      font-size: 10px;
+      margin: 5px;
+    }
+  }
+
+  .share {
+    &__popper {
+      .MuiPopover-paper {
+        background-color: $black;
+      }
+    }
+
+    &__button {
+      &--transform {
+        position: fixed;
+        top: 40%;
+        right: calc(0% - 55px);
+        transform: rotate(90deg);
+        background-color: $brand-blue;
+        color: $white;
+      }
+    }
+  }
+}
+
+.share {
+  &-icons {
+    display: flex !important;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -107,11 +166,12 @@
     font-family: $avenir-font-family;
     background-color: $brand-orange;
     color: $black;
+    padding: 0;
   }
   .details {
     &-container {
       margin-top: 0 !important;
-      
+
       &__grid {
         font-family: $avenir-font-family;
       }
@@ -125,14 +185,6 @@
 
       &__ratings {
         grid-column: 1 / span 2;
-      }
-
-      &__weekoff-button {
-        &--badge {
-          @include badge;
-          font-size: 10px;
-          margin: 5px;
-        }
       }
 
       .redirect {
@@ -150,6 +202,8 @@
           flex-direction: column;
           font-family: $avenir-font-family;
           color: $white;
+          z-index: 1001;
+          left: 0;
         }
         &__content {
           display: flex;
@@ -186,11 +240,8 @@
           display: grid;
           justify-items: center;
           align-items: center;
-          grid-template-columns: 1fr 1fr;
-          z-index: 1;
-          -webkit-box-shadow: 0px -1px 7px 0px rgba(0, 0, 0, 0.75);
-          -moz-box-shadow: 0px -1px 7px 0px rgba(0, 0, 0, 0.75);
-          box-shadow: 0px -1px 7px 0px rgba(0, 0, 0, 0.75);
+          grid-template-columns: 3fr 1fr;
+          z-index: 1001;
           left: 0;
         }
         &__share {
@@ -202,19 +253,13 @@
         &__direction {
           &--button {
             @extend %details-actions-button;
-          }
-        }
-      }
+            background-color: #3a404f;
+            padding-top: 5px;
 
-      .review {
-        &__button {
-          &--color-change {
-            background-color: $white;
-            color: $brand-blue;
-            border: 0;
-            border-bottom: 1px solid $brand-blue;
-            margin: 0;
-            padding: 0;
+            img {
+              width: 40px;
+              height: 40px;
+            }
           }
         }
       }
@@ -291,19 +336,27 @@
       }
     }
   }
+}
 
-  .share {
-    &__popper {
-      .MuiPopover-paper {
-        background-color: transparent !important;
-        transform: rotate(90deg) !important;
+.share {
+  &__popper {
+    .MuiPopover-paper {
+      background-color: transparent !important;
+      transform: rotate(90deg) !important;
+      overflow: hidden;
 
-        .share-icons {
-          button {
-            transform: rotate(-90deg);
-          }
+      .share-icons {
+        button {
+          transform: rotate(-90deg);
         }
       }
     }
+  }
+}
+
+.material-ui-review-btn {
+  padding: 15px;
+  span {
+    font-size: 12px;
   }
 }

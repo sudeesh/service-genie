@@ -1,11 +1,13 @@
-import React from "react";
-import CookieConsent, { Cookies } from "react-cookie-consent";
+import React from 'react';
+import CookieConsent from 'react-cookie-consent';
 
 // components
 import Search from "../../components/search/search.component";
 import Map from "../../components/map/map.component";
+import useGaTracker from "../../useGaTracker";
 
 const SearchPage = (props) => {
+  useGaTracker();
   const { latitude, longitude, history } = props;
   return (
     <>
@@ -14,14 +16,14 @@ const SearchPage = (props) => {
         buttonText="Accept"
         enableDeclineButton
         onDecline={() => {}}
-        style={{ background: "#2B373B" }}
-        buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+        style={{ background: '#2B373B' }}
+        buttonStyle={{ color: '#4e503b', fontSize: '13px' }}
       >
         This website uses cookies to enhance the user experience. For more info,
         see our
         <a
           href="https://www.servicegeni.in/terms-conditions"
-          style={{ color: "#fff", paddingLeft: "3px" }}
+          style={{ color: '#fff', paddingLeft: '3px' }}
         >
           Terms and Conditions & Privacy Policy
         </a>

@@ -1,0 +1,94 @@
+@import '../../styles/utility.scss';
+
+.addnewgarage-container {
+  font-family: $avenir-font-family;
+  margin-bottom: 10px;
+
+  form {
+    width: 80%;
+
+    .radio-group {
+      &-container {
+        margin-top: 10px;
+        margin-left: 10px;
+      }
+      flex-direction: row;
+
+      &-legend {
+        font-size: 12px;
+      }
+      .MuiSvgIcon-root {
+        color: #3a404f;
+      }
+    }
+
+    .text-container {
+      display: flex;
+      flex-direction: column;
+
+      .error {
+        &__text {
+          &--red {
+            color: $red;
+            font-size: 10px;
+            margin-left: 10px;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+
+  button {
+    width: 150px;
+    background-color: $brand-orange;
+    margin-right: 10px;
+  }
+
+  @media screen and (min-width: $screen-sm-max) and (max-width: $screen-md-min) {
+    form {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+
+      .radio-group {
+        &-container {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: $screen-md-max) {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    row-gap: 20px;
+    justify-items: center;
+    align-items: center;
+
+    form {
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  @media screen and (max-width: $screen-md-min) {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    row-gap: 20px;
+    justify-items: center;
+    align-items: center;
+
+    form {
+      display: grid;
+      justify-items: center;
+
+      .radio-group {
+        &-legend {
+          width: 200px;
+        }
+      }
+    }
+  }
+}
