@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import StarRatings from "react-star-ratings";
@@ -37,7 +36,7 @@ import {
 //Icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
-// import NearMeIcon from "@material-ui/icons/NearMe";
+import NearMeIcon from "@material-ui/icons/NearMe";
 
 // style
 import "./detailsPage.styles.scss";
