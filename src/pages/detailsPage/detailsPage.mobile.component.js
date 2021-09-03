@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import Grid from '@material-ui/core/Grid';
-import StarRatings from 'react-star-ratings';
-import Button from '@material-ui/core/Button';
-import OrangeIcon from '../../images/orange icon.png';
+import React, { useEffect, useState } from "react";
+import Grid from "@material-ui/core/Grid";
+import StarRatings from "react-star-ratings";
+import Button from "@material-ui/core/Button";
+import OrangeIcon from "../../images/orange icon.png";
 
 import {
   FacebookShareButton,
   TwitterShareButton,
   WhatsappShareButton,
-} from 'react-share';
-import { FacebookIcon, TwitterIcon, WhatsappIcon } from 'react-share';
+} from "react-share";
+import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
 import {
   Dialog,
   DialogActions,
@@ -17,35 +17,35 @@ import {
   DialogContentText,
   DialogTitle,
   Popover,
-} from '@material-ui/core';
+} from "@material-ui/core";
 //Icon
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
 
 // image
-import tyre from '../../images/tyre.png';
-import oil from '../../images/oil-bottle.png';
-import spray from '../../images/spray-can.png';
-import carWash from '../../images/car-wash.png';
-import ac from '../../images/ac.png';
-import accessories from '../../images/hubcap.png';
-import ecu from '../../images/ecu.png';
-import compass from '../../images/compass-svgrepo-com.svg';
+import tyre from "../../images/tyre.png";
+import oil from "../../images/oil-bottle.png";
+import spray from "../../images/spray-can.png";
+import carWash from "../../images/car-wash.png";
+import ac from "../../images/ac.png";
+import accessories from "../../images/hubcap.png";
+import ecu from "../../images/ecu.png";
+import compass from "../../images/compass-svgrepo-com.svg";
 
 // service
 import {
   getReviewRating,
   getOverallReviewRating,
   getGaragesByNameandLocation,
-} from '../../services/services';
+} from "../../services/services";
 
 // style
-import './detailsPage.styles.scss';
-import VerifiedTile from '../../components/common/verified.title';
-import BackToSearchButton from '../../components/backtosearch/backtosearch';
+import "./detailsPage.styles.scss";
+import VerifiedTile from "../../components/common/verified.title";
+import BackToSearchButton from "../../components/backtosearch/backtosearch";
 // import Close from '@material-ui/icons/Close';
-import Loader from '../../components/loader/loader';
-import CustomCarousel from '../../components/carousel/carousel';
+import Loader from "../../components/loader/loader";
+import CustomCarousel from "../../components/carousel/carousel";
 
 const MobileDetailsPage = (props) => {
   const [name, setGarageName] = useState({});
@@ -55,15 +55,15 @@ const MobileDetailsPage = (props) => {
   const [open, setOpen] = React.useState(false);
 
   //  Added for sharing link for social media
-  const getGarageName = props.location.search.split('?')[1];
-  const getGarageLocation = props.location.search.split('?')[2];
+  const getGarageName = props.location.search.split("?")[1];
+  const getGarageLocation = props.location.search.split("?")[2];
 
   const sericeCentrename = getGarageName
-    .replace('garageName=', '')
-    .replaceAll('%20', ' ');
+    .replace("garageName=", "")
+    .replaceAll("%20", " ");
   const serviceLocation = getGarageLocation
-    .replace('location=', '')
-    .replaceAll('%20', ' ');
+    .replace("location=", "")
+    .replaceAll("%20", " ");
   const updatedName =
     props.location.state !== undefined
       ? props.location.state.val
@@ -108,7 +108,7 @@ const MobileDetailsPage = (props) => {
   };
 
   const openShare = Boolean(anchorEl);
-  const shareId = open ? 'simple-popover' : undefined;
+  const shareId = open ? "simple-popover" : undefined;
 
   // Commented based on suggestions from @praveen
   // const [showRedirect, setShowRedirect] = useState(true);
@@ -146,8 +146,8 @@ const MobileDetailsPage = (props) => {
               <div className="details-container__far-reaching">
                 <div className="details-container__ratings">
                   {overAllRating &&
-                  overAllRating.averageGarageRatings === 'NaN' ? (
-                    'No Reviews'
+                  overAllRating.averageGarageRatings === "NaN" ? (
+                    "No Reviews"
                   ) : (
                     <>
                       <StarRatings
@@ -167,7 +167,7 @@ const MobileDetailsPage = (props) => {
                           variant="contained"
                           color="primary"
                           onClick={handleClickOpen}
-                          style={{ marginLeft: '10px' }}
+                          style={{ marginLeft: "10px" }}
                           className="review__button review__button--color-change"
                         >
                           {review.length && review.length === 1
@@ -184,7 +184,7 @@ const MobileDetailsPage = (props) => {
                 </button>
               </div>
               <div className="image-container">
-                {name.garageImage === '' ? (
+                {name.garageImage === "" ? (
                   <img src="http://via.placeholder.com/400x200" alt="garage" />
                 ) : (
                   <img
@@ -359,7 +359,7 @@ const MobileDetailsPage = (props) => {
                   ) : null}
                 </>
               </div>
-              <p style={{ marginBottom: '100px' }}>
+              <p style={{ marginBottom: "100px" }}>
                 <span>About Workshop:</span> {name.garageDescription}
               </p>
             </Grid>
@@ -395,14 +395,17 @@ const MobileDetailsPage = (props) => {
           </div>
         </div>
       ) : null} */}
-      {props.device.breakpoint === 'phone' ? (
+      {props.device.breakpoint === "phone" ? (
         <div>
           <p className="action-container text-center">
             <button
               className="common-button book-now-btn cursor-pointer action__share action__share--button"
               onClick={(e) => {
                 e.preventDefault();
-                window.location.href = `https://wa.me/919361040506?text=I%20need%20my%20car%20to%20be%20serviced%20@%20${name.garageTitle},%20${name.location}`;
+                window.open(
+                  `https://wa.me/919361040506?text=I%20need%20my%20car%20to%20be%20serviced%20@%20${name.garageTitle},%20${name.location}`,
+                  "_blank"
+                );
               }}
             >
               Schedule Now
@@ -410,7 +413,10 @@ const MobileDetailsPage = (props) => {
             <button
               className="common-button book-now-btn cursor-pointer action__directions action__direction--button"
               onClick={() =>
-                (window.location.href = `http://maps.google.com?q=${name.latitude},${name.longitude}`)
+                window.open(
+                  `http://maps.google.com?q=${name.latitude},${name.longitude}`,
+                  "_blank"
+                )
               }
             >
               <img src={compass} alt="Navigate" />
@@ -431,12 +437,12 @@ const MobileDetailsPage = (props) => {
         anchorEl={anchorEl}
         onClose={handleCloseShare}
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
+          vertical: "bottom",
+          horizontal: "left",
         }}
         transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
+          vertical: "top",
+          horizontal: "left",
         }}
         className="share__popper"
         disableScrollLock
